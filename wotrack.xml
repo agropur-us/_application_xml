@@ -114,18 +114,15 @@
 												<textbox dataattribute="wopriority" id="main_grid3_6" sigoption="READ"/>
 												<textbox dataattribute="justifypriority" id="main_grid3_8" lookup="longdesc"/>
 												<checkbox dataattribute="interruptible" id="1433950922500"/>
-												<checkbox dataattribute="inctasksinsched" id="1433950931357"/>
-												<textbox dataattribute="predessorwos" id="plans_children_table_1_Scheduling_grid1_1_1_Scheduling_grid2_10_plus" licensekey="SCHEDULER_PLUS" menutype="SELECTPREDWOSSCHPLUS" smartfilloff="true"/>
 												<textbox dataattribute="intshift" id="plans_children_table_1_Scheduling_grid1_1_1_Scheduling_grid2_15" lookup="shift"/>
+												<checkbox dataattribute="inctasksinsched" id="1433950931357"/>
 											</section>
 										</sectioncol>
 										<sectioncol id="1433953292646">
 											<section id="1433953307420">
-												<textbox dataattribute="ORIGRECORDID" id="1433953417467" menutype="normal"/>
-												<textbox dataattribute="ORIGRECORDCLASS" id="1433953442745" lookup="valuelist"/>
-												<checkbox dataattribute="HASFOLLOWUPWORK" id="1433953427161"/>
-												<textbox dataattribute="CHANGEBY" id="1433953436098" inputmode="readonly"/>
-												<textbox dataattribute="CHANGEdate" id="1433953385016" inputmode="readonly"/>
+												<textbox applink="PERSON" dataattribute="SUPERVISOR" id="1545242182164" lookup="PERSON" menutype="NORMAL" size="20"/>
+												<textbox applink="PERSON" dataattribute="LEAD" id="1545236105659" lookup="PERSON" menutype="NORMAL" size="20"/>
+												<textbox applink="AMCREW" dataattribute="CREWID" id="main_grid36_crew_1" licensekey="CREW" lookup="VALUELIST" menutype="normal"/>
 											</section>
 										</sectioncol>
 										<sectioncol id="plans_task_status" width="33%">
@@ -133,6 +130,8 @@
 												<textbox dataattribute="pcacthrs" id="plans_task_status_2_1" inputmode="readonly"/>
 												<textbox dataattribute="PCTASKCOMP" id="plans_task_status_2_2" inputmode="readonly"/>
 												<textbox dataattribute="pcphys" id="plans_task_status_2_3"/>
+												<textbox dataattribute="CHANGEBY" id="1433953436098" inputmode="readonly"/>
+												<textbox dataattribute="CHANGEdate" id="1433953385016" inputmode="readonly"/>
 											</section>
 										</sectioncol>
 									</sectionrow>
@@ -160,13 +159,14 @@
 												<textbox dataattribute="reportdate" id="main_grid4_2" inputmode="READONLY" lookup="datelookup"/>
 												<textbox applink="person" dataattribute="onbehalfof" id="main_grid4_5" lookup="personname" menutype="normal" rechover="person_recordhover"/>
 												<textbox dataattribute="phone" id="main_grid4_10"/>
+												<textbox dataattribute="predessorwos" id="plans_children_table_1_Scheduling_grid1_1_1_Scheduling_grid2_10_plus" licensekey="SCHEDULER_PLUS" menutype="SELECTPREDWOSSCHPLUS" smartfilloff="true"/>
 											</section>
 										</sectioncol>
 										<sectioncol id="main_grid35">
 											<section id="main_grid36">
-												<textbox applink="PERSON" dataattribute="SUPERVISOR" id="1545242182164" lookup="PERSON" menutype="NORMAL" size="20"/>
-												<textbox applink="PERSON" dataattribute="LEAD" id="1545236105659" lookup="PERSON" menutype="NORMAL" size="20"/>
-												<textbox applink="AMCREW" dataattribute="CREWID" id="main_grid36_crew_1" licensekey="CREW" lookup="VALUELIST" menutype="normal"/>
+												<textbox dataattribute="ORIGRECORDCLASS" id="1433953442745" lookup="valuelist"/>
+												<textbox dataattribute="ORIGRECORDID" id="1433953417467" menutype="normal"/>
+												<checkbox dataattribute="HASFOLLOWUPWORK" id="1433953427161"/>
 												<textbox applink="persongr" dataattribute="persongroup" id="plans_grid1_8" lookup="persongroup" menutype="normal"/>
 												<textbox applink="persongr" dataattribute="crewworkgroup" id="main_grid36_crew_2" licensekey="CREW" lookup="persongroup" menutype="normal"/>
 											</section>
@@ -3388,6 +3388,112 @@
 		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
 
+	<dialog beanclass="psdi.webclient.beans.workorder.AssignLaborBean" hidehelp="true" id="assignlabor" label="Available Labor" relationship="ASSIGNLABOR">
+		<helpgrid id="assignlabor_help" innerhtml="To find labor available during a specific date range, enter the dates in the From and To fields.  To include labor who are already assigned to other jobs, select Include Fully Assigned."/>
+		<section border="true" id="assignlabor_grid1">
+			<sectionrow id="assignlabor_grid1_1">
+				<sectioncol id="assignlabor_grid1_1_1">
+					<section id="assignlabor_grid1_1_1_grid2">
+						<textbox dataattribute="fromdate" id="assignlabor_grid1_1_1_grid2_1" lookup="datelookup"/>
+						<textbox dataattribute="todate" id="assignlabor_grid1_1_1_grid2_2" lookup="datelookup"/>
+						<checkbox dataattribute="assigned" id="assignlabor_grid1_1_1_grid2_3"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="assignlabor_grid1_1_2">
+					<section id="assignlabor_grid1_1_2_grid3">
+						<textbox dataattribute="location" id="assignlabor_grid1_1_2_grid3_1" lookup="location"/>
+						<textbox dataattribute="vendor" id="assignlabor_grid1_1_2_grid3_3" lookup="vendors" smartfilloff="true"/>
+						<textbox dataattribute="contractnum" id="assignlabor_grid1_1_2_grid3_4" lookup="contract" smartfilloff="true"/>
+					</section>
+					<buttongroup id="assignlabor_grid1_1_2_Tblbuttons2">
+						<pushbutton default="true" id="assignlabor_grid1_1_2_Tblbuttons2_1" label="Refresh" mxevent="refreshlabor"/>
+					</buttongroup>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<table beanclass="psdi.webclient.beans.workorder.AssignLaborLaborBean" id="assignlabor_assign_table" inputmode="readonly">
+			<tablebody displayrowsperpage="8" filterable="true" filterexpanded="true" id="assignlabor_assign_table_tablebody">
+				<tablecol dataattribute="laborcode" id="assignlabor_assign_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Select %1" type="link"/>
+				<tablecol dataattribute="person.displayname" id="assignlabor_assign_table_tablebody_3"/>
+				<tablecol dataattribute="laborcraftratedefault.craft" id="assignlabor_assign_table_tablebody_4"/>
+				<tablecol dataattribute="laborcraftratedefault.skilllevel" id="assignlabor_assign_table_tablebody_4a"/>
+				<tablecol dataattribute="WORKSITE" filterable="true" id="assignlabor_assign_table_tablebody_5"/>
+				<tablecol dataattribute="person.personcal.shiftnum" id="assignlabor_assign_table_tablebody_8" sortable="false"/>
+				<tablecol dataattribute="StartTime" id="assignlabor_assign_table_tablebody_7" sortable="false"/>
+				<tablecol dataattribute="availability" id="assignlabor_assign_table_tablebody_10" sortable="false"/>
+				<tablecol dataattribute="assigned" id="assignlabor_assign_table_tablebody_11" sortable="false"/>
+			</tablebody>
+		</table>
+		<buttongroup id="assignlabor_2">
+			<pushbutton id="assignlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.beans.workorder.WorkPackMaterialsBean" id="showwpstatus" inputmode="READONLY" label="Work Package Materials">
+		<table id="workpackstatus_table1" label="Work Package Materials">
+			<tablebody displayrowsperpage="15" filterable="true" id="workpackstatus_grid1" sortable="true">
+				<tablecol dataattribute="WORKORDER.WOGROUP" id="workpackstatus_table1_wonum" label="Work Order" sortable="true"/>
+				<tablecol dataattribute="WORKORDER.TASKID" id="workpackstatus_table1_taskid" label="Task ID"/>
+				<tablecol dataattribute="ITEMNUM" id="workpackstatus_table1_itemnum" label="Item" sortable="true"/>
+				<tablecol dataattribute="DESCRIPTION" id="workpackstatus_table1_description" inputmode="READONLY" sortable="true"/>
+				<tablecol dataattribute="ITEMQTY" id="workpackstatus_table1_reqqty" inputmode="READONLY" label="Required Quantity" sortable="true"/>
+				<tablecol dataattribute="INVENTORY.STAGEDQTY" id="workpack_table1_stagedqty" inputmode="READONLY" label="Staged Quantity" sortable="true"/>
+				<tablecol dataattribute="INVENTORYSTATUS.AVBLBALANCE" id="workpackstatus_table1_availqty" inputmode="READONLY" label="Available Quantity" sortable="true"/>
+				<tablecol dataattribute="LOCATION" id="workpackstatus_table1_store" inputmode="READONLY" label="Storeroom"/>
+				<tablecol dataattribute="STORELOCSITE" id="workpackstatus_table1_store_site" inputmode="READONLY" label="Storeroom Site"/>
+				<tablecol dataattribute="INVRESERVE.RESTYPE" id="workpackstatus_table1_store_restype" inputmode="READONLY" label="Reservation Type" sortable="true"/>
+				<tablecol dataattribute="DIRECTREQ" id="workpackstatus_table1_directreq" inputmode="READONLY" label="Direct Issue"/>
+				<tablecol dataattribute="PRLINE.PONUM" id="workpackstatus_table1_ponum" inputmode="READONLY" label="PO" sortable="true" type="LINK"/>
+				<tablecol dataattribute="POREV.STATUS" id="workpackstatus_table1_postatus" inputmode="READONLY" label="PO Status"/>
+				<tablecol dataattribute="POREV.VENDOR" id="workpackstatus_table1_vendor" inputmode="READONLY" label="PO Vendor" sortable="true"/>
+				<tablecol dataattribute="POLINE.VENDELIVERYDATE" id="workpackstatus_table1_antdeliverydate" inputmode="READONLY" label="Anticipated Delivery" sortable="true"/>
+				<tablecol dataattribute="DIMATUSETRANS.ACTUALDATE" id="workpackstatus_table1_actualdeliverydate" inputmode="READONLY" label="Delivery Date"/>
+			</tablebody>
+		</table>
+		<buttongroup id="workpackstatus_view_buttons">
+			<pushbutton default="true" id="workpackstatus_view_buttons_1" label="Close" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+	<action id="CREATEINCT" method="createIncident" savemode="ONLOAD"/>
+
+	<dialog beanclass="psdi.webclient.beans.workorder.SafetyPlanBean" icon="img_lookup.gif" id="lookup_selectsp" label="Select Safety Plan">
+		<section border="true" datasrc="MAINRECORD" id="selsafety_grid3">
+			<sectionrow id="selsafety_grid3_1">
+				<sectioncol id="selsafety_grid3_1_1">
+					<section id="selsafety_a">
+						<radiobuttongroup dataattribute="SAFETYPLAN_LOOKUP_LIST_TYPE" id="selsafety_grid3_1_1_rbg1"/>
+					</section>
+					<buttongroup id="selsafety_grid3_1_1_Tblbuttons1">
+						<pushbutton id="selsafety_grid3_1_1_Tblbuttons1_1" label="Refresh" mxevent="REFRESHLIST"/>
+					</buttongroup>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<table id="selsafety_select_table" inputmode="readonly" selectmode="single">
+			<tablebody displayrowsperpage="5" filterable="true" id="selsafety_select_table_tablebody">
+				<tablecol dataattribute="safetyplanid" id="selsafety_select_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+				<tablecol dataattribute="description" id="selsafety_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+			</tablebody>
+		</table>
+		<buttongroup id="selsafety_2">
+			<pushbutton default="true" id="selsafety_2_1" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="chgmtlstsb" label="Change Work Order Options" savemode="ONLOADUNLOAD">
+		<helpgrid id="createcont_help" innerhtml="You can apply your changes to the current work order, or select Apply to Work Pack to change the values on the current work order and on all related records."/>
+		<section id="chgmtlstsb_grid_s1">
+			<checkbox dataattribute="IGNORESRMAVAIL" id="chgmtlstsb_grid_s1_1"/>
+			<checkbox dataattribute="IGNOREDIAVAIL" id="chgmtlstsb_grid_s1_2"/>
+		</section>
+		<buttongroup id="chgmtlstsb_2">
+			<pushbutton id="chgmtlstsb_2_1" label="Apply to Work Package" mxevent="updateworkpackflags"/>
+			<pushbutton default="true" id="chgmtlstsb_2_2" label="Apply to Current Work Order" mxevent="dialogok"/>
+			<pushbutton id="chgmtlstsb_2_3" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+	<action id="CREATECHG" method="createChange" savemode="ONLOAD"/>
+
 	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
 		<datasrc beanclass="psdi.webclient.beans.common.RepairFacilityConditionalUIBean" id="repfacilitysrc"/>
 		<section id="qbe_s1">
@@ -3722,112 +3828,6 @@
 			<pushbutton id="qbe_bg1_pb3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
-
-	<dialog beanclass="psdi.webclient.beans.workorder.AssignLaborBean" hidehelp="true" id="assignlabor" label="Available Labor" relationship="ASSIGNLABOR">
-		<helpgrid id="assignlabor_help" innerhtml="To find labor available during a specific date range, enter the dates in the From and To fields.  To include labor who are already assigned to other jobs, select Include Fully Assigned."/>
-		<section border="true" id="assignlabor_grid1">
-			<sectionrow id="assignlabor_grid1_1">
-				<sectioncol id="assignlabor_grid1_1_1">
-					<section id="assignlabor_grid1_1_1_grid2">
-						<textbox dataattribute="fromdate" id="assignlabor_grid1_1_1_grid2_1" lookup="datelookup"/>
-						<textbox dataattribute="todate" id="assignlabor_grid1_1_1_grid2_2" lookup="datelookup"/>
-						<checkbox dataattribute="assigned" id="assignlabor_grid1_1_1_grid2_3"/>
-					</section>
-				</sectioncol>
-				<sectioncol id="assignlabor_grid1_1_2">
-					<section id="assignlabor_grid1_1_2_grid3">
-						<textbox dataattribute="location" id="assignlabor_grid1_1_2_grid3_1" lookup="location"/>
-						<textbox dataattribute="vendor" id="assignlabor_grid1_1_2_grid3_3" lookup="vendors" smartfilloff="true"/>
-						<textbox dataattribute="contractnum" id="assignlabor_grid1_1_2_grid3_4" lookup="contract" smartfilloff="true"/>
-					</section>
-					<buttongroup id="assignlabor_grid1_1_2_Tblbuttons2">
-						<pushbutton default="true" id="assignlabor_grid1_1_2_Tblbuttons2_1" label="Refresh" mxevent="refreshlabor"/>
-					</buttongroup>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<table beanclass="psdi.webclient.beans.workorder.AssignLaborLaborBean" id="assignlabor_assign_table" inputmode="readonly">
-			<tablebody displayrowsperpage="8" filterable="true" filterexpanded="true" id="assignlabor_assign_table_tablebody">
-				<tablecol dataattribute="laborcode" id="assignlabor_assign_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Select %1" type="link"/>
-				<tablecol dataattribute="person.displayname" id="assignlabor_assign_table_tablebody_3"/>
-				<tablecol dataattribute="laborcraftratedefault.craft" id="assignlabor_assign_table_tablebody_4"/>
-				<tablecol dataattribute="laborcraftratedefault.skilllevel" id="assignlabor_assign_table_tablebody_4a"/>
-				<tablecol dataattribute="WORKSITE" filterable="true" id="assignlabor_assign_table_tablebody_5"/>
-				<tablecol dataattribute="person.personcal.shiftnum" id="assignlabor_assign_table_tablebody_8" sortable="false"/>
-				<tablecol dataattribute="StartTime" id="assignlabor_assign_table_tablebody_7" sortable="false"/>
-				<tablecol dataattribute="availability" id="assignlabor_assign_table_tablebody_10" sortable="false"/>
-				<tablecol dataattribute="assigned" id="assignlabor_assign_table_tablebody_11" sortable="false"/>
-			</tablebody>
-		</table>
-		<buttongroup id="assignlabor_2">
-			<pushbutton id="assignlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.beans.workorder.WorkPackMaterialsBean" id="showwpstatus" inputmode="READONLY" label="Work Package Materials">
-		<table id="workpackstatus_table1" label="Work Package Materials">
-			<tablebody displayrowsperpage="15" filterable="true" id="workpackstatus_grid1" sortable="true">
-				<tablecol dataattribute="WORKORDER.WOGROUP" id="workpackstatus_table1_wonum" label="Work Order" sortable="true"/>
-				<tablecol dataattribute="WORKORDER.TASKID" id="workpackstatus_table1_taskid" label="Task ID"/>
-				<tablecol dataattribute="ITEMNUM" id="workpackstatus_table1_itemnum" label="Item" sortable="true"/>
-				<tablecol dataattribute="DESCRIPTION" id="workpackstatus_table1_description" inputmode="READONLY" sortable="true"/>
-				<tablecol dataattribute="ITEMQTY" id="workpackstatus_table1_reqqty" inputmode="READONLY" label="Required Quantity" sortable="true"/>
-				<tablecol dataattribute="INVENTORY.STAGEDQTY" id="workpack_table1_stagedqty" inputmode="READONLY" label="Staged Quantity" sortable="true"/>
-				<tablecol dataattribute="INVENTORYSTATUS.AVBLBALANCE" id="workpackstatus_table1_availqty" inputmode="READONLY" label="Available Quantity" sortable="true"/>
-				<tablecol dataattribute="LOCATION" id="workpackstatus_table1_store" inputmode="READONLY" label="Storeroom"/>
-				<tablecol dataattribute="STORELOCSITE" id="workpackstatus_table1_store_site" inputmode="READONLY" label="Storeroom Site"/>
-				<tablecol dataattribute="INVRESERVE.RESTYPE" id="workpackstatus_table1_store_restype" inputmode="READONLY" label="Reservation Type" sortable="true"/>
-				<tablecol dataattribute="DIRECTREQ" id="workpackstatus_table1_directreq" inputmode="READONLY" label="Direct Issue"/>
-				<tablecol dataattribute="PRLINE.PONUM" id="workpackstatus_table1_ponum" inputmode="READONLY" label="PO" sortable="true" type="LINK"/>
-				<tablecol dataattribute="POREV.STATUS" id="workpackstatus_table1_postatus" inputmode="READONLY" label="PO Status"/>
-				<tablecol dataattribute="POREV.VENDOR" id="workpackstatus_table1_vendor" inputmode="READONLY" label="PO Vendor" sortable="true"/>
-				<tablecol dataattribute="POLINE.VENDELIVERYDATE" id="workpackstatus_table1_antdeliverydate" inputmode="READONLY" label="Anticipated Delivery" sortable="true"/>
-				<tablecol dataattribute="DIMATUSETRANS.ACTUALDATE" id="workpackstatus_table1_actualdeliverydate" inputmode="READONLY" label="Delivery Date"/>
-			</tablebody>
-		</table>
-		<buttongroup id="workpackstatus_view_buttons">
-			<pushbutton default="true" id="workpackstatus_view_buttons_1" label="Close" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-	<action id="CREATEINCT" method="createIncident" savemode="ONLOAD"/>
-
-	<dialog beanclass="psdi.webclient.beans.workorder.SafetyPlanBean" icon="img_lookup.gif" id="lookup_selectsp" label="Select Safety Plan">
-		<section border="true" datasrc="MAINRECORD" id="selsafety_grid3">
-			<sectionrow id="selsafety_grid3_1">
-				<sectioncol id="selsafety_grid3_1_1">
-					<section id="selsafety_a">
-						<radiobuttongroup dataattribute="SAFETYPLAN_LOOKUP_LIST_TYPE" id="selsafety_grid3_1_1_rbg1"/>
-					</section>
-					<buttongroup id="selsafety_grid3_1_1_Tblbuttons1">
-						<pushbutton id="selsafety_grid3_1_1_Tblbuttons1_1" label="Refresh" mxevent="REFRESHLIST"/>
-					</buttongroup>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<table id="selsafety_select_table" inputmode="readonly" selectmode="single">
-			<tablebody displayrowsperpage="5" filterable="true" id="selsafety_select_table_tablebody">
-				<tablecol dataattribute="safetyplanid" id="selsafety_select_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
-				<tablecol dataattribute="description" id="selsafety_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
-			</tablebody>
-		</table>
-		<buttongroup id="selsafety_2">
-			<pushbutton default="true" id="selsafety_2_1" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog id="chgmtlstsb" label="Change Work Order Options" savemode="ONLOADUNLOAD">
-		<helpgrid id="createcont_help" innerhtml="You can apply your changes to the current work order, or select Apply to Work Pack to change the values on the current work order and on all related records."/>
-		<section id="chgmtlstsb_grid_s1">
-			<checkbox dataattribute="IGNORESRMAVAIL" id="chgmtlstsb_grid_s1_1"/>
-			<checkbox dataattribute="IGNOREDIAVAIL" id="chgmtlstsb_grid_s1_2"/>
-		</section>
-		<buttongroup id="chgmtlstsb_2">
-			<pushbutton id="chgmtlstsb_2_1" label="Apply to Work Package" mxevent="updateworkpackflags"/>
-			<pushbutton default="true" id="chgmtlstsb_2_2" label="Apply to Current Work Order" mxevent="dialogok"/>
-			<pushbutton id="chgmtlstsb_2_3" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-	<action id="CREATECHG" method="createChange" savemode="ONLOAD"/>
 
 	<dialog beanclass="psdi.webclient.beans.workorder.StoreroomMaterialsBean" id="showsrmstatus" inputmode="READONLY" label="Current Work Order Storeroom Materials">
 		<table id="storeroomstatus_table1" label="Storeroom Materials">
@@ -4183,28 +4183,6 @@
 	</dialog>
 	<action id="CREATESREQ" method="createServiceRequest" savemode="ONLOAD"/>
 
-	<dialog beanclass="psdi.plusc.webclient.beans.workorder.ShowPlusCTechnicianBean" id="tool-showlabor" label="Select By Labor" mboname="LABOR">
-		<table id="showlabor_select_table" inputmode="readonly" selectmode="single">
-			<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="showlabor_select_table_tablebody">
-				<tablecol dataattribute="laborcode" id="showlabor_select_table_tablecol_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-				<tablecol dataattribute="person.displayname" id="showlabor_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			</tablebody>
-		</table>
-		<buttongroup id="showlabor_2">
-			<pushbutton default="true" id="showlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog datasrc="MAINRECORD" id="duplicate" label="Duplicate Record">
-		<section id="duplicate_grid1">
-			<radiobuttongroup border="false" dataattribute="dupflag" id="duplicate_grid1_1_1_grid6"/>
-		</section>
-		<buttongroup id="duplicate_1">
-			<pushbutton default="true" id="owner_1_1" label="OK" mxevent="DUPLICATECHECK"/>
-			<pushbutton id="owner_1_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog beanclass="com.ibm.tivoli.maximo.appt.beans.CreateWorkOrderApptWindowDialogBean" id="CREATEWOWITHAPPTWIN" label="Create Work Order with Appointment Window" mboname="WORKORDER" savemode="ONUNLOAD">
 		<section id="CREATEWOWITHAPPTWIN_mainsection">
 			<sectionrow id="CREATEWOWITHAPPTWIN_row0">
@@ -4294,6 +4272,28 @@
 		<buttongroup id="CREATEWOWITHAPPTWIN_3">
 			<pushbutton default="true" id="CREATEWOWITHAPPTWIN_3_1" label="OK" mxevent="dialogok"/>
 			<pushbutton id="CREATEWOWITHAPPTWIN_3_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog datasrc="MAINRECORD" id="duplicate" label="Duplicate Record">
+		<section id="duplicate_grid1">
+			<radiobuttongroup border="false" dataattribute="dupflag" id="duplicate_grid1_1_1_grid6"/>
+		</section>
+		<buttongroup id="duplicate_1">
+			<pushbutton default="true" id="owner_1_1" label="OK" mxevent="DUPLICATECHECK"/>
+			<pushbutton id="owner_1_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.plusc.webclient.beans.workorder.ShowPlusCTechnicianBean" id="tool-showlabor" label="Select By Labor" mboname="LABOR">
+		<table id="showlabor_select_table" inputmode="readonly" selectmode="single">
+			<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="showlabor_select_table_tablebody">
+				<tablecol dataattribute="laborcode" id="showlabor_select_table_tablecol_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+				<tablecol dataattribute="person.displayname" id="showlabor_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			</tablebody>
+		</table>
+		<buttongroup id="showlabor_2">
+			<pushbutton default="true" id="showlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
