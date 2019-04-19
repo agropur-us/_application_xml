@@ -67,6 +67,11 @@
 									<checkbox dataattribute="returnedtovendor" id="returnedtovendor" inputmode="readonly"/>
 								</section>
 							</sectioncol>
+							<sectioncol id="main_grid8_11_4">
+								<section id="main_grid8_11_4_1">
+									<recordimage id="nxtgenui_record_img_ctrl"/>
+								</section>
+							</sectioncol>
 						</sectionrow>
 					</section>
 					<section id="main_grid3" label="Details">
@@ -111,7 +116,6 @@
 									<textbox dataattribute="eq3" id="1513095124494" inputmode="readonly" label="MVP Asset Type"/>
 									<textbox dataattribute="itemtype" id="main_grid3_18" inputmode="readonly"/>
 									<textbox dataattribute="toolrate" id="main_grid3_19"/>
-									<recordimage id="nxtgenui_record_img_ctrl"/>
 								</section>
 							</sectioncol>
 						</sectionrow>
