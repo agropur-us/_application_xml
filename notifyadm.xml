@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<presentation apphelp="com.interlocsolutions.informer.doc,administrator/overview.html" beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.NotifyAdminAppBean" id="notifyadm" ismobile="false" keyattribute="notifynum" mboname="ISNOTIFY" resultstableid="results_showlist" version="6.0.0">
+	<page id="mainrec" scroll="false">
+		<include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
+		<clientarea id="clientarea">
+			<tabgroup id="maintabs" style="form">
+				<tab default="true" id="results" label="List" type="list">
+					<menubar event="search" id="actiontoolbar1" sourcemethod="getAppSearchOptions"/>
+					<table id="results_showlist" inputmode="readonly" label="Profiles" mboname="ISNOTIFY" selectmode="multiple">
+						<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+							<tablecol dataattribute="NOTIFYNUM" filterable="false" id="results_showlist_column_select" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+							<tablecol dataattribute="NOTIFYNUM" id="results_showlist_column_link" mxevent="selectrecord" mxevent_desc="Go To %1" type="link" usefieldsizegroup="false"/>
+							<tablecol dataattribute="DESCRIPTION" id="results_showlist_column2"/>
+							<tablecol dataattribute="app" id="1375484220346"/>
+							<tablecol dataattribute="processname" id="1375484223098"/>
+							<tablecol dataattribute="active" id="1375484225596"/>
+							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
+						</tablebody>
+					</table>
+				</tab>
+				<tab id="main" label="Profile" type="insert">
+					<section border="true" id="1252101331236">
+						<sectionrow id="1252101331298">
+							<sectioncol id="1252101331345">
+								<multiparttextbox dataattribute="notifynum" descdataattribute="description" descinputmode="readonly" id="1252101331392" inputmode="REQUIRED"/>
+								<textbox dataattribute="APP" id="1252101331455" inputmode="REQUIRED" lookup="isinformermaxapps" ondatachange="RESETCHILDREN"/>
+								<textbox dataattribute="ALTTRIGROOT" id="1297809307062"/>
+								<textbox dataattribute="CLAUSENAME" id="1252101331501" inputmode="readonly" lookup="isinformernotifyquery"/>
+								<textbox dataattribute="processname" id="1252101331564" inputmode="readonly" lookup="isinformerwfprocess"/>
+							</sectioncol>
+							<sectioncol id="1252101331720">
+								<textbox dataattribute="version" id="1346800143467" inputmode="readonly"/>
+								<checkbox dataattribute="active" id="1252101331783"/>
+								<blankline id="1346800160259"/>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.CatalogDataBean" datasrc="1322004597593" id="1322004597593" label="Available Catalogs" ondatachange="resetchildren" relationship="CATALOG">
+						<tablebody displayrowsperpage="20" filterable="true" id="1322004597640">
+							<tablecol dataattribute="CATALOG" id="1322004597718"/>
+							<tablecol dataattribute="DESCRIPTION" id="1322004597765" inputmode="readonly"/>
+							<tablecol dataattribute="LASTPRELOADDATE" id="1322004597859" inputmode="readonly"/>
+							<tablecol dataattribute="preloadcount" id="1415821552539" inputmode="readonly"/>
+							<tablecol id="1340060175920" mxevent="preload" mxevent_desc="Refresh Preload" mxevent_icon="iconbtn_refresh.gif" sigoption="PRELOAD"/>
+						</tablebody>
+						<buttongroup id="1375917200884">
+							<pushbutton id="1375917215204" label="Manage Where Clauses" mxevent="subcat"/>
+						</buttongroup>
+					</table>
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageCatalogDataBean" datasrc="1322004814515" id="1322004814515" label="Devices for {0}" parentdatasrc="1322004597593" parentemptylabel="Devices" relationship="CATALOGDEVICELIST" selectmode="MULTIPLE" titleattributes="catalog">
+						<sectionheader id="1322004814562">
+							<paramvalues id="1322004814609" property="label">
+								<paramvalue dataattribute="catalog" datasrc="1322004597593" id="1322004814640" position="0"/>
+							</paramvalues>
+						</sectionheader>
+						<tablebody filterexpanded="true" id="1322004814687">
+							<tablecol id="1322004814734" mxevent="toggleselectrow" mxevent_desc="Select Row" type="EVENT"/>
+							<tablecol dataattribute="DEVICE.DEVICEUSER.PERSON.DISPLAYNAME" id="1343427260972" inputmode="readonly" label="Last User"/>
+							<tablecol dataattribute="CATALOG.PREFIX" id="1365613755340" inputmode="readonly" label="Where Clause"/>
+							<tablecol dataattribute="DEVICE.SERIALNUM" id="1322004814781" inputmode="READONLY"/>
+							<tablecol dataattribute="DEVICE.NAME" id="1322004814812" inputmode="READONLY"/>
+							<tablecol dataattribute="DEVICE.OS" id="1322004814859" inputmode="READONLY"/>
+						</tablebody>
+						<tabledetails id="1322004814906"/>
+						<buttongroup id="1322004814953">
+							<pushbutton id="1424410215967" label="Reset All Devices" mxevent="resetalldevices"/>
+							<pushbutton default="true" id="1322004815000" label="Reset Selected Devices" mxevent="resetdevices"/>
+						</buttongroup>
+					</table>
+				</tab>
+				<tab id="1252101091001" label="Users">
+					<section border="true" id="1252101341830">
+						<sectionrow id="1252101341892">
+							<sectioncol id="1252101341939">
+								<multiparttextbox dataattribute="notifynum" descdataattribute="description" descinputmode="readonly" id="1252101341986" inputmode="REQUIRED"/>
+								<textbox dataattribute="APP" id="1252101342048" inputmode="REQUIRED" lookup="isinformermaxapps"/>
+								<textbox dataattribute="ALTTRIGROOT" id="1310603264214"/>
+								<textbox dataattribute="CLAUSENAME" id="1252101342111" inputmode="readonly" lookup="isinformernotifyquery"/>
+								<textbox dataattribute="processname" id="1252101342158" inputmode="readonly" lookup="isinformerwfprocess"/>
+							</sectioncol>
+							<sectioncol id="1252101342330">
+								<textbox dataattribute="version" id="1375980601093" inputmode="readonly"/>
+								<checkbox dataattribute="active" id="1252101342376"/>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageUsersDataBean" datasrc="user_table" id="1252101105501" label="Users" ondatachange="resetchildren" relationship="NOTIFYUSER" selectmode="multiple">
+						<tablebody id="1252101105548">
+							<tablecol dataattribute="notifyuserid" id="1344895659649" mxevent="toggleselectrow" mxevent_desc="Select Row" type="event"/>
+							<tablecol dataattribute="LOGINID" id="1252101105658"/>
+							<tablecol dataattribute="MAXUSER.PERSON.DISPLAYNAME" id="1252101105705" inputmode="READONLY"/>
+							<tablecol id="1292881726511" mxevent="usersessions" mxevent_desc="View user sessions" mxevent_icon="nav_icon_usercust_informer.gif" type="EVENT"/>
+							<tablecol id="1292266872139" mxevent="refreshuser" mxevent_desc="Reconcile User's Notification" mxevent_icon="iconbtn_refresh.gif" type="EVENT"/>
+							<tablecol id="1252101105751" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="EVENT"/>
+						</tablebody>
+						<tabledetails id="1252101105830">
+							<section id="1252101105876" label="Users">
+								<sectionrow id="1252101105923">
+									<sectioncol id="1252101105986">
+										<multiparttextbox dataattribute="LOGINID" descdataattribute="MAXUSER.PERSON.DISPLAYNAME" descinputmode="READONLY" id="1252101106048" inputmode="REQUIRED" lookup="isinformermaxuser"/>
+									</sectioncol>
+								</sectionrow>
+							</section>
+						</tabledetails>
+						<buttongroup id="1252101106158">
+							<pushbutton id="1344895901466" label="Send Application Link" mxevent="sendapplink"/>
+							<pushbutton id="1252101106267" label="Select Users" mxevent="selectusers"/>
+							<pushbutton id="1376432122156" label="Import Groups" mxevent="selectgroups"/>
+							<pushbutton default="true" id="1252101106220" label="New Row" mxevent="addrow"/>
+						</buttongroup>
+					</table>
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageUserNotificationsDataBean" datasrc="active_notifications" id="1275693148960" label="Active Notifications for {0}" parentdatasrc="user_table" parentemptylabel="Active Notifications" relationship="ACTIVEUSERNOTIFICATION" titleattributes="loginid">
+						<sectionheader id="user_table_h">
+							<paramvalues id="user_table_h_1" property="label">
+								<paramvalue dataattribute="loginid" datasrc="user_table" id="user_table_h_2" position="0"/>
+							</paramvalues>
+						</sectionheader>
+						<tablebody id="1275693149007">
+							<tablecol id="1275693149069" mxevent="toggledetailstate" mxevent_desc="Show Detail" type="EVENT"/>
+							<tablecol dataattribute="PERSISTENTTITLE" id="1277318329505" inputmode="READONLY"/>
+							<tablecol dataattribute="lastupdate" id="1275693488507"/>
+							<tablecol dataattribute="LASTRETRIEVED" id="1408475499475" inputmode="readonly"/>
+							<tablecol dataattribute="LASTDEVICENAME" id="1408475503385" inputmode="readonly"/>
+							<tablecol id="1408487558543" mxevent="viewreceipts" mxevent_desc="Retrieval Details" mxevent_icon="img_information.gif"/>
+							<tablecol id="1275693149226" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="EVENT"/>
+						</tablebody>
+						<tabledetails id="1275693149288">
+							<section id="1275693149335" label="Notification Details">
+								<multilinetextbox columns="50" dataattribute="PERSISTENTTITLE" id="1277413872381" inputmode="readonly"/>
+							</section>
+						</tabledetails>
+						<buttongroup id="1321999951968">
+							<pushbutton id="1321999952015" label="Refresh" mxevent="refresh"/>
+						</buttongroup>
+					</table>
+				</tab>
+				<tab id="1377734824096" label="Devices">
+					<section border="true" id="1377735235184">
+						<sectionrow id="1377735235185">
+							<sectioncol id="1377735235186">
+								<multiparttextbox dataattribute="notifynum" descdataattribute="description" descinputmode="readonly" id="1377735235187" inputmode="REQUIRED"/>
+								<textbox dataattribute="APP" id="1377735235188" inputmode="REQUIRED" lookup="isinformermaxapps"/>
+								<textbox dataattribute="ALTTRIGROOT" id="1377735235189"/>
+								<textbox dataattribute="CLAUSENAME" id="1377735235190" inputmode="readonly" lookup="isinformernotifyquery"/>
+								<textbox dataattribute="processname" id="1377735235191" inputmode="readonly" lookup="isinformerwfprocess"/>
+							</sectioncol>
+							<sectioncol id="1377735235192">
+								<textbox dataattribute="version" id="1377735235193" inputmode="readonly"/>
+								<checkbox dataattribute="active" id="1377735235194"/>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageDeviceDataBean" datasrc="mandev" id="mandev" label="Devices" ondatachange="resetchildren" relationship="DEVICES" selectmode="MULTIPLE" whereclause="active = 1">
+						<tablebody id="1292336901528">
+							<tablecol id="1292336909591" mxevent="toggleselectrow" type="EVENT"/>
+							<tablecol id="1343429268517" mxevent="toggledetailstate" mxevent_desc="Show Detail" type="event"/>
+							<tablecol dataattribute="DEVICEUSER.PERSON.DISPLAYNAME" id="1343428765512" inputmode="readonly" label="Last User"/>
+							<tablecol dataattribute="name" id="1292336901575" inputmode="READONLY"/>
+							<tablecol dataattribute="serialnum" id="1390360769056" inputmode="readonly"/>
+							<tablecol dataattribute="os" id="1292337061591" inputmode="READONLY"/>
+							<tablecol dataattribute="CURRENTLOGLEVEL" id="1376613975605" inputmode="readonly"/>
+							<tablecol dataattribute="blocked" id="1292337109028"/>
+							<tablecol dataattribute="wipe" id="1292340443200"/>
+							<tablecol applink="ASSET" dataattribute="ASSET.ASSETNUM" id="1292708873792" inputmode="READONLY"/>
+							<tablecol id="1292338088653" mxevent="createasset" mxevent_desc="Create an asset for this device" mxevent_icon="action_insert_informer_asset.gif" type="EVENT"/>
+							<tablecol id="1408063809654" mxevent="deviceinfo" mxevent_desc="Device Details" mxevent_icon="img_information.gif" type="event"/>
+							<tablecol id="1292337143794" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="EVENT"/>
+						</tablebody>
+						<tabledetails id="1292336901606">
+							<section id="1275693149337" label="Device Instrumentation">
+								<sectionrow id="1278623202243">
+									<sectioncol id="1343429835857">
+										<textbox dataattribute="timestampreading" id="1343429462036" inputmode="readonly"/>
+										<textbox dataattribute="HACCURACY" id="1343429843040" inputmode="readonly"/>
+										<checkbox dataattribute="INSTRUMENTREQPENDING" id="1376618125334" inputmode="readonly"/>
+									</sectioncol>
+									<sectioncol id="1343429475602">
+										<textbox dataattribute="latitude" id="1343429479119" inputmode="readonly"/>
+										<textbox dataattribute="vaccuracy" id="1343429928033" inputmode="readonly"/>
+										<textbox dataattribute="batterylevel" id="1343430012599" inputmode="readonly"/>
+									</sectioncol>
+									<sectioncol id="1343429483566">
+										<textbox dataattribute="longitude" id="1343429486110" inputmode="readonly"/>
+										<textbox dataattribute="heading" id="1343429916301" inputmode="readonly"/>
+										<blankline id="1343430079217"/>
+									</sectioncol>
+									<sectioncol id="1343429791684">
+										<textbox dataattribute="altitude" id="1343429794814" inputmode="readonly"/>
+										<textbox dataattribute="speed" id="1343429930284" inputmode="readonly"/>
+										<blankline id="1343430079216"/>
+									</sectioncol>
+								</sectionrow>
+							</section>
+							<section id="1376614004600" label="Log">
+								<sectionrow id="1376614117058">
+									<sectioncol id="1376614145986">
+										<textbox dataattribute="loglevel" id="1376614149831" lookup="valuelist"/>
+									</sectioncol>
+									<sectioncol id="1376614141588">
+										<textbox dataattribute="LOGLEVELDATE" id="1376614242682" inputmode="readonly"/>
+									</sectioncol>
+									<sectioncol id="1376614135461">
+										<textbox dataattribute="currentloglevel" id="1376614157812" inputmode="readonly"/>
+									</sectioncol>
+									<sectioncol id="1376614117063">
+										<textbox dataattribute="CURRENTLOGLEVELDATE" id="1376614160975" inputmode="readonly"/>
+									</sectioncol>
+								</sectionrow>
+							</section>
+						</tabledetails>
+						<buttongroup id="1292337463903">
+							<pushbutton id="1343686933489" label="Refresh" mxevent="refresh"/>
+							<pushbutton id="1343435719703" label="Request Check-in" mxevent="reqinst"/>
+							<pushbutton id="1376611478605" label="Request Log" mxevent="requestlog"/>
+							<pushbutton id="1376611471672" label="Request Screenshot" mxevent="requestscreenshot"/>
+							<pushbutton id="1377036186919" label="Apply Log Level" mxevent="applyloglevel"/>
+							<pushbutton default="true" id="1292337463950" label="Delete Selected" mxevent="deleteselected"/>
+						</buttongroup>
+					</table>
+					<tabgroup id="1376605986790">
+						<tab default="true" id="1376605986836" label="Logs">
+							<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.LogDataBean" id="log" label="Logs for {0}" orderby="REQUESTLOGDATE desc" parentdatasrc="mandev" parentemptylabel="Logs" relationship="LOG" selectmode="MULTIPLE">
+								<sectionheader id="1376952582505">
+									<paramvalues id="1376952591118" property="label">
+										<paramvalue dataattribute="name" datasrc="mandev" id="1376952598273" position="0"/>
+									</paramvalues>
+								</sectionheader>
+								<tablebody id="1376605830077">
+									<tablecol id="1376950941672" mxevent="toggleselectrow" type="EVENT"/>
+									<tablecol dataattribute="requestlogdate" id="1376606846024" inputmode="readonly"/>
+									<tablecol dataattribute="status" id="1376606910607" inputmode="readonly"/>
+									<tablecol dataattribute="logdate" id="1376613696451" inputmode="readonly"/>
+									<tablecol id="1376616489002" mxevent="viewlog" mxevent_desc="View Log Entry" mxevent_icon="btn_edit.gif" sigoption="SHOWLOG" type="event"/>
+									<tablecol id="1376605830123" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="EVENT"/>
+								</tablebody>
+								<tabledetails id="1376605830168">
+									<section id="1376616298872" label="Log Details">
+										<multilinetextbox columns="80" dataattribute="log" id="1376616416113" inputmode="readonly" rows="15"/>
+										<sectionrow id="1376959748326"/>
+									</section>
+								</tabledetails>
+								<buttongroup id="1376953667480">
+									<pushbutton default="false" id="1376953674814" label="Delete Selected" mxevent="deleteselected"/>
+									<pushbutton id="1377778840052" label="Delete All" mxevent="deleteall"/>
+									<pushbutton id="1379495240777" label="Download" mxevent="download"/>
+									<pushbutton default="true" id="1377735334237" label="Refresh" mxevent="refresh"/>
+								</buttongroup>
+							</table>
+						</tab>
+						<tab id="1376606006673" label="Screenshots">
+							<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ScreenshotDataBean" id="sc" label="Screenshots for {0}" orderby="REQUESTLOGDATE desc" parentdatasrc="mandev" parentemptylabel="Screenshots" relationship="SCREENSHOT" selectmode="MULTIPLE">
+								<paramvalues id="1376953428488" property="label">
+									<paramvalue dataattribute="name" datasrc="mandev" id="1376953436787" position="0"/>
+								</paramvalues>
+								<tablebody id="1376606014744">
+									<tablecol id="1376950966164" mxevent="toggleselectrow" type="EVENT"/>
+									<tablecol dataattribute="requestlogdate" id="1376606918986" inputmode="readonly"/>
+									<tablecol dataattribute="status" id="1376606925854" inputmode="readonly"/>
+									<tablecol dataattribute="logdate" id="1376613731799" inputmode="readonly"/>
+									<tablecol id="1377767147023" mxevent="showsc" mxevent_desc="Show Screenshot" mxevent_icon="nav_icon_togglevp.gif" sigoption="SHOWSC"/>
+									<tablecol id="1376606014799" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="EVENT"/>
+								</tablebody>
+								<buttongroup id="1376953689549">
+									<pushbutton id="1377778896148" label="Delete All" mxevent="deleteall"/>
+									<pushbutton default="false" id="1376953696905" label="Delete Selected" mxevent="deleteselected"/>
+									<pushbutton default="true" id="1377735365199" label="Refresh" mxevent="refresh"/>
+								</buttongroup>
+							</table>
+						</tab>
+					</tabgroup>
+					<buttongroup id="mandev_2">
+						<pushbutton default="true" id="mandev_2_1" label="OK" mxevent="dialogok"/>
+						<pushbutton id="1292338512388" label="Cancel" mxevent="dialogcancel"/>
+					</buttongroup>
+				</tab>
+				<tab id="1292011639989" label="Error Management">
+					<section border="true" id="1375862770541">
+						<sectionrow id="1375862770550">
+							<sectioncol id="1375862770556">
+								<multiparttextbox dataattribute="notifynum" descdataattribute="description" descinputmode="readonly" id="1375862770561" inputmode="REQUIRED"/>
+								<textbox dataattribute="APP" id="1375862770567" inputmode="REQUIRED" lookup="isinformermaxapps"/>
+								<textbox dataattribute="ALTTRIGROOT" id="1375862770573"/>
+								<textbox dataattribute="CLAUSENAME" id="1375862770578" inputmode="readonly" lookup="isinformernotifyquery"/>
+								<textbox dataattribute="processname" id="1375862770584" inputmode="readonly" lookup="isinformerwfprocess"/>
+							</sectioncol>
+							<sectioncol id="1375862770590">
+								<textbox dataattribute="version" id="1375862770595" inputmode="readonly"/>
+								<checkbox dataattribute="active" id="1375862770600"/>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageErrorsDataBean" datasrc="error_table" id="1292254445453" label="Errors" orderby="errordate desc" relationship="ACTIVENOTIFYCOMMANDLOG" selectmode="MULTIPLE">
+						<tablebody id="1292254445500">
+							<tablecol dataattribute="notifycommandlogid" id="1292261719826" mxevent="toggleselectrow" mxevent_desc="Select Row" type="EVENT"/>
+							<tablecol dataattribute="errordate" id="1292254445578" inputmode="READONLY"/>
+							<tablecol dataattribute="username" id="1292254445625" inputmode="READONLY"/>
+							<tablecol dataattribute="subject" id="1292254445656" inputmode="READONLY"/>
+							<tablecol dataattribute="commandname" id="1292260023451" inputmode="READONLY"/>
+							<tablecol id="1292262414076" mxevent="createincident" mxevent_desc="Create Service Request for Error" mxevent_icon="action_insert_incident.gif" type="EVENT"/>
+							<tablecol id="1292260729295" mxevent="stacktrace" mxevent_desc="View Error Details" mxevent_icon="btn_edit.gif" type="EVENT"/>
+							<tablecol id="1292254445703" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" showfilterfield="false" type="EVENT"/>
+						</tablebody>
+						<buttongroup id="1292261732873">
+							<pushbutton id="1292335572856" label="Refresh" mxevent="refresh"/>
+							<pushbutton id="1292261732904" label="Delete Selected" mxevent="deleteselected"/>
+						</buttongroup>
+					</table>
+				</tab>
+			</tabgroup>
+		</clientarea>
+		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
+	</page>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageErrorsDataBean" datasrc="error_table" id="stacktrace" label="Error &gt; Message Details">
+		<section border="true" id="details_grid1_grid3">
+			<sectionrow id="details_grid1_row1">
+				<sectioncol id="details_grid1_row1_col1">
+					<section id="details_grid1_row1_col1_sec1">
+						<textbox dataattribute="commandname" id="details_grid1_row1_col2_sec1_5" inputmode="readonly"/>
+						<textbox dataattribute="username" id="details_grid1_row1_col2_sec1_3" inputmode="readonly"/>
+						<textbox dataattribute="errortimestamp" id="details_grid1_row1_col1_sec1_1" inputmode="readonly"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="details_grid1_row1_col2">
+					<section id="details_grid1_row1_col2_sec1">
+						<textbox dataattribute="devicename" id="details_grid1_row1_col2_sec1_4" inputmode="readonly"/>
+						<textbox dataattribute="deviceos" id="details_grid1_row1_col2_sec1_6" inputmode="readonly"/>
+						<textbox dataattribute="deviceserialnum" id="details_grid1_row1_col1_sec1_2" inputmode="readonly"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="details_grid1_row1_col3">
+					<section id="details_grid1_row1_col3_sec1">
+						<textbox dataattribute="sessionkey" id="details_grid1_row1_col2_sec1_7" inputmode="readonly"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<tabgroup id="1292261135420">
+			<tab id="1292261145920" label="Command XML">
+				<section id="1292261158076">
+					<sectionrow id="1377165009899">
+						<sectioncol id="1377165009904">
+							<section id="1377164808821">
+								<multilinetextbox columns="80" dataattribute="XML" id="1292261158123" rows="15"/>
+							</section>
+						</sectioncol>
+						<sectioncol id="1377165015621">
+							<pushbutton id="1377164541729" label="Resubmit" mxevent="resubmit"/>
+						</sectioncol>
+					</sectionrow>
+				</section>
+			</tab>
+			<tab id="1292261135467" label="Error Stacktrace">
+				<section id="details_grid1_grid4">
+					<multilinetextbox columns="80" dataattribute="detail" id="details_grid1_grid4_1" inputmode="READONLY" rows="15"/>
+				</section>
+			</tab>
+		</tabgroup>
+		<buttongroup id="details_2">
+			<pushbutton id="details_2_3" label="OK" mxevent="dialogok"/>
+			<pushbutton id="1319644874056" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog datasrc="sessions" id="mansession" label="Sessions" mboname="issession">
+		<table id="1292336901482" label="Sessions">
+			<tablebody filterexpanded="true" id="1292336901529">
+				<tablecol dataattribute="sessionkey" id="1292884402683" inputmode="READONLY"/>
+				<tablecol dataattribute="username" id="1292336901576" inputmode="READONLY"/>
+				<tablecol dataattribute="lastactive" id="1292884474511" inputmode="READONLY"/>
+				<tablecol dataattribute="expires" id="1292884509823" inputmode="READONLY"/>
+				<tablecol dataattribute="DEVICE.NAME" id="1376519525459" inputmode="readonly" label="Device Name"/>
+				<tablecol dataattribute="hostname" id="1414731590987" inputmode="readonly"/>
+				<tablecol dataattribute="node" id="1414731586827" inputmode="readonly"/>
+				<tablecol dataattribute="PROFILEDISPLAY" id="1376519430998"/>
+				<tablecol id="1340316916266" mxevent="instantdelete" mxevent_desc="Expire Session" mxevent_icon="btn_delete.gif " type="event"/>
+			</tablebody>
+		</table>
+		<buttongroup id="1292337463905">
+			<pushbutton default="true" id="1292337463907" label="OK" mxevent="dialogok"/>
+			<pushbutton id="1292337463906" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="subcat" label="Manage Where Clauses">
+		<table id="1292336901484" label="Where Clauses" parentdatasrc="1322004597593" relationship="children">
+			<tablebody filterexpanded="false" id="1292336901630">
+				<tablecol dataattribute="prefix" id="1292884402783" inputmode="readonly"/>
+				<tablecol dataattribute="lastpreloaddate" id="1292336901780" inputmode="readonly"/>
+				<tablecol dataattribute="preloadcount" id="1416355641313" inputmode="readonly"/>
+			</tablebody>
+		</table>
+		<buttongroup id="1292337465905">
+			<pushbutton default="true" id="1294337463907" label="OK" mxevent="dialogok"/>
+			<pushbutton id="1292337363906" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="createassetform" label="Create Asset" parentdatasrc="mandev" relationship="createasset">
+		<section border="true" id="createasset_grid1">
+			<sectionrow id="1292339316903">
+				<sectioncol id="1292339316950">
+					<textbox dataattribute="assetnum" id="1292548503182"/>
+					<textbox applink="LOCATION" dataattribute="location" id="1292548510401" inputmode="REQUIRED" lookup="locations" menutype="ASSETLOC"/>
+					<textbox dataattribute="itemnum" id="1292548523557" lookup="item" menutype="item"/>
+					<textbox dataattribute="siteid" id="1292548516760" inputmode="REQUIRED" lookup="site"/>
+				</sectioncol>
+				<sectioncol id="1292339330841"/>
+			</sectionrow>
+		</section>
+		<buttongroup id="createasset_2">
+			<pushbutton default="true" id="createasset_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="1292338512389" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.SelectProfileUsersDataBean" id="selectusers" label="Select Users" mboname="MAXUSER">
+		<table id="selectusers_table" inputmode="readonly" label="Users" selectmode="multiple" width="700">
+			<tablebody displayrowsperpage="15" filterable="true" id="selectusers_table_tablebody">
+				<tablecol filterable="false" id="selectusers_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+				<tablecol dataattribute="loginid" id="selectusers_table_tablebody_2"/>
+				<tablecol dataattribute="person.displayname" id="selectitems_table_tablebody_3"/>
+			</tablebody>
+		</table>
+		<buttongroup id="selectusers_buttongroup">
+			<pushbutton default="true" id="selectusers_pushbutton_1" label="OK" mxevent="dialogok" value="copyUsersToNotifyUsers"/>
+			<pushbutton id="selectusers_pushbutton_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notify.ManagePushDataBean" datasrc="pushreg" id="pushreg" label="Configure Push Notifications" relationship="PUSHREG">
+		<table id="appmap_table" label="Push Notifications" selectmode="single">
+			<tablebody displayrowsperpage="15" filterable="true" id="appmap_table_tablebody">
+				<tablecol id="appmap_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" type="EVENT"/>
+				<tablecol dataattribute="appname" id="appmap_table_tablebody_2" inputmode="READONLY"/>
+				<tablecol dataattribute="description" id="appmap_table_tablebody_3" inputmode="READONLY"/>
+				<tablecol dataattribute="type" id="1278706040695" inputmode="READONLY"/>
+				<tablecol id="1278696421211" mxevent="addcert" mxevent_desc="Add Certificate" mxevent_icon="img_attach.gif" sigoption="READ" type="EVENT"/>
+			</tablebody>
+			<tabledetails id="1275693149289">
+				<section id="1275693149336" label="Push Notifications">
+					<sectionrow id="1278623202242">
+						<sectioncol id="1278623226492">
+							<textbox dataattribute="appname" id="1278623233461" inputmode="READONLY"/>
+							<textbox dataattribute="type" id="1278623244601" inputmode="READONLY" lookup="VALUELIST"/>
+							<textbox dataattribute="message" id="1295472530468"/>
+							<textbox dataattribute="updatemessage" id="1343921957992"/>
+							<textbox dataattribute="params" id="1295472576437"/>
+						</sectioncol>
+						<sectioncol id="1278623208476">
+							<textbox dataattribute="description" id="1278706094664" inputmode="READONLY"/>
+							<textbox dataattribute="senderid" id="1278623237961"/>
+							<textbox dataattribute="password" id="1295358001104" inputmode="PASSWORD"/>
+							<textbox dataattribute="sound" id="1295472541093"/>
+							<checkbox dataattribute="usesandbox" id="1380604225727"/>
+						</sectioncol>
+						<sectioncol id="1295357805042">
+							<section id="1295357809917">
+								<hyperlink id="1295357880542" image="img_attach.gif" label="Attach Certificate" mxevent="addcert" sigoption="READ"/>
+							</section>
+							<blankline id="1278706200711"/>
+							<blankline id="1278706200712"/>
+							<blankline id="1278706200713"/>
+						</sectioncol>
+					</sectionrow>
+				</section>
+			</tabledetails>
+		</table>
+		<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.DevicesBean" datasrc="push_device" id="1295460041166" label="Devices for {0}" parentdatasrc="pushreg" parentemptylabel="Devices" relationship="DEVICE" selectmode="single">
+			<sectionheader id="push_device_h">
+				<paramvalues id="push_device_h_1" property="label">
+					<paramvalue dataattribute="appname" datasrc="pushreg" id="push_device_h_2" position="0"/>
+				</paramvalues>
+			</sectionheader>
+			<tablebody id="1295460041276">
+				<tablecol filterable="false" id="1295460063072" mxevent="toggleselectrow" sortable="false" type="event"/>
+				<tablecol dataattribute="DEVICE.name" id="1295460063073" inputmode="READONLY"/>
+				<tablecol dataattribute="Device.serialnum" id="1346169074797" inputmode="readonly"/>
+				<tablecol dataattribute="device.os" id="1345156720975" inputmode="readonly"/>
+				<tablecol dataattribute="loginid" id="1295460041369" inputmode="READONLY"/>
+				<tablecol dataattribute="playsound" id="1295484450348"/>
+				<tablecol dataattribute="displaymsg" id="1295484453535"/>
+				<tablecol dataattribute="displaybadge" id="1295485131520"/>
+				<tablecol dataattribute="lastsequence" id="1295466430218" inputmode="READONLY"/>
+				<tablecol id="1295466569421" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="EVENT"/>
+			</tablebody>
+			<buttongroup id="devicereg_buttongroup_1">
+				<pushbutton default="true" id="devicereg_testbutton" label="Send Test Message" mxevent="test"/>
+			</buttongroup>
+		</table>
+		<buttongroup id="appmap_buttongroup">
+			<pushbutton default="true" id="appmap_pushbutton_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="appmap_pushbutton_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog datasrc="mansession" id="usersessions" label="View User Sessions">
+		<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageUserHistoryBean" datasrc="usersessions" id="2292336901482" inputmode="READONLY" label="Sessions" orderby="active desc" parentdatasrc="user_table" relationship="SESSIONHISTORY">
+			<tablebody filterable="true" filterexpanded="true" id="2292336901529">
+				<tablecol dataattribute="sessionkey" id="1292885658448"/>
+				<tablecol dataattribute="device.name" id="1292885707479"/>
+				<tablecol dataattribute="device.serialnum" id="1292885710964"/>
+				<tablecol dataattribute="active" id="2292336901576" inputmode="READONLY"/>
+				<tablecol dataattribute="hostname" id="1414731693855" inputmode="readonly"/>
+				<tablecol dataattribute="node" id="1414731698775" inputmode="readonly"/>
+				<tablecol id="1346170245664" mxevent="instantdelete" mxevent_desc="Expire Session" mxevent_icon="btn_delete.gif" type="event"/>
+			</tablebody>
+			<buttongroup id="1252101106159">
+				<pushbutton default="true" id="1252101106225" label="Clear Session History" mxevent="deleteall"/>
+			</buttongroup>
+		</table>
+		<buttongroup id="2292337463905">
+			<pushbutton default="true" id="2292337463907" label="OK" mxevent="dialogok"/>
+			<pushbutton id="2292337463906" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageProcessingQueueBean" id="procmon" label="Monitor" mboname="ISNOTIFYMONITOR">
+		<tabgroup id="1408379749119">
+			<tab default="true" id="1408379749120" label="Notification Queue">
+				<section border="true" id="1408380147856">
+					<section id="1329198281936">
+						<sectionrow id="1329198303998">
+							<sectioncol id="1329198308030">
+								<textbox dataattribute="TOTALCOUNT" id="1329198322577" inputmode="READONLY"/>
+							</sectioncol>
+							<sectioncol id="1329198316655">
+								<textbox dataattribute="ACTIVECOUNT" id="1329198325748" inputmode="READONLY"/>
+							</sectioncol>
+							<sectioncol id="1329198304045">
+								<textbox dataattribute="USERREFRESHCOUNT" id="1329198332217" inputmode="READONLY"/>
+							</sectioncol>
+							<sectioncol id="1369853527265">
+								<textbox dataattribute="errorcount" id="1369853534246" inputmode="readonly"/>
+							</sectioncol>
+							<sectioncol id="1329198313358">
+								<textbox dataattribute="LASTDATEADDED" id="1329198335983" inputmode="READONLY"/>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageQueueBean" collapsed="false" datasrc="queuemonitor" id="1292336901483" label="Notification Queue Processors" mboname="isnotifyqueuemonitor">
+						<tablebody filterexpanded="false" id="1292336901530">
+							<tablecol dataattribute="host" id="1329202196436" inputmode="READONLY"/>
+							<tablecol dataattribute="NODE" id="1292884402684" inputmode="READONLY"/>
+							<tablecol dataattribute="name" id="1329181675056" inputmode="READONLY"/>
+							<tablecol dataattribute="state" id="1329181680540" inputmode="READONLY"/>
+							<tablecol dataattribute="lastupdated" id="1329181684056" inputmode="READONLY"/>
+							<tablecol id="1329202201045" mxevent="instantdelete" mxevent_desc="Force Refresh" mxevent_icon="btn_delete.gif" type="EVENT"/>
+						</tablebody>
+					</table>
+				</section>
+				<buttongroup id="1292337463150">
+					<pushbutton id="1343953925396" label="Reset Active" mxevent="resetactive"/>
+					<pushbutton id="1369862571308" label="Reset Error" mxevent="reseterror"/>
+					<pushbutton id="1329194933733" label="Refresh" menutype="NONE" mxevent="refresh"/>
+				</buttongroup>
+			</tab>
+			<tab default="false" id="1414776013030" label="Catalog Queue">
+				<section border="true" id="1414776053457">
+					<section datasrc="catalogmonitor" id="1414717211863" relationship="CATALOGMONITOR">
+						<sectionrow id="1414717261312">
+							<sectioncol id="1414717266444">
+								<textbox dataattribute="TOTALCOUNT" id="1414717276375" inputmode="readonly"/>
+								<textbox dataattribute="PRELOADCOUNT" id="1414793004682" inputmode="readonly"/>
+							</sectioncol>
+							<sectioncol id="1414717261319">
+								<textbox dataattribute="ACTIVECOUNT" id="1414717283045" inputmode="readonly"/>
+								<textbox dataattribute="RECONCILECOUNT" id="1414793017671" inputmode="readonly"/>
+							</sectioncol>
+							<sectioncol id="1414781580996">
+								<textbox dataattribute="LASTDATEADDED" id="1414793043321" inputmode="readonly"/>
+								<textbox dataattribute="ERRORCOUNT" id="1414793035661" inputmode="readonly"/>
+							</sectioncol>
+						</sectionrow>
+					</section>
+				</section>
+				<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManageCatalogQueueBean" collapsed="false" datasrc="catalogqueuemonitor" id="1414776133435" label="Catalog Queue Processors" mboname="ISCATALOGQUEUEMONITOR">
+					<tablebody filterexpanded="false" id="1414776172118">
+						<tablecol dataattribute="host" id="1414776182305" inputmode="READONLY"/>
+						<tablecol dataattribute="NODE" id="1414777404387" inputmode="READONLY"/>
+						<tablecol dataattribute="name" id="1414777416742" inputmode="READONLY"/>
+						<tablecol dataattribute="state" id="1414777423401" inputmode="READONLY"/>
+						<tablecol dataattribute="lastupdated" id="1414777428730" inputmode="READONLY"/>
+						<tablecol id="1414776200626" mxevent="instantdelete" mxevent_desc="Force Refresh" mxevent_icon="btn_delete.gif" type="EVENT"/>
+					</tablebody>
+				</table>
+				<buttongroup id="1414777440724">
+					<pushbutton id="1414777435729" label="Reset Active" mxevent="resetcatalogactive"/>
+					<pushbutton id="1414777446386" label="Reset Error" mxevent="resetcatalogerror"/>
+					<pushbutton id="1414777451716" label="Refresh" menutype="NONE" mxevent="refresh"/>
+				</buttongroup>
+			</tab>
+			<tab id="1415729682438" label="Push Queue">
+				<section border="true" id="1415729719493">
+					<section datasrc="pushmonitor" id="1415729738395" relationship="PUSHMONITOR">
+						<sectionrow id="1415729749249">
+							<sectioncol id="1415742745988">
+								<textbox dataattribute="TOTALCOUNT" id="1415742757865" inputmode="readonly"/>
+							</sectioncol>
+							<sectioncol id="1415742753588">
+								<textbox dataattribute="ACTIVECOUNT" id="1415742761526" inputmode="readonly"/>
+							</sectioncol>
+							<sectioncol id="1415729749257">
+								<textbox dataattribute="errorcount" id="1415742764546" inputmode="readonly"/>
+							</sectioncol>
+						</sectionrow>
+					</section>
+				</section>
+				<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.ManagePushQueueBean" collapsed="false" datasrc="pushqueuemonitor" id="1415729756744" label="Push Queue Processors" mboname="ISPUSHQUEUEMONITOR">
+					<tablebody filterexpanded="false" id="1415729756755">
+						<tablecol dataattribute="host" id="1415729781729" inputmode="READONLY"/>
+						<tablecol dataattribute="node" id="1415729784813" inputmode="READONLY"/>
+						<tablecol dataattribute="name" id="1415729787189" inputmode="READONLY"/>
+						<tablecol dataattribute="state" id="1415729789589" inputmode="READONLY"/>
+						<tablecol dataattribute="lastupdated" id="1415729791744" inputmode="READONLY"/>
+						<tablecol id="1415729793820" mxevent="instantdelete" mxevent_desc="Force Refresh" mxevent_icon="btn_delete.gif" type="EVENT"/>
+					</tablebody>
+					<buttongroup id="1415809720038">
+						<pushbutton id="1415809729030" label="Reset Active" mxevent="resetpushactive"/>
+						<pushbutton id="1415809734693" label="Reset Error" mxevent="resetpusherror"/>
+						<pushbutton id="1415809740024" label="Refresh" mxevent="refresh"/>
+					</buttongroup>
+				</table>
+			</tab>
+			<tab beanclass="com.interlocsolutions.maximo.webclient.beans.notify.PerformanceDataBean" id="1408379934938" label="Performance">
+				<helpgrid id="1408397230264" innerhtml="&lt;p&gt;The table below provides counts and average times in seconds for delivery to the device, evaluation of user refreshes, and push receipts.&lt;/p&gt;"/>
+				<section id="1408380406712">
+					<table beanclass="com.interlocsolutions.maximo.webclient.beans.notify.PerformanceDataBean" id="1408380422658" inputmode="readonly" label="History" mboname="ISTRACKINGSUMMARY" orderby="period desc">
+						<tablebody id="1408380422666">
+							<tablecol dataattribute="period" id="1408380422672"/>
+							<tablecol dataattribute="notify.notifynum" filterable="true" id="1408473354877"/>
+							<tablecol dataattribute="TOTALAVG" id="1408380618295"/>
+							<tablecol dataattribute="userrefreshcount" id="1408380794259"/>
+							<tablecol dataattribute="userrefreshavg" id="1408380796850"/>
+							<tablecol dataattribute="pushcount" id="1408380799960"/>
+							<tablecol dataattribute="pushavg" id="1408380802589"/>
+							<tablecol dataattribute="commandcount" id="1408411525924"/>
+							<tablecol id="1408394633561" mxevent="instantdelete" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_delete.gif"/>
+						</tablebody>
+					</table>
+				</section>
+			</tab>
+		</tabgroup>
+		<buttongroup id="1408380075465">
+			<pushbutton default="true" id="1292337463908" label="OK" mxevent="dialogok"/>
+			<pushbutton id="1408384256093" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notify.ManagePushDataBean" datasrc="pushreg" id="addcert" label="Add/Modify Certificate">
+		<section id="addcert_1">
+			<helpgrid id="addcert_help" innerhtml="Click button to select a server push certificate to associate with this push configuration."/>
+		</section>
+		<section id="addcert_3">
+			<uploadfile cancellabel="Cancel" event="importcert" id="addcert_3_1" label="Select a Certificate" oklabel="OK"/>
+		</section>
+	</dialog>
+
+	<dialog datasrc="log" id="viewlog" label="View Log">
+		<section id="1379414351012">
+			<multilinetextbox columns="80" dataattribute="log" id="1379414356895" inputmode="readonly" rows="15"/>
+		</section>
+		<buttongroup id="viewlog_buttongroup">
+			<pushbutton id="viewlog_pushbutton_2" label="OK" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.SelectGroupsDataBean" id="selectgroups" label="Select Groups" mboname="MAXGROUP">
+		<table id="selectgroups_table" inputmode="readonly" label="Groups" selectmode="multiple" width="700">
+			<tablebody displayrowsperpage="15" filterable="true" id="selectgroups_table_tablebody">
+				<tablecol filterable="false" id="selectgroups_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+				<tablecol dataattribute="groupname" id="selectgroups_table_tablebody_2"/>
+				<tablecol dataattribute="description" id="selectgroup_table_tablebody_3"/>
+			</tablebody>
+		</table>
+		<buttongroup id="selectgroups_buttongroup">
+			<pushbutton default="true" id="selectgroups_pushbutton_1" label="OK" mxevent="dialogok" value="copyMaximoGroups"/>
+			<pushbutton id="selectgroups_pushbutton_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog datasrc="manapp" id="manapp" label="Applications" orderby="name desc" relationship="APPDEPLOY">
+		<table id="2292336901483" inputmode="default" label="Applications" orderby="active desc, version desc, type desc">
+			<tablebody filterable="true" filterexpanded="true" id="2292336901530">
+				<tablecol dataattribute="active" id="1373067349966"/>
+				<tablecol dataattribute="name" id="1292885658449" inputmode="READONLY"/>
+				<tablecol dataattribute="title" id="1292885707480" inputmode="READONLY"/>
+				<tablecol dataattribute="type" id="1339991954658" inputmode="readonly"/>
+				<tablecol dataattribute="versionname" id="1292885710966" inputmode="READONLY"/>
+				<tablecol dataattribute="applinkurl" id="1292885720967" inputmode="READONLY"/>
+			</tablebody>
+		</table>
+		<buttongroup id="2292337463107">
+			<pushbutton default="true" id="2292337463908" label="OK" mxevent="dialogok"/>
+			<pushbutton id="2292337462607" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<section id="searchmore_1">
+			<textbox dataattribute="NOTIFYNUM" id="searchmore_attr4"/>
+			<textbox dataattribute="DESCRIPTION" id="searchmore_attr1"/>
+			<textbox dataattribute="app" id="1275415416166"/>
+			<textbox dataattribute="processname" id="1275415358260"/>
+			<textbox dataattribute="clausename" id="1275415382947"/>
+			<checkbox dataattribute="ACTIVE" id="searchmore_attr6"/>
+		</section>
+		<buttongroup id="searchmore_buttongroup">
+			<pushbutton default="true" id="searchmore_buttongroup_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="searchmore_buttongroup_3" label="Cancel" mxevent="qbecancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="mangroup" label="Profile Groups">
+		<table id="notifygrouprec" label="Profile Groups" ondatachange="resetchildren" parentdatasrc="MAINRECORD" relationship="notifygroup">
+			<tablebody filterable="true" filterexpanded="false" id="1375826943436">
+				<tablecol dataattribute="groupname" id="1375826953691"/>
+				<tablecol dataattribute="description" id="1375826975165"/>
+				<tablecol id="1375896399738" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="event"/>
+			</tablebody>
+			<buttongroup id="1375827036197">
+				<pushbutton default="true" id="1375896260855" label="New Row" mxevent="addrow"/>
+			</buttongroup>
+		</table>
+		<tabgroup id="1375850062566">
+			<tab default="true" id="1375850062574" label="Users">
+				<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.GroupUserBean" id="1375850140566" label="Users in {0}" parentdatasrc="notifygrouprec" parentemptylabel="Users" relationship="NOTIFYGROUPUSER" titleattributes="groupname">
+					<sectionheader id="1375977387330">
+						<paramvalues id="1375977395520" property="label">
+							<paramvalue dataattribute="groupname" datasrc="notifygrouprec" id="1375977406351" position="0"/>
+						</paramvalues>
+					</sectionheader>
+					<tablebody id="1375850140573">
+						<tablecol dataattribute="NOTIFYUSERLOGIN" id="1375850140579" lookup="isinformeruser"/>
+						<tablecol dataattribute="notifyuser.maxuser.person.displayname" id="1375915721198" inputmode="readonly"/>
+						<tablecol id="1375863416307" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="event"/>
+					</tablebody>
+					<buttongroup id="1322004598421">
+						<pushbutton id="1375880899502" label="Import Users from Group" mxevent="selectgroups"/>
+						<pushbutton id="1375864060364" label="Select Users" mxevent="selectgroupusers"/>
+						<pushbutton default="true" id="1322004598468" label="New Row" mxevent="addrow"/>
+					</buttongroup>
+				</table>
+			</tab>
+			<tab id="1375850068879" label="Options">
+				<table beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.GroupOptionBean" id="1375850146559" label="Options for {0}" parentdatasrc="notifygrouprec" parentemptylabel="Options" relationship="NOTIFYGROUPOPTION" titleattributes="groupname">
+					<sectionheader id="1376006040624">
+						<paramvalues id="1376006054636" property="label">
+							<paramvalue dataattribute="groupname" datasrc="notifygrouprec" id="1376006062917" position="0"/>
+						</paramvalues>
+					</sectionheader>
+					<tablebody id="1375850146566">
+						<tablecol dataattribute="OPTIONNAME" id="1375850146572" lookup="isinformeroption"/>
+						<tablecol dataattribute="NOTIFYOPTION.description" id="1375863441875" inputmode="readonly"/>
+						<tablecol id="1375863435646" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" type="event"/>
+					</tablebody>
+					<buttongroup id="1375917103124">
+						<pushbutton id="1376431149072" label="Select Options" mxevent="selectgroupoptions"/>
+						<pushbutton default="true" id="1375917110729" label="New Row" mxevent="addrow"/>
+					</buttongroup>
+				</table>
+			</tab>
+		</tabgroup>
+		<buttongroup id="1375896271270">
+			<pushbutton default="true" id="1375896277927" label="OK" mxevent="dialogok"/>
+			<pushbutton id="1375896285811" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.SelectOptionsDataBean" id="selectgroupoptions" label="Select Options" mboname="ISNOTIFYOPTION">
+		<table id="selectgroupoptions_table" inputmode="readonly" label="Users" selectmode="multiple" width="700">
+			<tablebody displayrowsperpage="15" filterable="true" id="selectgroupoptions_table_tablebody">
+				<tablecol filterable="false" id="selectgroupoptions_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+				<tablecol dataattribute="optionname" id="selectgroupoptions_table_tablebody_2"/>
+				<tablecol dataattribute="description" id="selectgroupoptions_table_tablebody_3"/>
+			</tablebody>
+		</table>
+		<buttongroup id="selectgroupoptions_buttongroup">
+			<pushbutton default="true" id="selectgroupoptions_pushbutton_1" label="OK" mxevent="dialogok" value="copyOptionsToGroup"/>
+			<pushbutton id="selectgroupoptions_pushbutton_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="viewreceipts" label="Retrieval History" parentdatasrc="active_notifications" relationship="RETRIEVALTRACKING">
+		<table id="1408487269010" label="Retrieval History" orderby="retrievaldate desc" parentdatasrc="active_notifications" relationship="RETRIEVALTRACKING">
+			<tablebody filterexpanded="true" id="1408487269011">
+				<tablecol dataattribute="RETRIEVALDATE" id="1408487269012" inputmode="READONLY"/>
+				<tablecol dataattribute="device.name" id="1408487269013" inputmode="READONLY"/>
+				<tablecol dataattribute="device.serialnum" id="1408492756362" inputmode="readonly"/>
+			</tablebody>
+		</table>
+		<buttongroup id="1408487269014">
+			<pushbutton default="true" id="1408487269015" label="OK" mxevent="dialogok"/>
+			<pushbutton id="1408487269016" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="ISNOTIFY">
+		<table id="bookmarks_table" inputmode="readonly" selectmode="single">
+			<tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+				<tablecol dataattribute="NOTIFYNUM" id="bookmarks_tablecolumn_1" mxevent="selectrecord" type="link"/>
+				<tablecol dataattribute="description" id="bookmarks_tablecolumn_2"/>
+				<tablecol filterable="false" id="bookmarks_tablecolumn_3" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+			</tablebody>
+		</table>
+		<buttongroup id="bookmarks_2">
+			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="com.interlocsolutions.maximo.webclient.beans.notifyadm.SelectUsersDataBean" id="selectgroupusers" label="Select Users" mboname="MAXUSER">
+		<table id="selectgroupusers_table" inputmode="readonly" label="Users" selectmode="multiple" width="700">
+			<tablebody displayrowsperpage="15" filterable="true" id="selectgroupusers_table_tablebody">
+				<tablecol filterable="false" id="selectgroupusers_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+				<tablecol dataattribute="loginid" id="selectgroupusers_table_tablebody_2"/>
+				<tablecol dataattribute="person.displayname" id="selectgroupusers_table_tablebody_3"/>
+			</tablebody>
+		</table>
+		<buttongroup id="selectgroupusers_buttongroup">
+			<pushbutton default="true" id="selectgroupusers_pushbutton_1" label="OK" mxevent="dialogok" value="copyUsersToGroup"/>
+			<pushbutton id="selectgroupusers_pushbutton_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+	<configurationblock id="datastore_configurationblock"/>
+</presentation>
