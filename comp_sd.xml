@@ -26,8 +26,8 @@
 						<sectionrow id="main_grid1_11">
 							<sectioncol id="main_grid1_11_1">
 								<section id="main_grid1_11_1_1">
-									<multiparttextbox dataattribute="company" descdataattribute="name" descinputmode="readonly" id="main_grid1_1" inputmode="readonly" sigoption="READ"/>
-									<multilinetextbox dataattribute="NAME_LONGDESCRIPTION" id="1466092887436" inputmode="readonly" label="Company Notes"/>
+									<multiparttextbox dataattribute="company" descdataattribute="name" id="main_grid1_1" inputmode="readonly" sigoption="READ"/>
+									<multilinetextbox dataattribute="NAME_LONGDESCRIPTION" id="1466092887436" label="Company Notes"/>
 									<multiparttextbox dataattribute="parentcompany" descdataattribute="companychildren.name" descinputmode="readonly" id="main_grid1_4" inputmode="readonly" lookup="companies" menutype="hier" movetoattribute="company" movetoresultset="rec"/>
 									<textbox dataattribute="customernum" id="main_grid1_7" label="Customer/Acct #" size="30"/>
 									<textbox dataattribute="homepage" id="main_grid1_9"/>
