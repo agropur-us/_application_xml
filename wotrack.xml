@@ -123,6 +123,8 @@
 												<textbox applink="PERSON" dataattribute="SUPERVISOR" id="1545242182164" lookup="PERSON" menutype="NORMAL" size="20"/>
 												<textbox applink="PERSON" dataattribute="LEAD" id="1545236105659" lookup="PERSON" menutype="NORMAL" size="20"/>
 												<textbox applink="AMCREW" dataattribute="CREWID" id="main_grid36_crew_1" licensekey="CREW" lookup="VALUELIST" menutype="normal"/>
+												<textbox applink="company" dataattribute="VENDOR" id="1556724357929" lookup="companies"/>
+												<textbox dataattribute="VENDOR.NAME" hidelabel="true" id="1556726278997" inputmode="readonly" size="30"/>
 											</section>
 										</sectioncol>
 										<sectioncol id="plans_task_status" width="33%">
