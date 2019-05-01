@@ -297,6 +297,7 @@
 			<tablecol dataattribute="craft" id="craftrate_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="skilllevel" id="craftrate_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="description" id="craftrate_lookup_tablebody_col_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="companies.name" id="craftrate_lookup_tablebody_col_4_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="vendor" id="craftrate_lookup_tablebody_col_4" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="contractnum" id="craftrate_lookup_tablebody_col_5" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="orgid" id="craftrate_lookup_tablebody_col_6" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
@@ -317,6 +318,7 @@
 			<tablecol dataattribute="skilllevel" id="craftstandardrate_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="description" id="craftstandardrate_lookup_tablebody_col_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="vendor" id="craftstandardrate_lookup_tablebody_col_4" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="companies.name" id="craftstandardrate_lookup_tablebody_col_4_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="contractnum" id="craftstandardrate_lookup_tablebody_col_5" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="standardrate" id="craftstandardrate_lookup_tablebody_col_6" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="orgid" id="craftstandardrate_lookup_tablebody_col_7" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
@@ -2868,73 +2870,6 @@
 			<tablecol dataattribute="condition" id="budgetaxis_lookup_tablebody_col_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 		</tablebody>
 	</table>
-	<table id="isinformermaxapps" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxapps_lookup_tablebody">
-			<tablecol dataattribute="app" id="isinformermaxapps_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="description" id="isinformermaxapps_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformermaxattribute" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxattribute_lookup_tablebody">
-			<tablecol dataattribute="attributename" id="isinformermaxattribute_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="objectname" id="isinformermaxattribute_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformermaxattributecfg" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxattributecfg_lookup_tablebody">
-			<tablecol dataattribute="attributename" id="isinformermaxattributecfg_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="title" id="isinformermaxattributecfg_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformermaxobjectcfg" inputmode="readonly" mboname="maxobjectcfg" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxobjectcfg_lookup_tablebody">
-			<tablecol dataattribute="objectname" id="isinformermaxobjectcfg_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="description" id="isinformermaxobjectcfg_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformermaxuser" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxuser_lookup_tablebody">
-			<tablecol dataattribute="loginid" id="isinformermaxuser_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="PERSON.displayname" id="isinformermaxuser_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformernotifyquery" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformernotifyquery_lookup_tablebody">
-			<tablecol dataattribute="clausename" id="isinformernotifyquery_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="description" id="isinformernotifyquery_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformeroption" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformeroption_lookup_tablebody">
-			<tablecol dataattribute="optionname" id="isinformeroption_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="description" id="isinformeroption_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformerrelationship" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxrelationship_lookup_tablebody">
-			<tablecol dataattribute="name" id="isinformermaxrelationship_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="child" id="isinformermaxrelationship_lookup_tablebody_col_4" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="remarks" id="isinformerrelationship_lookup_tablebody_col_5" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformeruser" inputmode="readonly" selectmode="single">
-		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformeruser_lookup_tablebody">
-			<tablecol dataattribute="loginid" id="isinformeruser_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="MAXUSER.PERSON.displayname" id="isinformeruser_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isinformerwfprocess" inputmode="readonly" rowsperpage="5" selectmode="single">
-		<tablebody displayrowsperpage="5" filterable="true" filterexpanded="true" id="isinformerwfprocess_lookup_tablebody">
-			<tablecol dataattribute="processname" id="isinformerwfprocess_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="description" id="isinformerwfprocess_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
-	<table id="isverifyprovider" inputmode="readonly" rowsperpage="5" selectmode="single">
-		<tablebody displayrowsperpage="5" filterable="true" filterexpanded="true" id="isverifyprovider_lookup_tablebody">
-			<tablecol dataattribute="shortname" id="isverifyprovider_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			<tablecol dataattribute="description" id="isverifyprovider_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-		</tablebody>
-	</table>
 	<table id="bimfilter" inputmode="readonly" selectmode="single">
 		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="bimfilter_lookup_tablebody">
 			<tablecol dataattribute="filtername" id="bimfilter_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
@@ -3068,6 +3003,78 @@
 			<tablecol dataattribute="processname" id="isworkflow_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="processrev" id="isworkflow_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="description" id="isworkflow_lookup_tablebody_col_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformerclasses" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformerclasses_lookup_tablebody">
+			<tablecol dataattribute="name" id="isinformerclasses_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformermaxapps" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxapps_lookup_tablebody">
+			<tablecol dataattribute="app" id="isinformermaxapps_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="description" id="isinformermaxapps_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformermaxattribute" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxattribute_lookup_tablebody">
+			<tablecol dataattribute="attributename" id="isinformermaxattribute_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="objectname" id="isinformermaxattribute_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformermaxattributecfg" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxattributecfg_lookup_tablebody">
+			<tablecol dataattribute="attributename" id="isinformermaxattributecfg_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="title" id="isinformermaxattributecfg_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformermaxobjectcfg" inputmode="readonly" mboname="maxobjectcfg" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxobjectcfg_lookup_tablebody">
+			<tablecol dataattribute="objectname" id="isinformermaxobjectcfg_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="description" id="isinformermaxobjectcfg_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformermaxuser" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxuser_lookup_tablebody">
+			<tablecol dataattribute="loginid" id="isinformermaxuser_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="PERSON.displayname" id="isinformermaxuser_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformernotifyquery" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformernotifyquery_lookup_tablebody">
+			<tablecol dataattribute="clausename" id="isinformernotifyquery_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="description" id="isinformernotifyquery_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformeroption" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformeroption_lookup_tablebody">
+			<tablecol dataattribute="optionname" id="isinformeroption_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="description" id="isinformeroption_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformerrelationship" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformermaxrelationship_lookup_tablebody">
+			<tablecol dataattribute="name" id="isinformermaxrelationship_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="child" id="isinformermaxrelationship_lookup_tablebody_col_4" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="remarks" id="isinformerrelationship_lookup_tablebody_col_5" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformeruser" inputmode="readonly" selectmode="single">
+		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="isinformeruser_lookup_tablebody">
+			<tablecol dataattribute="loginid" id="isinformeruser_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="MAXUSER.PERSON.displayname" id="isinformeruser_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isinformerwfprocess" inputmode="readonly" rowsperpage="5" selectmode="single">
+		<tablebody displayrowsperpage="5" filterable="true" filterexpanded="true" id="isinformerwfprocess_lookup_tablebody">
+			<tablecol dataattribute="processname" id="isinformerwfprocess_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="description" id="isinformerwfprocess_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+		</tablebody>
+	</table>
+	<table id="isverifyprovider" inputmode="readonly" rowsperpage="5" selectmode="single">
+		<tablebody displayrowsperpage="5" filterable="true" filterexpanded="true" id="isverifyprovider_lookup_tablebody">
+			<tablecol dataattribute="shortname" id="isverifyprovider_lookup_tablebody_col_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="description" id="isverifyprovider_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 		</tablebody>
 	</table>
 </systemlib>
