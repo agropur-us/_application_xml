@@ -1172,6 +1172,189 @@
 		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
 
+	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<section id="qbe_grid2">
+			<sectionrow id="qbe_grid2_1">
+				<sectioncol id="qbe_grid2_1_1">
+					<section id="qbe_grid2_1_1_grid3">
+						<multiparttextbox dataattribute="assetnum" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query" menutype="ASSETCLASSIFICATION"/>
+						<multiparttextbox dataattribute="PARENT" descdataattribute="parent.description" descinputmode="query" id="qbe_grid2_1_1_grid3_8" inputmode="query" lookup="asset" menutype="locassethier"/>
+						<textbox applink="asset,ipc" dataattribute="ASSETANCESTOR.ancestor" id="qbe_grid2_1_1_grid99_1" inputmode="query" label="Search Asset Hierarchy" lookup="contractasset" menutype="assetmain"/>
+						<multiparttextbox applink="location,ipc" dataattribute="location" descdataattribute="location.description" descinputmode="query" id="qbe_grid2_1_1_grid3_12" inputmode="query" lookup="locations" menutype="locations"/>
+						<textbox dataattribute="location.type" id="qbe_grid2_1_1_grid99_8" inputmode="query" label="Location Type" lookup="valuelist"/>
+						<textbox applink="location,ipc" dataattribute="PRIMARYSYSLOCASSET.ancestor" id="qbe_grid2_1_1_grid99_6" inputmode="query" lookup="locations" menutype="locations"/>
+						<multiparttextbox applink="item,inventor,tool,toolinv" dataattribute="itemnum" descdataattribute="item.description" descinputmode="query" id="qbe_grid2_1_1_grid3_19" inputmode="query" lookup="item" menutype="item"/>
+						<multiparttextbox applink="metergrp" dataattribute="groupname" descdataattribute="METERGROUP.description" descinputmode="query" id="qbe_grid2_1_1_grid3_21" inputmode="query" lookup="metergroup" menutype="normal"/>
+						<textbox dataattribute="usage" id="qbe_grid2_1_1_grid99_13" inputmode="query" lookup="valuelist"/>
+						<multiparttextbox applink="company" dataattribute="vendor" descdataattribute="companies.name" descinputmode="query" id="qbe_grid2_1_1_grid3_25" inputmode="query" lookup="companies" menutype="normal"/>
+						<multiparttextbox applink="company" dataattribute="manufacturer" descdataattribute="manufacturer.name" descinputmode="query" id="qbe_grid2_1_1_grid3_23" inputmode="query" lookup="companies" menutype="normal"/>
+						<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_classificationhierarchy" inputmode="query" menutype="classificationqbe"/>
+						<textbox applink="srvcommod" dataattribute="ASSETLOCCOMM.COMMODITYGROUP" id="qbe_servicegroup" inputmode="query" label="Service Group" lookup="commodities" menutype="normal"/>
+						<textbox applink="persongr" dataattribute="TLOAMASSETPERSONGRP.persongroup" id="qbe_grid2_1_1_grid99_14" inputmode="query" label="Person Group" lookup="persongroup" menutype="normal"/>
+						<textbox applink="INVENTOR" dataattribute="sparepart.itemnum" id="1497620593729" label="Spare Part Item Num" lookup="inventor" menutype="item"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="qbe_grid2_2_1">
+					<section id="qbe_grid2_1_1_grid99">
+						<textbox dataattribute="assettype" id="qbe_grid2_1_1_grid3_5" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="status" id="qbe_grid2_1_1_grid3_6" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="siteid" id="qbe_grid2_1_1_grid3_7" inputmode="query" lookup="site"/>
+						<textbox dataattribute="EQ4" id="1558020632224" size="40"/>
+						<textbox dataattribute="serialnum" id="qbe_grid2_1_1_grid99_9" inputmode="query"/>
+						<textbox dataattribute="priority" id="qbe_grid2_1_1_grid99_10" inputmode="query"/>
+						<textbox dataattribute="moved" id="qbe_grid2_1_1_grid99_5" inputmode="query"/>
+						<textbox dataattribute="islinear" id="qbe_grid2_1_1_islinear" inputmode="masked" licensekey="LINEAR"/>
+						<textbox dataattribute="mccid" id="1337002624262" inputmode="QUERY"/>
+						<textbox dataattribute="binnum" id="qbe_grid2_1_1_grid3_16" inputmode="query"/>
+						<textbox applink="person" dataattribute="ASSETUSER.personid" id="qbe_grid2_1_1_grid99_2" inputmode="query" label="User" lookup="person" menutype="normal"/>
+						<textbox applink="person" dataattribute="ASSETCUSTODIAN.personid" id="qbe_grid2_1_1_grid99_3" inputmode="query" label="Custodian" lookup="person" menutype="normal"/>
+						<textbox applink="failure" applinkreturn="failurecode" dataattribute="failurecode" id="qbe_grid2_1_1_grid99_7" inputmode="query" lookup="failureclass" menutype="normal"/>
+						<textbox dataattribute="glaccount" id="qbe_grid2_1_1_grid99_4" inputmode="query" lookup="glnavigator"/>
+						<textbox dataattribute="calnum" id="qbe_grid2_1_1_grid99_12" inputmode="query" lookup="calendar"/>
+						<textbox dataattribute="ASSETLOCCOMM.COMMODITY" id="qbe_service" inputmode="query" label="Service" lookup="commodities"/>
+						<textbox applink="workzone" dataattribute="assetworkzone.workzone" id="qbe_grid2_1_1_grid99_12_1" inputmode="query" licensekey="SCHEDULER_OPT" lookup="workzone" menutype="normal"/>
+						<textbox dataattribute="assetworkzone.type" id="qbe_grid2_1_1_grid99_12_2" inputmode="query" licensekey="SCHEDULER_OPT" lookup="valuelist"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<section id="pluscasset_grid_2" licensekey="CALIBRATION">
+			<sectionrow id="pluscasset_grid_2_1">
+				<sectioncol id="pluscasset_grid_2_2">
+					<section id="pluscasset_grid_2_2_1">
+						<sectionrow id="pluscasset_grid_2_2_1_2">
+							<sectioncol id="pluscasset_grid_2_2_1_2_1">
+								<section id="pluscasset_grid_2_2_1_2_1_1">
+									<multiparttextbox applink="location,ipc" dataattribute="plusclploc" descdataattribute="plusclploc.description" id="qbe_grid2_1_1_grid3_plusclploc" inputmode="masked" lookup="locations" menutype="locations"/>
+									<textbox dataattribute="item.itemtype" id="qbe_grid2_1_1_grid3_19a" inputmode="masked" title="Item Type"/>
+									<multiparttextbox dataattribute="pluscismte" descdataattribute="pluscismteclass" id="pluscasset_qbe_97" inputmode="masked"/>
+									<multiparttextbox dataattribute="plusciscontam" descdataattribute="plusciscondesc" id="pluscasset_qbe_94" inputmode="masked"/>
+									<textbox dataattribute="pluscisinhousecal" id="pluscasset_qbe_99" inputmode="masked" label="Internal Calibration"/>
+									<textbox dataattribute="pluscclass" id="pluscasset_qbe_88" inputmode="masked" lookup="valuelist"/>
+									<textbox dataattribute="pluscoprgefrom" id="pluscasset_qbe_87" inputmode="masked"/>
+									<textbox dataattribute="pluscoprgeto" id="pluscasset_qbe_86" inputmode="masked"/>
+									<textbox dataattribute="pluscoprgeeu" id="pluscasset_qbe_85" inputmode="masked" lookup="valuelist"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="pluscasset_grid_2_2_1_2_3">
+								<section id="pluscasset_grid_2_2_1_2_3_1">
+									<textbox dataattribute="pluscassetdept" id="pluscasset_qbe_82" inputmode="masked" lookup="valuelist"/>
+									<textbox dataattribute="iscalibration" id="pluscasset_qbe_iscal" inputmode="masked"/>
+									<textbox dataattribute="pluscmodelnum" id="pluscasset_qbe_81" inputmode="masked"/>
+									<textbox dataattribute="pluscloopnum" id="pluscasset_qbe_98" inputmode="masked"/>
+									<textbox dataattribute="pluscsumeu" id="pluscasset_qbe_95" inputmode="masked" label="Accuracy EU +"/>
+									<textbox dataattribute="pluscsumspan" id="pluscasset_qbe_92" inputmode="masked" label="%Span +"/>
+									<textbox dataattribute="pluscsumurv" id="pluscasset_qbe_91" inputmode="masked" label="%URV +"/>
+									<textbox dataattribute="pluscsumread" id="pluscasset_qbe_90" inputmode="masked" label="%Reading"/>
+									<textbox dataattribute="pluscsumdir" id="pluscasset_qbe_89" inputmode="masked" lookup="valuelist"/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<section id="qbe_date_s1" label="Dates">
+			<sectionrow id="qbe_date_r1">
+				<sectioncol id="qbe_date_r1_c1">
+					<section id="qbe_date_r1_c1_s1">
+						<sectionrow id="qbe_date_s1_r1">
+							<sectioncol id="qbe_date_s1_r1_c1">
+								<section id="qbe_date_s1_r1_c1_s1">
+									<statictext align="center" id="qbe_date_s1_r1_c1_s1_st1"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r1_c2">
+								<section id="qbe_date_s1_r1_c2_s1">
+									<statictext align="left" cssclass="prependheader" id="qbe_date_s1_r1_c2_s1_st1" label="From"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r1_c3">
+								<section id="qbe_date_s1_r1_c3_s1">
+									<statictext align="left" cssclass="prependheader" id="qbe_date_s1_r1_c3_s1_st1" label="To"/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+						<sectionrow id="qbe_date_s1_r2">
+							<sectioncol id="qbe_date_s1_r2_c1">
+								<section id="qbe_date_s1_r2_c1_s1">
+									<statictext align="right" id="qbe_date_s1_r2_c1_s1_t1" label="Installation Date"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r2_c2">
+								<section id="qbe_date_s1_r2_c2_s1">
+									<textbox dataattribute="installdate" hidelabel="true" id="qbe_grid2_1_1_grid3_10" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r2_c3">
+								<section id="qbe_date_s1_r2_c3_s1">
+									<textbox dataattribute="installdate" hidelabel="true" id="qbe_grid2_1_1_grid3_11" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+						<sectionrow id="qbe_date_s1_r3" licensekey="CALIBRATION">
+							<sectioncol id="qbe_date_s1_r3_c1">
+								<section id="qbe_date_s1_r3_c1_s1">
+									<statictext id="qbe_date_s1_r3_c1_s1_t1" label="Calibration Due Date" span="right"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r3_c2">
+								<section id="qbe_date_s1_r3_c2_s1">
+									<textbox dataattribute="pluscduedate" hidelabel="true" id="pluscasset_qbe_84" inputmode="masked" lookup="datelookup" prepend="&gt;="/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r3_c3">
+								<section id="qbe_date_s1_r3_c3_s1">
+									<textbox dataattribute="pluscduedate" hidelabel="true" id="pluscasset_qbe_83" inputmode="masked" lookup="datelookup" prepend="&lt;="/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+					</section>
+				</sectioncol>
+				<sectioncol id="qbe_date_r1_c2">
+					<section id="qbe_date_r1_c2_s1">
+						<blankline id="qbe_blkline"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<section id="qbe_serviceaddress_s1" label="Address Information" licensekey="SERVICEADDRESS">
+			<sectionrow id="qbe_serviceaddress_r1">
+				<sectioncol id="qbe_serviceaddress_r1_c1">
+					<section id="qbe_serviceaddress_r1_c1_s1">
+						<sectionrow id="qbe_serviceaddress_s1_r2">
+							<sectioncol id="qbe_serviceaddress_s1_r2_c2">
+								<section id="qbe_serviceaddress_s1_r2_c2_s1">
+									<textbox applink="srvad" dataattribute="saddresscode" id="qbe_serviceaddress_1_1_grid3_00" inputmode="query" label="Service Address" lookup="assets_saadvsearch" menutype="SERVICEADDRESS_SEARCH"/>
+									<textbox dataattribute="SERVICEADDRESS.FORMATTEDADDRESS" id="qbe_serviceaddress_1_1_grid3_01_1" inputmode="query"/>
+									<textbox dataattribute="SERVICEADDRESS.streetaddress" id="qbe_serviceaddress_1_1_grid3_01" inputmode="query"/>
+									<textbox dataattribute="SERVICEADDRESS.city" id="qbe_serviceaddress_1_1_grid3_02" inputmode="query"/>
+									<textbox dataattribute="SERVICEADDRESS.REGIONDISTRICT" id="qbe_serviceaddress_1_1_grid3_04" inputmode="query"/>
+									<textbox dataattribute="SERVICEADDRESS.county" id="qbe_serviceaddress_1_1_grid3_03" inputmode="query"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_serviceaddress_s1_r2_c3">
+								<section id="qbe_serviceaddress_s1_r2_c3_s1">
+									<textbox dataattribute="SERVICEADDRESS.stateprovince" id="qbe_serviceaddress_1_1_grid3_10" inputmode="query" lookup="valuelist"/>
+									<textbox dataattribute="SERVICEADDRESS.postalcode" id="qbe_serviceaddress_1_1_grid3_11" inputmode="query"/>
+									<textbox dataattribute="SERVICEADDRESS.country" id="qbe_serviceaddress_1_1_grid3_12" inputmode="query" lookup="valuelist"/>
+									<textbox dataattribute="SERVICEADDRESS.geocode" id="qbe_row1_col2_sec_5" inputmode="query"/>
+									<textbox dataattribute="SERVICEADDRESS.timezone" id="qbe_row1_col2_sec_4" inputmode="query" lookup="valuelist"/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<buttongroup id="qbe_buttongrid">
+			<pushbutton default="true" id="qbe_buttongrid_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="qbe_buttongrid_3" label="Cancel" mxevent="qbecancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog beanclass="psdi.webclient.beans.asset.ApplyIASBean" id="applyias" label="Apply Item Assembly Structure" relationship="TOPITEMSTRUCT" width="900">
 		<datasrc id="parentitem" relationship="PARENT"/>
 		<helpgrid id="applyias_help" innerhtml="To generate asset numbers for the whole hierarchy in the Item Assembly Structure, click Autonumber All. Alternatively, enter the asset numbers for the first level in the hierarchy in the Asset Hierarchy table. To move to the second level in the hierarchy, click the detail button next to the Item field in the table and select Move To."/>
@@ -1498,188 +1681,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
-		<section id="qbe_grid2">
-			<sectionrow id="qbe_grid2_1">
-				<sectioncol id="qbe_grid2_1_1">
-					<section id="qbe_grid2_1_1_grid3">
-						<multiparttextbox dataattribute="assetnum" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query" menutype="ASSETCLASSIFICATION"/>
-						<multiparttextbox dataattribute="PARENT" descdataattribute="parent.description" descinputmode="query" id="qbe_grid2_1_1_grid3_8" inputmode="query" lookup="asset" menutype="locassethier"/>
-						<textbox applink="asset,ipc" dataattribute="ASSETANCESTOR.ancestor" id="qbe_grid2_1_1_grid99_1" inputmode="query" label="Search Asset Hierarchy" lookup="contractasset" menutype="assetmain"/>
-						<multiparttextbox applink="location,ipc" dataattribute="location" descdataattribute="location.description" descinputmode="query" id="qbe_grid2_1_1_grid3_12" inputmode="query" lookup="locations" menutype="locations"/>
-						<textbox dataattribute="location.type" id="qbe_grid2_1_1_grid99_8" inputmode="query" label="Location Type" lookup="valuelist"/>
-						<textbox applink="location,ipc" dataattribute="PRIMARYSYSLOCASSET.ancestor" id="qbe_grid2_1_1_grid99_6" inputmode="query" lookup="locations" menutype="locations"/>
-						<multiparttextbox applink="item,inventor,tool,toolinv" dataattribute="itemnum" descdataattribute="item.description" descinputmode="query" id="qbe_grid2_1_1_grid3_19" inputmode="query" lookup="item" menutype="item"/>
-						<multiparttextbox applink="metergrp" dataattribute="groupname" descdataattribute="METERGROUP.description" descinputmode="query" id="qbe_grid2_1_1_grid3_21" inputmode="query" lookup="metergroup" menutype="normal"/>
-						<textbox dataattribute="usage" id="qbe_grid2_1_1_grid99_13" inputmode="query" lookup="valuelist"/>
-						<multiparttextbox applink="company" dataattribute="vendor" descdataattribute="companies.name" descinputmode="query" id="qbe_grid2_1_1_grid3_25" inputmode="query" lookup="companies" menutype="normal"/>
-						<multiparttextbox applink="company" dataattribute="manufacturer" descdataattribute="manufacturer.name" descinputmode="query" id="qbe_grid2_1_1_grid3_23" inputmode="query" lookup="companies" menutype="normal"/>
-						<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_classificationhierarchy" inputmode="query" menutype="classificationqbe"/>
-						<textbox applink="srvcommod" dataattribute="ASSETLOCCOMM.COMMODITYGROUP" id="qbe_servicegroup" inputmode="query" label="Service Group" lookup="commodities" menutype="normal"/>
-						<textbox applink="persongr" dataattribute="TLOAMASSETPERSONGRP.persongroup" id="qbe_grid2_1_1_grid99_14" inputmode="query" label="Person Group" lookup="persongroup" menutype="normal"/>
-						<textbox applink="INVENTOR" dataattribute="sparepart.itemnum" id="1497620593729" label="Spare Part Item Num" lookup="inventor" menutype="item"/>
-					</section>
-				</sectioncol>
-				<sectioncol id="qbe_grid2_2_1">
-					<section id="qbe_grid2_1_1_grid99">
-						<textbox dataattribute="assettype" id="qbe_grid2_1_1_grid3_5" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="status" id="qbe_grid2_1_1_grid3_6" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="siteid" id="qbe_grid2_1_1_grid3_7" inputmode="query" lookup="site"/>
-						<textbox dataattribute="priority" id="qbe_grid2_1_1_grid99_10" inputmode="query"/>
-						<textbox dataattribute="moved" id="qbe_grid2_1_1_grid99_5" inputmode="query"/>
-						<textbox dataattribute="islinear" id="qbe_grid2_1_1_islinear" inputmode="masked" licensekey="LINEAR"/>
-						<textbox dataattribute="serialnum" id="qbe_grid2_1_1_grid99_9" inputmode="query"/>
-						<textbox dataattribute="mccid" id="1337002624262" inputmode="QUERY"/>
-						<textbox dataattribute="binnum" id="qbe_grid2_1_1_grid3_16" inputmode="query"/>
-						<textbox applink="person" dataattribute="ASSETUSER.personid" id="qbe_grid2_1_1_grid99_2" inputmode="query" label="User" lookup="person" menutype="normal"/>
-						<textbox applink="person" dataattribute="ASSETCUSTODIAN.personid" id="qbe_grid2_1_1_grid99_3" inputmode="query" label="Custodian" lookup="person" menutype="normal"/>
-						<textbox applink="failure" applinkreturn="failurecode" dataattribute="failurecode" id="qbe_grid2_1_1_grid99_7" inputmode="query" lookup="failureclass" menutype="normal"/>
-						<textbox dataattribute="glaccount" id="qbe_grid2_1_1_grid99_4" inputmode="query" lookup="glnavigator"/>
-						<textbox dataattribute="calnum" id="qbe_grid2_1_1_grid99_12" inputmode="query" lookup="calendar"/>
-						<textbox dataattribute="ASSETLOCCOMM.COMMODITY" id="qbe_service" inputmode="query" label="Service" lookup="commodities"/>
-						<textbox applink="workzone" dataattribute="assetworkzone.workzone" id="qbe_grid2_1_1_grid99_12_1" inputmode="query" licensekey="SCHEDULER_OPT" lookup="workzone" menutype="normal"/>
-						<textbox dataattribute="assetworkzone.type" id="qbe_grid2_1_1_grid99_12_2" inputmode="query" licensekey="SCHEDULER_OPT" lookup="valuelist"/>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<section id="pluscasset_grid_2" licensekey="CALIBRATION">
-			<sectionrow id="pluscasset_grid_2_1">
-				<sectioncol id="pluscasset_grid_2_2">
-					<section id="pluscasset_grid_2_2_1">
-						<sectionrow id="pluscasset_grid_2_2_1_2">
-							<sectioncol id="pluscasset_grid_2_2_1_2_1">
-								<section id="pluscasset_grid_2_2_1_2_1_1">
-									<multiparttextbox applink="location,ipc" dataattribute="plusclploc" descdataattribute="plusclploc.description" id="qbe_grid2_1_1_grid3_plusclploc" inputmode="query" lookup="locations" menutype="locations"/>
-									<textbox dataattribute="item.itemtype" id="qbe_grid2_1_1_grid3_19a" inputmode="masked" title="Item Type"/>
-									<multiparttextbox dataattribute="pluscismte" descdataattribute="pluscismteclass" id="pluscasset_qbe_97" inputmode="query"/>
-									<multiparttextbox dataattribute="plusciscontam" descdataattribute="plusciscondesc" id="pluscasset_qbe_94" inputmode="query"/>
-									<textbox dataattribute="pluscisinhousecal" id="pluscasset_qbe_99" inputmode="masked" label="Internal Calibration"/>
-									<textbox dataattribute="pluscclass" id="pluscasset_qbe_88" inputmode="masked" lookup="valuelist"/>
-									<textbox dataattribute="pluscoprgefrom" id="pluscasset_qbe_87" inputmode="masked"/>
-									<textbox dataattribute="pluscoprgeto" id="pluscasset_qbe_86" inputmode="masked"/>
-									<textbox dataattribute="pluscoprgeeu" id="pluscasset_qbe_85" inputmode="masked" lookup="valuelist"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="pluscasset_grid_2_2_1_2_3">
-								<section id="pluscasset_grid_2_2_1_2_3_1">
-									<textbox dataattribute="pluscassetdept" id="pluscasset_qbe_82" inputmode="masked" lookup="valuelist"/>
-									<textbox dataattribute="iscalibration" id="pluscasset_qbe_iscal" inputmode="masked"/>
-									<textbox dataattribute="pluscmodelnum" id="pluscasset_qbe_81" inputmode="masked"/>
-									<textbox dataattribute="pluscloopnum" id="pluscasset_qbe_98" inputmode="masked"/>
-									<textbox dataattribute="pluscsumeu" id="pluscasset_qbe_95" inputmode="masked" label="Accuracy EU +"/>
-									<textbox dataattribute="pluscsumspan" id="pluscasset_qbe_92" inputmode="masked" label="%Span +"/>
-									<textbox dataattribute="pluscsumurv" id="pluscasset_qbe_91" inputmode="masked" label="%URV +"/>
-									<textbox dataattribute="pluscsumread" id="pluscasset_qbe_90" inputmode="masked" label="%Reading"/>
-									<textbox dataattribute="pluscsumdir" id="pluscasset_qbe_89" inputmode="masked" lookup="valuelist"/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<section id="qbe_date_s1" label="Dates">
-			<sectionrow id="qbe_date_r1">
-				<sectioncol id="qbe_date_r1_c1">
-					<section id="qbe_date_r1_c1_s1">
-						<sectionrow id="qbe_date_s1_r1">
-							<sectioncol id="qbe_date_s1_r1_c1">
-								<section id="qbe_date_s1_r1_c1_s1">
-									<statictext align="center" id="qbe_date_s1_r1_c1_s1_st1"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r1_c2">
-								<section id="qbe_date_s1_r1_c2_s1">
-									<statictext align="left" cssclass="prependheader" id="qbe_date_s1_r1_c2_s1_st1" label="From"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r1_c3">
-								<section id="qbe_date_s1_r1_c3_s1">
-									<statictext align="left" cssclass="prependheader" id="qbe_date_s1_r1_c3_s1_st1" label="To"/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-						<sectionrow id="qbe_date_s1_r2">
-							<sectioncol id="qbe_date_s1_r2_c1">
-								<section id="qbe_date_s1_r2_c1_s1">
-									<statictext align="right" id="qbe_date_s1_r2_c1_s1_t1" label="Installation Date"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r2_c2">
-								<section id="qbe_date_s1_r2_c2_s1">
-									<textbox dataattribute="installdate" hidelabel="true" id="qbe_grid2_1_1_grid3_10" inputmode="query" lookup="datelookup" prepend="&gt;="/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r2_c3">
-								<section id="qbe_date_s1_r2_c3_s1">
-									<textbox dataattribute="installdate" hidelabel="true" id="qbe_grid2_1_1_grid3_11" inputmode="query" lookup="datelookup" prepend="&lt;="/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-						<sectionrow id="qbe_date_s1_r3" licensekey="CALIBRATION">
-							<sectioncol id="qbe_date_s1_r3_c1">
-								<section id="qbe_date_s1_r3_c1_s1">
-									<statictext id="qbe_date_s1_r3_c1_s1_t1" label="Calibration Due Date" span="right"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r3_c2">
-								<section id="qbe_date_s1_r3_c2_s1">
-									<textbox dataattribute="pluscduedate" hidelabel="true" id="pluscasset_qbe_84" inputmode="masked" lookup="datelookup" prepend="&gt;="/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r3_c3">
-								<section id="qbe_date_s1_r3_c3_s1">
-									<textbox dataattribute="pluscduedate" hidelabel="true" id="pluscasset_qbe_83" inputmode="masked" lookup="datelookup" prepend="&lt;="/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-					</section>
-				</sectioncol>
-				<sectioncol id="qbe_date_r1_c2">
-					<section id="qbe_date_r1_c2_s1">
-						<blankline id="qbe_blkline"/>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<section id="qbe_serviceaddress_s1" label="Address Information" licensekey="SERVICEADDRESS">
-			<sectionrow id="qbe_serviceaddress_r1">
-				<sectioncol id="qbe_serviceaddress_r1_c1">
-					<section id="qbe_serviceaddress_r1_c1_s1">
-						<sectionrow id="qbe_serviceaddress_s1_r2">
-							<sectioncol id="qbe_serviceaddress_s1_r2_c2">
-								<section id="qbe_serviceaddress_s1_r2_c2_s1">
-									<textbox applink="srvad" dataattribute="saddresscode" id="qbe_serviceaddress_1_1_grid3_00" inputmode="query" label="Service Address" lookup="assets_saadvsearch" menutype="SERVICEADDRESS_SEARCH"/>
-									<textbox dataattribute="SERVICEADDRESS.FORMATTEDADDRESS" id="qbe_serviceaddress_1_1_grid3_01_1" inputmode="query"/>
-									<textbox dataattribute="SERVICEADDRESS.streetaddress" id="qbe_serviceaddress_1_1_grid3_01" inputmode="query"/>
-									<textbox dataattribute="SERVICEADDRESS.city" id="qbe_serviceaddress_1_1_grid3_02" inputmode="query"/>
-									<textbox dataattribute="SERVICEADDRESS.REGIONDISTRICT" id="qbe_serviceaddress_1_1_grid3_04" inputmode="query"/>
-									<textbox dataattribute="SERVICEADDRESS.county" id="qbe_serviceaddress_1_1_grid3_03" inputmode="query"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_serviceaddress_s1_r2_c3">
-								<section id="qbe_serviceaddress_s1_r2_c3_s1">
-									<textbox dataattribute="SERVICEADDRESS.stateprovince" id="qbe_serviceaddress_1_1_grid3_10" inputmode="query" lookup="valuelist"/>
-									<textbox dataattribute="SERVICEADDRESS.postalcode" id="qbe_serviceaddress_1_1_grid3_11" inputmode="query"/>
-									<textbox dataattribute="SERVICEADDRESS.country" id="qbe_serviceaddress_1_1_grid3_12" inputmode="query" lookup="valuelist"/>
-									<textbox dataattribute="SERVICEADDRESS.geocode" id="qbe_row1_col2_sec_5" inputmode="query"/>
-									<textbox dataattribute="SERVICEADDRESS.timezone" id="qbe_row1_col2_sec_4" inputmode="query" lookup="valuelist"/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<buttongroup id="qbe_buttongrid">
-			<pushbutton default="true" id="qbe_buttongrid_1" label="Find" mxevent="dialogok"/>
-			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
-			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
-			<pushbutton id="qbe_buttongrid_3" label="Cancel" mxevent="qbecancel"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog id="viewwopm" label="View Work Orders and PMs" width="900">
 		<section border="true" id="viewWOandPMs_ViewWOandPMsFieldGrid">
 			<multiparttextbox dataattribute="assetnum" datasrc="MAINRECORD" descdataattribute="description" descinputmode="readonly" id="viewWOandPMs_ViewWOandPMsFieldGrid_1" inputmode="readonly"/>
@@ -1697,77 +1698,6 @@
 		</tabgroup>
 		<buttongroup id="viewWOandPMs_2">
 			<pushbutton default="true" id="viewWOandPMs_2_1" label="OK" mxevent="dialogclose"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog id="usercust" label="Associate Users and Custodians">
-		<table id="usercust_grid1_1_1_UsersCustodiansTable" label="Users and Custodians" relationship="ASSETUSERCUST">
-			<tablebody displayrowsperpage="20" filterexpanded="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody">
-				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-				<tablecol applink="person" dataattribute="personid" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_2" lookup="person" menutype="normal" sortable="true"/>
-				<tablecol dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3" sortable="true">
-					<textbox dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3a" inputmode="readonly"/>
-				</tablecol>
-				<tablecol dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_4" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
-				<tablecol dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_5" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_4" sortable="true"/>
-				<tablecol dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_6" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_5" sortable="true"/>
-				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-			</tablebody>
-			<tabledetails id="usercust_grid1_1_1_UsersCustodiansTable_1">
-				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_3" label="Details">
-					<multiparttextbox applink="person" dataattribute="personid" defaultfocus="true" descdataattribute="PERSON.displayname" descinputmode="readonly" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" lookup="person" menutype="normal"/>
-					<checkbox dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_3"/>
-					<checkbox dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_4"/>
-					<checkbox dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_5"/>
-				</section>
-				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_4" label="Planned Modifications">
-					<sectionrow id="usercust_grid1_1_1_UsersCustodiansTable_row1">
-						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col1">
-							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec1">
-								<checkbox dataattribute="willbeprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_1"/>
-								<checkbox dataattribute="willbecustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_2"/>
-								<checkbox dataattribute="willbeuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_3"/>
-							</section>
-						</sectioncol>
-						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col2">
-							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec2">
-								<checkbox dataattribute="modifyperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_1"/>
-								<checkbox dataattribute="addperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_2"/>
-								<checkbox dataattribute="removeperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_3"/>
-								<textbox dataattribute="multiassetlocci.recordclass" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_4" inputmode="readonly"/>
-								<textbox dataattribute="multiassetlocci.recordkey" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_5" inputmode="readonly" label="Record"/>
-							</section>
-						</sectioncol>
-					</sectionrow>
-				</section>
-			</tabledetails>
-			<buttongroup id="usercust_grid1_1_1_UsersCustodiansTable_2">
-				<pushbutton default="true" id="usercust_grid1_1_1_UsersCustodiansTable_2_1" label="New Row" mxevent="addrow"/>
-			</buttongroup>
-		</table>
-		<table id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable" label="Associate Group" relationship="TLOAMASSETPERSONGRP">
-			<tablebody displayrowsperpage="20" filterexpanded="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody">
-				<tablecol filterable="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-				<tablecol applink="persongr" dataattribute="persongroup" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_2" lookup="persongroup" menutype="normal" sortable="true"/>
-				<tablecol dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3" sortable="true">
-					<textbox dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3a" inputmode="readonly"/>
-				</tablecol>
-				<tablecol dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_4" linkedcontrolid="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
-				<tablecol filterable="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-			</tablebody>
-			<tabledetails id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1">
-				<section id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3" label="Details">
-					<multiparttextbox applink="persongr" dataattribute="persongroup" defaultfocus="true" descdataattribute="TLOAMPERSONGROUP.description" descinputmode="readonly" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_1" lookup="persongroup" menutype="normal"/>
-					<checkbox dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3"/>
-				</section>
-			</tabledetails>
-			<buttongroup id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2">
-				<pushbutton default="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2_1" label="New Row" mxevent="addrow"/>
-			</buttongroup>
-		</table>
-		<buttongroup id="usercust_2">
-			<pushbutton default="true" id="usercust_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="usercust_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -1843,6 +1773,77 @@
 		</table>
 		<buttongroup id="session_bg">
 			<pushbutton id="session_bg_1" label="Close" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="usercust" label="Associate Users and Custodians">
+		<table id="usercust_grid1_1_1_UsersCustodiansTable" label="Users and Custodians" relationship="ASSETUSERCUST">
+			<tablebody displayrowsperpage="20" filterexpanded="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody">
+				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+				<tablecol applink="person" dataattribute="personid" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_2" lookup="person" menutype="normal" sortable="true"/>
+				<tablecol dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3" sortable="true">
+					<textbox dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3a" inputmode="readonly"/>
+				</tablecol>
+				<tablecol dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_4" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
+				<tablecol dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_5" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_4" sortable="true"/>
+				<tablecol dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_6" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_5" sortable="true"/>
+				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+			</tablebody>
+			<tabledetails id="usercust_grid1_1_1_UsersCustodiansTable_1">
+				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_3" label="Details">
+					<multiparttextbox applink="person" dataattribute="personid" defaultfocus="true" descdataattribute="PERSON.displayname" descinputmode="readonly" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" lookup="person" menutype="normal"/>
+					<checkbox dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_3"/>
+					<checkbox dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_4"/>
+					<checkbox dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_5"/>
+				</section>
+				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_4" label="Planned Modifications">
+					<sectionrow id="usercust_grid1_1_1_UsersCustodiansTable_row1">
+						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col1">
+							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec1">
+								<checkbox dataattribute="willbeprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_1"/>
+								<checkbox dataattribute="willbecustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_2"/>
+								<checkbox dataattribute="willbeuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_3"/>
+							</section>
+						</sectioncol>
+						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col2">
+							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec2">
+								<checkbox dataattribute="modifyperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_1"/>
+								<checkbox dataattribute="addperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_2"/>
+								<checkbox dataattribute="removeperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_3"/>
+								<textbox dataattribute="multiassetlocci.recordclass" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_4" inputmode="readonly"/>
+								<textbox dataattribute="multiassetlocci.recordkey" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_5" inputmode="readonly" label="Record"/>
+							</section>
+						</sectioncol>
+					</sectionrow>
+				</section>
+			</tabledetails>
+			<buttongroup id="usercust_grid1_1_1_UsersCustodiansTable_2">
+				<pushbutton default="true" id="usercust_grid1_1_1_UsersCustodiansTable_2_1" label="New Row" mxevent="addrow"/>
+			</buttongroup>
+		</table>
+		<table id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable" label="Associate Group" relationship="TLOAMASSETPERSONGRP">
+			<tablebody displayrowsperpage="20" filterexpanded="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody">
+				<tablecol filterable="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+				<tablecol applink="persongr" dataattribute="persongroup" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_2" lookup="persongroup" menutype="normal" sortable="true"/>
+				<tablecol dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3" sortable="true">
+					<textbox dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3a" inputmode="readonly"/>
+				</tablecol>
+				<tablecol dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_4" linkedcontrolid="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
+				<tablecol filterable="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+			</tablebody>
+			<tabledetails id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1">
+				<section id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3" label="Details">
+					<multiparttextbox applink="persongr" dataattribute="persongroup" defaultfocus="true" descdataattribute="TLOAMPERSONGROUP.description" descinputmode="readonly" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_1" lookup="persongroup" menutype="normal"/>
+					<checkbox dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3"/>
+				</section>
+			</tabledetails>
+			<buttongroup id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2">
+				<pushbutton default="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2_1" label="New Row" mxevent="addrow"/>
+			</buttongroup>
+		</table>
+		<buttongroup id="usercust_2">
+			<pushbutton default="true" id="usercust_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="usercust_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -2280,6 +2281,19 @@
 		</buttongroup>
 	</dialog>
 
+	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="ASSET">
+		<table id="bookmarks_table" inputmode="readonly" label="Assets" selectmode="single">
+			<tablebody displayrowsperpage="20" id="bookmarks_table_tablebody">
+				<tablecol dataattribute="assetnum" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
+				<tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
+				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+			</tablebody>
+		</table>
+		<buttongroup id="bookmarks_2">
+			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog beanclass="psdi.webclient.beans.asset.SourceOrTargetAssetBean" id="VIEWASHIS" label="View Asset Specification History" width="850">
 		<section border="true" id="viewashis_grid1">
 			<sectionrow id="viewashis_grid1_11">
@@ -2326,19 +2340,6 @@
 		</table>
 		<buttongroup id="viewashis_2">
 			<pushbutton default="true" id="viewashis_2_1" label="OK" mxevent="dialogclose"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="ASSET">
-		<table id="bookmarks_table" inputmode="readonly" label="Assets" selectmode="single">
-			<tablebody displayrowsperpage="20" id="bookmarks_table_tablebody">
-				<tablecol dataattribute="assetnum" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
-				<tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
-				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
-			</tablebody>
-		</table>
-		<buttongroup id="bookmarks_2">
-			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
 		</buttongroup>
 	</dialog>
 
