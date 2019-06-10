@@ -176,9 +176,9 @@
 											<textbox dataattribute="polinenum" id="polines_poline_table_1_grid3_1" inputmode="READONLY" sizeintable="7"/>
 											<combobox dataattribute="linetype" id="polines_poline_table_1_grid3_2"/>
 											<multiparttextbox dataattribute="itemnum" defaultfocus="true" descdataattribute="description" id="polines_poline_table_1_grid3_3" lookup="item" menutype="item" rechover="item_recordhover"/>
-											<textbox dataattribute="conditioncode" id="polines_poline_table_1_grid3_5" lookup="conditioncode"/>
 											<textbox dataattribute="remark" id="polines_poline_table_1_grid9_9" lookup="longdesc"/>
-											<textbox dataattribute="PL1" id="1493911673557" label="QA Test Code" size="20"/>
+											<textbox dataattribute="AGP_QUOTEREFNO" id="1493911673557" label="PR Quote Num" size="35"/>
+											<textbox dataattribute="conditioncode" id="polines_poline_table_1_grid3_5" lookup="conditioncode"/>
 										</section>
 									</sectioncol>
 									<sectioncol id="polines_poline_table_1_grid3_d">
@@ -902,6 +902,8 @@
 						<textbox dataattribute="poline.mrnum" id="qbe_grid2_1_1_grid6_11" inputmode="query"/>
 						<textbox dataattribute="poline.gldebitacct" id="qbe_grid2_1_1_grid6_10" inputmode="query" lookup="glnavigator"/>
 						<textbox dataattribute="poline.glcreditacct" id="qbe_grid2_1_1_grid6_12" inputmode="query" lookup="glnavigator"/>
+						<blankline id="1558643152379"/>
+						<textbox dataattribute="poline.DEFBINNUM" id="1558643141270" inputmode="query" label="Bin Num"/>
 					</section>
 				</sectioncol>
 			</sectionrow>

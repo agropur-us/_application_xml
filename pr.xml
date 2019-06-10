@@ -160,9 +160,8 @@
 											<combobox dataattribute="linetype" id="prlines_grid2a_2"/>
 											<multiparttextbox dataattribute="itemnum" defaultfocus="true" descdataattribute="description" id="prlines_grid2a_3" lookup="item" menutype="item" rechover="item_recordhover"/>
 											<textbox dataattribute="conditioncode" id="prlines_grid2a_6" lookup="conditioncode"/>
+											<textbox dataattribute="AGP_QUOTEREFNO" id="1560174202574" size="35"/>
 											<textbox dataattribute="remark" id="prlines_grid5b_8" lookup="longdesc"/>
-											<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="prlines_grid5c_9" inputmode="readonly" menutype="normal" ondatachange="refreshtable"/>
-											<textbox dataattribute="CLASSSTRUCTURE.description_class" id="prlines_grid5c_10" inputmode="readonly"/>
 										</section>
 									</sectioncol>
 									<sectioncol id="prlines_grid2_c2">
@@ -173,7 +172,6 @@
 											<textbox dataattribute="catalogcode" id="prlines_grid2a_9"/>
 											<textbox dataattribute="commoditygroup" defaultfocus="true" id="prlines_grid2a_4" lookup="commoditygroup"/>
 											<textbox dataattribute="commodity" defaultfocus="true" id="prlines_grid2a_5" lookup="COMMODITIES"/>
-											<textbox dataattribute="RL1" id="1493911615472" label="QA Test Code" size="20"/>
 										</section>
 									</sectioncol>
 									<sectioncol id="prlines_grid2_c3">
