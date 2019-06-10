@@ -7843,7 +7843,7 @@
 			<sectionrow id="myProfilePWInfo_1_row4">
 				<sectioncol id="myProfilePWInfo_1_row4_col1">
 					<section id="myProfilePWInfo_1_row4_col1_1">
-						<multiparttextbox dataattribute="pwhintquestion" descdataattribute="pwhintdomain.description" descinputmode="readonly" id="myProfilePWSection_5" lookup="valuelist"/>
+						<multiparttextbox dataattribute="pwhintquestion" descdataattribute="pwhintdomain.description" descinputmode="readonly" id="myProfilePWSection_5" lookup="valuelist" width="300"/>
 						<textbox dataattribute="pwhintanswer" id="myProfilePWSection_6"/>
 					</section>
 				</sectioncol>
@@ -12399,7 +12399,8 @@
 				<tablecol dataattribute="itemnum" id="wosparepart_Spare_PartsTable_tablebody_2" sortable="true"/>
 				<tablecol dataattribute="item.description" id="wosparepart_Spare_PartsTable_tablebody_3" showfilterfield="true" sortable="false"/>
 				<tablecol dataattribute="quantity" id="wosparepart_Spare_PartsTable_tablebody_4" sortable="true"/>
-				<tablecol dataattribute="description" id="wosparepart_Spare_PartsTable_tablebody_5" sortable="true"/>
+				<tablecol dataattribute="inventory.catalogcode" id="wosparepart_Spare_PartsTable_tablebody_41" sortable="true"/>
+				<tablecol dataattribute="inventory.modelnum" id="wosparepart_Spare_PartsTable_tablebody_42" sortable="true"/>
 				<tablecol dataattribute="siteid" id="wosparepart_Spare_PartsTable_tablebody_6" sortable="true"/>
 			</tablebody>
 		</table>
