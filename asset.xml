@@ -266,17 +266,29 @@
 							<tablecol dataattribute="quantity" id="sparepartsform_parts_table_tablebody_4"/>
 							<tablecol dataattribute="issuedqty" id="sparepartsform_parts_table_tablebody_5"/>
 							<tablecol dataattribute="item.status" id="1307541058896" inputmode="READONLY"/>
-							<tablecol dataattribute="description" id="sparepartsform_parts_table_tablebody_6"/>
+							<tablecol dataattribute="INVENTORY.CATALOGCODE" id="sparepartsform_parts_table_tablebody_6" inputmode="readonly" label="Catalog Code"/>
+							<tablecol dataattribute="INVENTORY.MODELNUM" id="1560176443369" inputmode="readonly"/>
 							<tablecol filterable="false" id="sparepartsform_parts_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
 						</tablebody>
 						<tabledetails id="sparepartsform_parts_table_1">
 							<section id="sparepartsform_parts_table_1_grid3" label="Details">
-								<multiparttextbox applink="item,inventor" dataattribute="itemnum" defaultfocus="true" descdataattribute="item.description" descinputmode="readonly" desclookup="longdesc" id="sparepartsform_parts_table_1_grid3_1" lookup="item" menutype="ITEM"/>
-								<textbox dataattribute="quantity" id="sparepartsform_parts_table_1_grid3_3"/>
-								<textbox dataattribute="issuedqty" id="sparepartsform_parts_table_1_grid3_4"/>
-								<textbox dataattribute="INVENTORY.BINNUM" id="1343668725815" inputmode="READONLY"/>
-								<textbox dataattribute="item.status" id="1307540996289" inputmode="READONLY"/>
-								<textbox dataattribute="description" id="sparepartsform_parts_table_1_grid3_5" lookup="longdesc"/>
+								<sectionrow id="1560176557233"/>
+								<sectionrow id="1560176587965">
+									<sectioncol id="1560176592458">
+										<multiparttextbox applink="item,inventor" dataattribute="itemnum" defaultfocus="true" descdataattribute="item.description" descinputmode="readonly" desclookup="longdesc" id="sparepartsform_parts_table_1_grid3_1" lookup="item" menutype="ITEM"/>
+										<textbox dataattribute="quantity" id="sparepartsform_parts_table_1_grid3_3"/>
+										<multiparttextbox dataattribute="INVENTORY.VENDOR" descdataattribute="INVENTORY.VENDOR.NAME" descinputmode="readonly" id="1560176766133" inputmode="readonly"/>
+										<textbox dataattribute="INVENTORY.CATALOGCODE" id="1560176666511" inputmode="readonly"/>
+										<textbox dataattribute="INVENTORY.MODELNUM" id="1560176663516" inputmode="readonly" size="40"/>
+									</sectioncol>
+									<sectioncol id="1560176595313"/>
+									<sectioncol id="15601765879652">
+										<textbox dataattribute="description" id="sparepartsform_parts_table_1_grid3_5" lookup="longdesc"/>
+										<textbox dataattribute="INVENTORY.BINNUM" id="1343668725815" inputmode="READONLY"/>
+										<textbox dataattribute="item.status" id="1307540996289" inputmode="READONLY"/>
+										<textbox dataattribute="issuedqty" id="sparepartsform_parts_table_1_grid3_4"/>
+									</sectioncol>
+								</sectionrow>
 							</section>
 						</tabledetails>
 						<buttongroup id="sparepartsform_parts_table_2">
