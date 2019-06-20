@@ -180,6 +180,7 @@
 		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="commoditygroup_lookup_tablebody">
 			<tablecol dataattribute="commodity" id="commoditygroup_lookup_tablebody_col_2" label="Commodity Group" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="description" id="commoditygroup_lookup_tablebody_col_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			<tablecol dataattribute="parent" id="commoditygroup_lookup_tablebody_col_31" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="itemsetid" id="commoditygroup_lookup_tablebody_col_4" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 		</tablebody>
 	</table>
