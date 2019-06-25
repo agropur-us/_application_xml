@@ -282,6 +282,50 @@
 						</tab>
 					</tabgroup>
 				</tab>
+				<tab id="1561425919672" label="Open WO's">
+					<section border="true" height="100" id="act_wo_grid1">
+						<sectionrow id="act_wo_grid1_r1">
+							<sectioncol id="act_wo_grid1_c1">
+								<section id="act_wo_grid1_s1">
+									<multiparttextbox dataattribute="pmnum" descdataattribute="description" desclookup="longdesc" id="act_wo_grid1_1"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="act_wo_grid1_c2">
+								<section id="act_wo_grid1_s2">
+									<textbox dataattribute="siteid" id="act_wo_grid1_3" inputmode="readonly"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="act_wo_grid1_c3">
+								<section id="act_wo_grid1_s3">
+									<textbox dataattribute="status" id="act_wo_grid1_6" inputmode="readonly"/>
+									<checkbox dataattribute="forecastexists" id="act_wo_grid1_6_a"/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table datasrc="act_wo_open_table" id="act_wo_opentable" inputmode="readonly" label="Open Work Orders" orderby="wonum" relationship="ACTWORKORDER">
+						<tablebody displayrowsperpage="10" filterable="false" id="ahistory_inventorytable_tablebody">
+							<tablecol filterable="false" id="act_wo_open_table1_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+							<tablecol dataattribute="WONUM" filterable="true" id="wo61412250219" inputmode="readonly" label="WO Num" menutype="HYPERLINK" rechover="WO_RECORDHOVER" sortable="true"/>
+							<tablecol dataattribute="REPORTDATE" id="wo61412253183" inputmode="readonly" label="Report Date" sortable="true"/>
+							<tablecol dataattribute="SCHEDSTART" id="1561470337374" inputmode="readonly"/>
+							<tablecol dataattribute="status" id="1561468804763" inputmode="readonly"/>
+							<tablecol dataattribute="SUPERVISOR" id="wo61412241608" inputmode="readonly" label="Supervisor" sortable="true"/>
+						</tablebody>
+						<tabledetails id="act_wo_open_table1_1">
+							<section id="act_wo_open_table1_1_grid7" label="Details">
+								<sectionrow id="act_wo_open_table1_1_grid7_r1">
+									<sectioncol id="act_wo_open_table1_1_grid7_c1">
+										<section id="act_wo_open_table1_1_grid7_s1">
+											<multiparttextbox applink="wotrack" dataattribute="wonum" defaultfocus="true" descdataattribute="description" descinputmode="readonly" desclookup="longdesc" id="act_wo_open_table1_1_grid7_1" lookup="workorder" menutype="normal"/>
+										</section>
+									</sectioncol>
+									<sectioncol id="act_wo_open_table1_1_grid7_c2"/>
+								</sectionrow>
+							</section>
+						</tabledetails>
+					</table>
+				</tab>
 				<tab id="pmseasons" label="Seasonal Dates">
 					<section border="true" id="pmseasons_grid2">
 						<sectionrow id="pmseasons_grid2_r1">
@@ -1021,5 +1065,6 @@
 			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
 		</buttongroup>
 	</dialog>
-	<configurationblock id="datastore_configurationblock"/>
+	<configurationblock id="datastore_configurationblock">
+	</configurationblock>
 </presentation>
