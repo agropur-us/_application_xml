@@ -18,8 +18,8 @@
 							<tablecol applink="asset,ipc" dataattribute="assetnum" id="results_showlist_tablebody_5" lookup="asset" menutype="assetmain" rechover="asset_recordhover"/>
 							<tablecol dataattribute="status" id="results_showlist_tablebody_6" linkedcontrolid="qbe_s1_sr1_sc2_s2_tb1" lookup="VALUELIST"/>
 							<tablecol dataattribute="WORKTYPE" filterable="true" id="1331732469332" lookup="WORKTYPE" sortable="true"/>
-							<tablecol dataattribute="schedstart" id="results_showlist_tablebody_7" lookup="DATELOOKUP"/>
-							<tablecol dataattribute="targstartdate" filterable="true" id="1265228883062" lookup="DATELOOKUP" sortable="true"/>
+							<tablecol dataattribute="schedstart" id="results_showlist_tablebody_7" label="Sched Start" lookup="DATELOOKUP"/>
+							<tablecol dataattribute="SCHEDFINISH" filterable="true" id="1265228883062" label="Sched Finish" lookup="DATELOOKUP" sortable="true"/>
 							<tablecol dataattribute="reportdate" id="1530031456484" inputmode="query" lookup="DATELOOKUP"/>
 							<tablecol dataattribute="siteid" id="results_showlist_tablebody_10" linkedcontrolid="qbe_s1_sr1_sc2_s1_tb1"/>
 							<tablecol dataattribute="HISTORYFLAG" id="1562879704431"/>
@@ -4190,6 +4190,28 @@
 	</dialog>
 	<action id="CREATESREQ" method="createServiceRequest" savemode="ONLOAD"/>
 
+	<dialog beanclass="psdi.plusc.webclient.beans.workorder.ShowPlusCTechnicianBean" id="tool-showlabor" label="Select By Labor" mboname="LABOR">
+		<table id="showlabor_select_table" inputmode="readonly" selectmode="single">
+			<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="showlabor_select_table_tablebody">
+				<tablecol dataattribute="laborcode" id="showlabor_select_table_tablecol_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+				<tablecol dataattribute="person.displayname" id="showlabor_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
+			</tablebody>
+		</table>
+		<buttongroup id="showlabor_2">
+			<pushbutton default="true" id="showlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog datasrc="MAINRECORD" id="duplicate" label="Duplicate Record">
+		<section id="duplicate_grid1">
+			<radiobuttongroup border="false" dataattribute="dupflag" id="duplicate_grid1_1_1_grid6"/>
+		</section>
+		<buttongroup id="duplicate_1">
+			<pushbutton default="true" id="owner_1_1" label="OK" mxevent="DUPLICATECHECK"/>
+			<pushbutton id="owner_1_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog beanclass="com.ibm.tivoli.maximo.appt.beans.CreateWorkOrderApptWindowDialogBean" id="CREATEWOWITHAPPTWIN" label="Create Work Order with Appointment Window" mboname="WORKORDER" savemode="ONUNLOAD">
 		<section id="CREATEWOWITHAPPTWIN_mainsection">
 			<sectionrow id="CREATEWOWITHAPPTWIN_row0">
@@ -4279,28 +4301,6 @@
 		<buttongroup id="CREATEWOWITHAPPTWIN_3">
 			<pushbutton default="true" id="CREATEWOWITHAPPTWIN_3_1" label="OK" mxevent="dialogok"/>
 			<pushbutton id="CREATEWOWITHAPPTWIN_3_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog datasrc="MAINRECORD" id="duplicate" label="Duplicate Record">
-		<section id="duplicate_grid1">
-			<radiobuttongroup border="false" dataattribute="dupflag" id="duplicate_grid1_1_1_grid6"/>
-		</section>
-		<buttongroup id="duplicate_1">
-			<pushbutton default="true" id="owner_1_1" label="OK" mxevent="DUPLICATECHECK"/>
-			<pushbutton id="owner_1_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.plusc.webclient.beans.workorder.ShowPlusCTechnicianBean" id="tool-showlabor" label="Select By Labor" mboname="LABOR">
-		<table id="showlabor_select_table" inputmode="readonly" selectmode="single">
-			<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="showlabor_select_table_tablebody">
-				<tablecol dataattribute="laborcode" id="showlabor_select_table_tablecol_1" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-				<tablecol dataattribute="person.displayname" id="showlabor_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
-			</tablebody>
-		</table>
-		<buttongroup id="showlabor_2">
-			<pushbutton default="true" id="showlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
