@@ -139,6 +139,11 @@
 									<multiparttextbox dataattribute="ITEMNUM" descdataattribute="DESCRIPTION" id="store_grid2_1" longdescription="true" menutype="item"/>
 								</section>
 							</sectioncol>
+							<sectioncol id="1564672492263">
+								<section id="1564672513794">
+									<textbox dataattribute="STATUS" id="1564672497935" inputmode="readonly"/>
+								</section>
+							</sectioncol>
 							<sectioncol id="store_gridb">
 								<section id="store_gridc">
 									<textbox dataattribute="ITEMSETID" id="store_grid2_4"/>
@@ -590,11 +595,11 @@
 						<textbox dataattribute="MSDSNUM" id="qbe_grid5_1_1_9" inputmode="query"/>
 						<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_classificationhierarchy" inputmode="query" menutype="classificationqbe"/>
 						<textbox dataattribute="itemorginfo.category" id="qbe_itemorgstatus" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="status" id="qbe_grid5_1_1_9a" inputmode="query"/>
 					</section>
 				</sectioncol>
 				<sectioncol id="qbe_grid5_r1_c2">
 					<section id="qbe_grid5_r1_c2_s1">
+						<textbox dataattribute="status" id="qbe_grid5_1_1_9a" inputmode="query" lookup="domain"/>
 						<textbox dataattribute="LOTTYPE" id="qbe_grid5_1_1_8" inputmode="query" lookup="valuelist"/>
 						<textbox applink="meter" dataattribute="METERNAME" id="qbe_grid5_1_1_15" inputmode="query" lookup="meter" menutype="normal"/>
 						<textbox applink="metergrp" dataattribute="GROUPNAME" id="qbe_grid5_1_1_14" inputmode="query" lookup="metergroup" menutype="normal"/>
