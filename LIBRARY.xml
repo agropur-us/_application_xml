@@ -1411,8 +1411,6 @@
 							<checkbox dataattribute="ticket.isglobal" id="worklog_tb_details_sec12a" sigoption="SHOWGLOBAL" sigoptiondatasrc="MAINRECORD"/>
 							<textbox dataattribute="createby" id="worklog_tb_details_sec13"/>
 							<textbox dataattribute="createdate" displaytype="DATETIME" id="worklog_tb_details_sec16"/>
-							<textbox dataattribute="logtype" id="worklog_tb_details_sec17" lookup="valuelist"/>
-							<checkbox dataattribute="clientviewable" id="worklog_tb_details_sec18"/>
 						</section>
 					</sectioncol>
 					<sectioncol id="worklog_tb_details_row1_col2">
@@ -1420,6 +1418,10 @@
 							<textbox dataattribute="description" id="worklog_tb_details_sec14" lookup="longdesc"/>
 							<richtexteditor dataattribute="description_longdescription" height="100" id="worklog_tb_details_sec15" width="660"/>
 						</section>
+					</sectioncol>
+					<sectioncol id="worklog_tb_details_row1_col3">
+							<textbox dataattribute="logtype" id="worklog_tb_details_sec17" lookup="valuelist"/>
+							<checkbox dataattribute="clientviewable" id="worklog_tb_details_sec18"/>
 					</sectioncol>
 				</sectionrow>
 			</section>
