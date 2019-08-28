@@ -1420,8 +1420,8 @@
 						</section>
 					</sectioncol>
 					<sectioncol id="worklog_tb_details_row1_col3">
-							<textbox dataattribute="logtype" id="worklog_tb_details_sec17" lookup="valuelist"/>
-							<checkbox dataattribute="clientviewable" id="worklog_tb_details_sec18"/>
+						<textbox dataattribute="logtype" id="worklog_tb_details_sec17" lookup="valuelist"/>
+						<checkbox dataattribute="clientviewable" id="worklog_tb_details_sec18"/>
 					</sectioncol>
 				</sectionrow>
 			</section>
@@ -7834,19 +7834,19 @@
 					</section>
 				</sectioncol>
 			</sectionrow>
-			<sectionrow id="myProfilePWInfo_1_row3">
-				<sectioncol id="myProfilePWInfo_1_row3_col1">
-					<section border="true" id="myProfilePWInfo_1_row3_col1_1">
-						<textbox dataattribute="passwordinput" id="myProfilePWSection_3" inputmode="password" setfocus="true" synchronous="true"/>
-						<textbox dataattribute="passwordcheck" id="myProfilePWSection_4" inputmode="password" synchronous="true"/>
-					</section>
-				</sectioncol>
-			</sectionrow>
 			<sectionrow id="myProfilePWInfo_1_row4">
 				<sectioncol id="myProfilePWInfo_1_row4_col1">
 					<section id="myProfilePWInfo_1_row4_col1_1">
 						<multiparttextbox dataattribute="pwhintquestion" descdataattribute="pwhintdomain.description" descinputmode="readonly" id="myProfilePWSection_5" lookup="valuelist" width="300"/>
 						<textbox dataattribute="pwhintanswer" id="myProfilePWSection_6"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+			<sectionrow id="myProfilePWInfo_1_row3">
+				<sectioncol id="myProfilePWInfo_1_row3_col1">
+					<section border="true" id="myProfilePWInfo_1_row3_col1_1">
+						<textbox dataattribute="passwordinput" id="myProfilePWSection_3" inputmode="password" setfocus="true" synchronous="true"/>
+						<textbox dataattribute="passwordcheck" id="myProfilePWSection_4" inputmode="password" synchronous="true"/>
 					</section>
 				</sectioncol>
 			</sectionrow>
