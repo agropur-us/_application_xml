@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <presentation apprestrictions="WRTYPE='QA'" beanclass="psdi.webclient.beans.workorder.WorkorderAppBean" id="qa_audit" ismobile="N" mboname="WORKORDER" orderby="WONUM" resultstableid="results_showlist" version="6.2.3">
-	<page id="mainrec">
-		<include id="pageHeader"/>
+	<page id="mainrec" scroll="false">
+		<include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
 		<clientarea id="clientarea">
 			<tabgroup id="maintabs" style="form">
 				<tab default="true" id="results" label="List" type="list">
@@ -18,7 +18,7 @@
 							<tablecol dataattribute="AUDIT_CAT" filterable="true" id="1265555301992" inputmode="QUERY" label="Audit Cat" linkedcontrolid="qbe_s1_sr1_sc2_s2_tb001" lookup="AUDIT_CAT" sortable="true"/>
 							<tablecol dataattribute="AUDIT_REG" filterable="true" id="1397699890925" inputmode="QUERY" lookup="valuelist" sortable="true"/>
 							<tablecol applink="person" dataattribute="REPORTEDBY" filterable="true" id="1267636179143" inputmode="query" lookup="person" sortable="true"/>
-							<tablecol applink="PERSON" dataattribute="SUPERVISOR" filterable="true" id="1265555232425" label="Peson Resp" lookup="person" sortable="true"/>
+							<tablecol applink="PERSON" dataattribute="SUPERVISOR" filterable="true" id="1265555232425" label="Resp Person" lookup="person" sortable="true"/>
 							<tablecol dataattribute="REPORTDATE" filterable="true" id="1265228883062" lookup="DATELOOKUP" sortable="true"/>
 							<tablecol dataattribute="siteid" id="results_showlist_tablebody_10" linkedcontrolid="qbe_s1_sr1_sc2_s1_tb1"/>
 							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
@@ -252,10 +252,10 @@
 					</section>
 					<tabgroup id="log_tabs">
 						<tab default="true" id="worklog_tab" label="Work Log">
-							<include id="worklog"/>
+							<include controltoclone="worklog" id="INCLUDE-worklog"/>
 						</tab>
 						<tab id="commlog_tab" label="Communication Log">
-							<include id="commlog"/>
+							<include controltoclone="commlog" id="INCLUDE-commlog"/>
 						</tab>
 					</tabgroup>
 				</tab>
@@ -1358,7 +1358,7 @@
 				</tab>
 			</tabgroup>
 		</clientarea>
-		<include id="pageFooter"/>
+		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
 
 	<dialog beanclass="psdi.webclient.beans.workorder.AssignLaborBean" id="assignlabor" label="Available Labor" relationship="ASSIGNLABOR">
@@ -1398,8 +1398,6 @@
 			<pushbutton id="assignlabor_2_1" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
-	<action id="CREATECHG" method="createChange" savemode="ONLOAD"/>
-	<action id="CREATESREQ" method="createServiceRequest" savemode="ONLOAD"/>
 
 	<dialog id="viewhist" label="View Work Order History">
 		<table id="viewhist_table" label="Status History" orderby="changedate desc" relationship="WOSTATUS">
@@ -1424,148 +1422,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog datasrc="MAINRECORD" id="duplicate" label="Duplicate Record">
-		<section id="duplicate_grid1">
-			<radiobuttongroup border="false" dataattribute="dupflag" id="duplicate_grid1_1_1_grid6"/>
-		</section>
-		<buttongroup id="duplicate_1">
-			<pushbutton default="true" id="owner_1_1" label="OK" mxevent="DUPLICATECHECK"/>
-			<pushbutton id="owner_1_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog id="mandwntime" label="Manage Downtime History" relationship="MODDOWNTIMEHIST" savemode="ONLOADUNLOAD">
-		<section border="true" id="mandwntime_grid1">
-			<multiparttextbox dataattribute="wonum" datasrc="MAINRECORD" descdataattribute="description" descinputmode="READONLY" id="mandwntime_grid1_1"/>
-			<textbox dataattribute="siteid" datasrc="MAINRECORD" id="mandwntime_grid1_2"/>
-		</section>
-		<table id="mandwntime_view_assetstatus">
-			<tablebody displayrowsperpage="10" filterable="true" filterexpanded="false" id="mandwntime_view_assetstatus_tablebody">
-				<tablecol filterable="false" id="mandwntime_view_assetstatus_tablebody_0" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-				<tablecol dataattribute="assetnum" id="mandwntime_view_assetstatus_tablebody_1"/>
-				<tablecol dataattribute="startdate" id="mandwntime_view_assetstatus_tablebody_2"/>
-				<tablecol dataattribute="startwonum" id="mandwntime_view_assetstatus_tablebody_3"/>
-				<tablecol dataattribute="enddate" id="mandwntime_view_assetstatus_tablebody_4"/>
-				<tablecol dataattribute="endwonum" id="mandwntime_view_assetstatus_tablebody_5"/>
-				<tablecol dataattribute="downtime" id="mandwntime_view_assetstatus_tablebody_6"/>
-				<tablecol filterable="false" id="mandwntime_view_assetstatus_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-			</tablebody>
-			<tabledetails id="mandwntime_view_assetstatus_tabledetails">
-				<section id="mandwntime_view_assetstatus_tabledetails_1" label="Details">
-					<sectionrow id="mandwntime_view_assetstatus_tabledetails_1_1">
-						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_1_1">
-							<section id="mandwntime_view_assetstatus_tabledetails_1_1_1_1">
-								<textbox applink="asset" dataattribute="assetnum" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_1" lookup="asset" menutype="normal"/>
-								<textbox dataattribute="startdate" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_2" lookup="datelookup"/>
-								<textbox dataattribute="startwonum" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_3" lookup="workorder"/>
-								<textbox dataattribute="startcode" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_4" lookup="valuelist"/>
-							</section>
-						</sectioncol>
-						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_1_2">
-							<section id="mandwntime_view_assetstatus_tabledetails_1_1_2_1">
-								<textbox dataattribute="downtime" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_1"/>
-								<textbox dataattribute="enddate" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_2" lookup="datelookup"/>
-								<textbox dataattribute="endwonum" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_3" lookup="workorder"/>
-								<textbox dataattribute="endcode" id="mandwntime_view_assetstatus_tabledetails_1_1_3_1_4" lookup="valuelist"/>
-							</section>
-						</sectioncol>
-					</sectionrow>
-					<sectionrow id="mandwntime_view_assetstatus_tabledetails_1_2">
-						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_2_1">
-							<section id="mandwntime_view_assetstatus_tabledetails_1_2_1_1" label="Start Operational Type">
-								<radiobuttongroup border="false" dataattribute="startoperational" id="mandwntime_downtimetype_1">
-									<radiobutton id="mandwntime_downtimetype_1_1" label="Operational" value="1"/>
-									<radiobutton id="mandwntime_downtimetype_1_2" label="Non-operational" value="0"/>
-								</radiobuttongroup>
-							</section>
-						</sectioncol>
-						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_2_2">
-							<section id="mandwntime_view_assetstatus_tabledetails_1_2_2_1" label="End Operational Type">
-								<radiobuttongroup border="false" dataattribute="endoperational" id="mandwntime_downtimetype_2">
-									<radiobutton id="mandwntime_downtimetype_2_1" label="Operational" value="1"/>
-									<radiobutton id="mandwntime_downtimetype_2_2" label="Non-operational" value="0"/>
-								</radiobuttongroup>
-							</section>
-						</sectioncol>
-					</sectionrow>
-				</section>
-			</tabledetails>
-		</table>
-		<buttongroup id="mandwntime_view_buttons">
-			<pushbutton default="true" id="mandwntime_view_buttons_1" label="OK" mxevent="dialogok"/>
-			<pushbutton default="true" id="mandwntime_view_buttons_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-	<action id="CREATEPROB" method="createProblem" savemode="ONLOAD"/>
-
-	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="WORKORDER">
-		<table id="bookmarks_table" inputmode="readonly" label="Work Orders" selectmode="single">
-			<tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
-				<tablecol dataattribute="wonum" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
-				<tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
-				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
-			</tablebody>
-		</table>
-		<buttongroup id="bookmarks_2">
-			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog id="selectsh" label="Select Safety Hazards">
-		<helpgrid id="selecthaz_help" innerhtml="The following assets and locations are safety-related assets for the current work order.  Each asset might have safety hazards that affect the work environment of the current work order. Select hazards to Apply to Work Order. To finish, click Done."/>
-		<section id="selecthaz_grid2">
-			<sectionrow id="selecthaz_grid2_1">
-				<sectioncol id="selecthaz_grid2_1_1">
-					<table id="selecthaz_grid2_1_1_relassets_table" inputmode="readonly" label="Safety Related Assets" relationship="SPRELATEDASSET">
-						<tablebody displayrowsperpage="10" filterable="true" id="selecthaz_grid2_1_1_relassets_table_tablebody">
-							<tablecol dataattribute="relatedasset" id="selecthaz_grid2_1_1_relassets_table_tablebody_1"/>
-							<tablecol dataattribute="relatedlocation" id="selecthaz_grid2_1_1_relassets_table_tablebody_2"/>
-							<tablecol dataattribute="relassetdescription" id="selecthaz_grid2_1_1_relassets_table_tablebody_3" sortable="false"/>
-						</tablebody>
-					</table>
-					<table beanclass="psdi.webclient.beans.workorder.WOHazardsBean" id="selecthaz_grid2_1_1_hazards_table" inputmode="readonly" label="Hazards for {0}" parentdatasrc="selecthaz_grid2_1_1_relassets_table" parentemptylabel="Hazards" relationship="SELECTHAZARD" selectmode="multiple" titleattributes="relatedassetloc">
-						<sectionheader id="selecthaz_grid2_1_1_hazards_table_h">
-							<paramvalues id="selecthaz_grid2_1_1_hazards_table_h_1" property="label">
-								<paramvalue dataattribute="relatedassetloc" id="selecthaz_grid2_1_1_hazards_table_h_2" position="0"/>
-							</paramvalues>
-						</sectionheader>
-						<tablebody displayrowsperpage="10" filterable="true" id="selecthaz_grid2_1_1_hazards_table_tablebody" label="Hazards">
-							<tablecol filterable="false" id="selecthaz_grid2_1_1_hazards_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
-							<tablecol dataattribute="hazardid" id="selecthaz_grid2_1_1_hazards_table_tablebody_2"/>
-							<tablecol dataattribute="description" id="selecthaz_grid2_1_1_hazards_table_tablebody_3"/>
-							<tablecol dataattribute="precautionenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_4"/>
-							<tablecol dataattribute="hazmatenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_5"/>
-							<tablecol dataattribute="tagoutenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_6"/>
-						</tablebody>
-						<buttongroup id="selecthaz_grid2_1_1_hazards_table_1">
-							<pushbutton default="true" id="selecthaz_grid2_1_1_hazards_table_1_1" label="Apply to Work Order" mxevent="AddHazardsToWOActionHandler"/>
-						</buttongroup>
-					</table>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<buttongroup id="selecthaz_2">
-			<pushbutton default="true" id="selecthaz_2_1" label="Done" mxevent="dialogok"/>
-		</buttongroup>
-	</dialog>
-	<action id="CREATEINCT" method="createIncident" savemode="ONLOAD"/>
-
-	<dialog id="sqrlist" label="SQR Reports List">
-		<section border="true" id="sqrlist_reportlist">
-			<sectionrow id="sqrlist_reportlist_1">
-				<sectioncol id="sqrlist_reportlist_1_1">
-					<buttongroup id="sqrlist_reportlist_1_1_buttons1">
-						<pushbutton id="sqrlist_reportlist_1_1_buttons1_1" label="Close"/>
-					</buttongroup>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<buttongroup id="sqrlist_2">
-			<pushbutton default="true" id="sqrlist_2_1" label="OK" mxevent="dialogok"/>
-		</buttongroup>
-	</dialog>
-	<action id="CREATEWO" method="createWorkorder" savemode="ONLOAD"/>
-
 	<dialog id="displaywopm" label="Display Work Orders Generated">
 		<section border="true" id="displaywopm_grid1">
 			<sectionrow id="displaywopm_grid1_1">
@@ -1578,17 +1434,33 @@
 			<pushbutton default="true" id="displaywopm_2_1" label="OK" mxevent="dialogok"/>
 		</buttongroup>
 	</dialog>
+	<action id="CREATEINCT" method="createIncident" savemode="ONLOAD"/>
 
-	<dialog id="catalogs" label="Search Catalogs">
-		<section border="true" id="cataloglist_grid4">
-			<sectionrow id="cataloglist_grid4_1">
-				<sectioncol id="cataloglist_grid4_1_1"/>
+	<dialog beanclass="psdi.webclient.beans.workorder.SafetyPlanBean" icon="img_lookup.gif" id="lookup_selectsp" label="Select Safety Plan">
+		<section border="true" datasrc="MAINRECORD" id="selsafety_grid3">
+			<sectionrow id="selsafety_grid3_1">
+				<sectioncol id="selsafety_grid3_1_1">
+					<section id="selsafety_a">
+						<radiobuttongroup dataattribute="SAFETYPLAN_LOOKUP_LIST_TYPE" id="selsafety_grid3_1_1_rbg1"/>
+					</section>
+					<buttongroup id="selsafety_grid3_1_1_Tblbuttons1">
+						<pushbutton id="selsafety_grid3_1_1_Tblbuttons1_1" label="Refresh" mxevent="REFRESHLIST"/>
+					</buttongroup>
+				</sectioncol>
 			</sectionrow>
 		</section>
-		<buttongroup id="cataloglist_2">
-			<pushbutton default="true" id="cataloglist_2_1" label="Cancel" mxevent="dialogcancel"/>
+		<table id="selsafety_select_table" inputmode="readonly" selectmode="single">
+			<tablebody displayrowsperpage="5" filterable="true" id="selsafety_select_table_tablebody">
+				<tablecol dataattribute="safetyplanid" id="selsafety_select_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+				<tablecol dataattribute="description" id="selsafety_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+			</tablebody>
+		</table>
+		<buttongroup id="selsafety_2">
+			<pushbutton default="true" id="selsafety_2_1" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
+	<action id="CREATECHG" method="createChange" savemode="ONLOAD"/>
+	<action id="CREATEPROB" method="createProblem" savemode="ONLOAD"/>
 
 	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
 		<section id="qbe_s1">
@@ -1821,29 +1693,67 @@
 			<pushbutton id="qbe_bg1_pb3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
-	<action id="CREATEREL" method="createRelease" savemode="ONLOAD"/>
 
-	<dialog beanclass="psdi.webclient.beans.workorder.SafetyPlanBean" icon="img_lookup.gif" id="lookup_selectsp" label="Select Safety Plan">
-		<section border="true" datasrc="MAINRECORD" id="selsafety_grid3">
-			<sectionrow id="selsafety_grid3_1">
-				<sectioncol id="selsafety_grid3_1_1">
-					<section id="selsafety_a">
-						<radiobuttongroup dataattribute="SAFETYPLAN_LOOKUP_LIST_TYPE" id="selsafety_grid3_1_1_rbg1"/>
-					</section>
-					<buttongroup id="selsafety_grid3_1_1_Tblbuttons1">
-						<pushbutton id="selsafety_grid3_1_1_Tblbuttons1_1" label="Refresh" mxevent="REFRESHLIST"/>
-					</buttongroup>
-				</sectioncol>
-			</sectionrow>
+	<dialog id="mandwntime" label="Manage Downtime History" relationship="MODDOWNTIMEHIST" savemode="ONLOADUNLOAD">
+		<section border="true" id="mandwntime_grid1">
+			<multiparttextbox dataattribute="wonum" datasrc="MAINRECORD" descdataattribute="description" descinputmode="READONLY" id="mandwntime_grid1_1"/>
+			<textbox dataattribute="siteid" datasrc="MAINRECORD" id="mandwntime_grid1_2"/>
 		</section>
-		<table id="selsafety_select_table" inputmode="readonly" selectmode="single">
-			<tablebody displayrowsperpage="5" filterable="true" id="selsafety_select_table_tablebody">
-				<tablecol dataattribute="safetyplanid" id="selsafety_select_table_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
-				<tablecol dataattribute="description" id="selsafety_select_table_tablebody_3" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
+		<table id="mandwntime_view_assetstatus">
+			<tablebody displayrowsperpage="10" filterable="true" filterexpanded="false" id="mandwntime_view_assetstatus_tablebody">
+				<tablecol filterable="false" id="mandwntime_view_assetstatus_tablebody_0" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+				<tablecol dataattribute="assetnum" id="mandwntime_view_assetstatus_tablebody_1"/>
+				<tablecol dataattribute="startdate" id="mandwntime_view_assetstatus_tablebody_2"/>
+				<tablecol dataattribute="startwonum" id="mandwntime_view_assetstatus_tablebody_3"/>
+				<tablecol dataattribute="enddate" id="mandwntime_view_assetstatus_tablebody_4"/>
+				<tablecol dataattribute="endwonum" id="mandwntime_view_assetstatus_tablebody_5"/>
+				<tablecol dataattribute="downtime" id="mandwntime_view_assetstatus_tablebody_6"/>
+				<tablecol filterable="false" id="mandwntime_view_assetstatus_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
 			</tablebody>
+			<tabledetails id="mandwntime_view_assetstatus_tabledetails">
+				<section id="mandwntime_view_assetstatus_tabledetails_1" label="Details">
+					<sectionrow id="mandwntime_view_assetstatus_tabledetails_1_1">
+						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_1_1">
+							<section id="mandwntime_view_assetstatus_tabledetails_1_1_1_1">
+								<textbox applink="asset" dataattribute="assetnum" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_1" lookup="asset" menutype="normal"/>
+								<textbox dataattribute="startdate" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_2" lookup="datelookup"/>
+								<textbox dataattribute="startwonum" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_3" lookup="workorder"/>
+								<textbox dataattribute="startcode" id="mandwntime_view_assetstatus_tabledetails_1_1_1_1_4" lookup="valuelist"/>
+							</section>
+						</sectioncol>
+						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_1_2">
+							<section id="mandwntime_view_assetstatus_tabledetails_1_1_2_1">
+								<textbox dataattribute="downtime" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_1"/>
+								<textbox dataattribute="enddate" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_2" lookup="datelookup"/>
+								<textbox dataattribute="endwonum" id="mandwntime_view_assetstatus_tabledetails_1_1_2_1_3" lookup="workorder"/>
+								<textbox dataattribute="endcode" id="mandwntime_view_assetstatus_tabledetails_1_1_3_1_4" lookup="valuelist"/>
+							</section>
+						</sectioncol>
+					</sectionrow>
+					<sectionrow id="mandwntime_view_assetstatus_tabledetails_1_2">
+						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_2_1">
+							<section id="mandwntime_view_assetstatus_tabledetails_1_2_1_1" label="Start Operational Type">
+								<radiobuttongroup border="false" dataattribute="startoperational" id="mandwntime_downtimetype_1">
+									<radiobutton id="mandwntime_downtimetype_1_1" label="Operational" value="1"/>
+									<radiobutton id="mandwntime_downtimetype_1_2" label="Non-operational" value="0"/>
+								</radiobuttongroup>
+							</section>
+						</sectioncol>
+						<sectioncol id="mandwntime_view_assetstatus_tabledetails_1_2_2">
+							<section id="mandwntime_view_assetstatus_tabledetails_1_2_2_1" label="End Operational Type">
+								<radiobuttongroup border="false" dataattribute="endoperational" id="mandwntime_downtimetype_2">
+									<radiobutton id="mandwntime_downtimetype_2_1" label="Operational" value="1"/>
+									<radiobutton id="mandwntime_downtimetype_2_2" label="Non-operational" value="0"/>
+								</radiobuttongroup>
+							</section>
+						</sectioncol>
+					</sectionrow>
+				</section>
+			</tabledetails>
 		</table>
-		<buttongroup id="selsafety_2">
-			<pushbutton default="true" id="selsafety_2_1" label="Cancel" mxevent="dialogcancel"/>
+		<buttongroup id="mandwntime_view_buttons">
+			<pushbutton default="true" id="mandwntime_view_buttons_1" label="OK" mxevent="dialogok"/>
+			<pushbutton default="true" id="mandwntime_view_buttons_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -1870,6 +1780,96 @@
 		<buttongroup id="pmalert_2">
 			<pushbutton default="true" id="pmalert_2_1" label="OK" mxevent="doWork"/>
 			<pushbutton id="pmalert_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+	<action id="CREATEREL" method="createRelease" savemode="ONLOAD"/>
+	<action id="CREATEWO" method="createWorkorder" savemode="ONLOAD"/>
+
+	<dialog id="sqrlist" label="SQR Reports List">
+		<section border="true" id="sqrlist_reportlist">
+			<sectionrow id="sqrlist_reportlist_1">
+				<sectioncol id="sqrlist_reportlist_1_1">
+					<buttongroup id="sqrlist_reportlist_1_1_buttons1">
+						<pushbutton id="sqrlist_reportlist_1_1_buttons1_1" label="Close"/>
+					</buttongroup>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<buttongroup id="sqrlist_2">
+			<pushbutton default="true" id="sqrlist_2_1" label="OK" mxevent="dialogok"/>
+		</buttongroup>
+	</dialog>
+	<action id="CREATESREQ" method="createServiceRequest" savemode="ONLOAD"/>
+
+	<dialog id="selectsh" label="Select Safety Hazards">
+		<helpgrid id="selecthaz_help" innerhtml="The following assets and locations are safety-related assets for the current work order.  Each asset might have safety hazards that affect the work environment of the current work order. Select hazards to Apply to Work Order. To finish, click Done."/>
+		<section id="selecthaz_grid2">
+			<sectionrow id="selecthaz_grid2_1">
+				<sectioncol id="selecthaz_grid2_1_1">
+					<table id="selecthaz_grid2_1_1_relassets_table" inputmode="readonly" label="Safety Related Assets" relationship="SPRELATEDASSET">
+						<tablebody displayrowsperpage="10" filterable="true" id="selecthaz_grid2_1_1_relassets_table_tablebody">
+							<tablecol dataattribute="relatedasset" id="selecthaz_grid2_1_1_relassets_table_tablebody_1"/>
+							<tablecol dataattribute="relatedlocation" id="selecthaz_grid2_1_1_relassets_table_tablebody_2"/>
+							<tablecol dataattribute="relassetdescription" id="selecthaz_grid2_1_1_relassets_table_tablebody_3" sortable="false"/>
+						</tablebody>
+					</table>
+					<table beanclass="psdi.webclient.beans.workorder.WOHazardsBean" id="selecthaz_grid2_1_1_hazards_table" inputmode="readonly" label="Hazards for {0}" parentdatasrc="selecthaz_grid2_1_1_relassets_table" parentemptylabel="Hazards" relationship="SELECTHAZARD" selectmode="multiple" titleattributes="relatedassetloc">
+						<sectionheader id="selecthaz_grid2_1_1_hazards_table_h">
+							<paramvalues id="selecthaz_grid2_1_1_hazards_table_h_1" property="label">
+								<paramvalue dataattribute="relatedassetloc" id="selecthaz_grid2_1_1_hazards_table_h_2" position="0"/>
+							</paramvalues>
+						</sectionheader>
+						<tablebody displayrowsperpage="10" filterable="true" id="selecthaz_grid2_1_1_hazards_table_tablebody" label="Hazards">
+							<tablecol filterable="false" id="selecthaz_grid2_1_1_hazards_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+							<tablecol dataattribute="hazardid" id="selecthaz_grid2_1_1_hazards_table_tablebody_2"/>
+							<tablecol dataattribute="description" id="selecthaz_grid2_1_1_hazards_table_tablebody_3"/>
+							<tablecol dataattribute="precautionenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_4"/>
+							<tablecol dataattribute="hazmatenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_5"/>
+							<tablecol dataattribute="tagoutenabled" id="selecthaz_grid2_1_1_hazards_table_tablebody_6"/>
+						</tablebody>
+						<buttongroup id="selecthaz_grid2_1_1_hazards_table_1">
+							<pushbutton default="true" id="selecthaz_grid2_1_1_hazards_table_1_1" label="Apply to Work Order" mxevent="AddHazardsToWOActionHandler"/>
+						</buttongroup>
+					</table>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<buttongroup id="selecthaz_2">
+			<pushbutton default="true" id="selecthaz_2_1" label="Done" mxevent="dialogok"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog datasrc="MAINRECORD" id="duplicate" label="Duplicate Record">
+		<section id="duplicate_grid1">
+			<radiobuttongroup border="false" dataattribute="dupflag" id="duplicate_grid1_1_1_grid6"/>
+		</section>
+		<buttongroup id="duplicate_1">
+			<pushbutton default="true" id="owner_1_1" label="OK" mxevent="DUPLICATECHECK"/>
+			<pushbutton id="owner_1_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="catalogs" label="Search Catalogs">
+		<section border="true" id="cataloglist_grid4">
+			<sectionrow id="cataloglist_grid4_1">
+				<sectioncol id="cataloglist_grid4_1_1"/>
+			</sectionrow>
+		</section>
+		<buttongroup id="cataloglist_2">
+			<pushbutton default="true" id="cataloglist_2_1" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="WORKORDER">
+		<table id="bookmarks_table" inputmode="readonly" label="Work Orders" selectmode="single">
+			<tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+				<tablecol dataattribute="wonum" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
+				<tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
+				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+			</tablebody>
+		</table>
+		<buttongroup id="bookmarks_2">
+			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
 		</buttongroup>
 	</dialog>
 	<configurationblock id="datastore_configurationblock">
