@@ -719,6 +719,122 @@
 		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
 
+	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<section id="qbe_grid3">
+			<sectionrow id="qbe_grid3_r1">
+				<sectioncol id="qbe_grid3_r1c1">
+					<section id="qbe_grid3_r1c11">
+						<multiparttextbox dataattribute="pmnum" descdataattribute="description" descinputmode="query" id="qbe_grid3_1" inputmode="query"/>
+						<multiparttextbox applink="masterpm" dataattribute="masterpm" descdataattribute="masterpm.description" descinputmode="query" id="qbe_grid3_17" inputmode="query" lookup="masterpm" menutype="normal"/>
+						<multiparttextbox applink="location,ipc" dataattribute="location" descdataattribute="locations.description" descinputmode="query" id="qbe_grid3_5" inputmode="query" lookup="locations" menutype="locations"/>
+						<textbox applink="location,ipc" dataattribute="primarysyslocpm.ancestor" id="qbe_grid6_1_1_11" inputmode="query" lookup="locations" menutype="locations"/>
+						<multiparttextbox applink="asset,ipc" dataattribute="assetnum" descdataattribute="asset.description" descinputmode="query" id="qbe_grid3_9" inputmode="query" lookup="asset" menutype="assetmain"/>
+						<textbox applink="FAILURE" dataattribute="asset.FAILURECODE" id="1573835775988" lookup="FAILURECLASS"/>
+						<multiparttextbox applink="routes" dataattribute="route" descdataattribute="routes.description" descinputmode="query" id="qbe_grid3_13" inputmode="query" lookup="routes" menutype="normal"/>
+						<textbox applink="JOBPLAN" dataattribute="PMSEQUENCE.JPNUM" id="1437768387027" inputmode="query" label="Sequenced JP Number" lookup="jobplan"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="qbe_grid3_r1c2">
+					<section id="qbe_grid3_r1c21">
+						<textbox dataattribute="status" id="qbe_grid3_4" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="siteid" id="qbe_grid3_3" inputmode="query" lookup="site"/>
+						<textbox dataattribute="leadtime" id="qbe_grid6_1_1_9" inputmode="query"/>
+						<textbox dataattribute="glaccount" id="qbe_grid6_1_1_7" inputmode="query" lookup="glnavigator"/>
+						<textbox applink="storeroom,ipc" dataattribute="storeloc" id="qbe_grid6_1_1_3" inputmode="query" lookup="storelocsite" menutype="normal"/>
+						<textbox dataattribute="JPSEQINUSE" id="1453842792679" inputmode="query" label="JP Seq"/>
+						<textbox dataattribute="FREQUENCY" id="1506450773329" inputmode="query"/>
+						<textbox dataattribute="FREQUNIT" id="1506450765298" inputmode="query" lookup="VALUELIST"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<section id="qbe_grid3a">
+			<sectionrow id="qbe_grid3a_r1">
+				<sectioncol id="qbe_grid3a_r1_c1">
+					<section id="qbe_grid3a_r1_c1_s1" label="Work Order Information">
+						<multiparttextbox applink="jobplan" dataattribute="jpnum" descdataattribute="pluscjobplan.description" descinputmode="query" id="qbe_grid3_15" inputmode="query" label="Job Plan" lookup="jobplan" menutype="normal"/>
+						<textbox dataattribute="worktype" id="qbe_grid6_1_1_8" inputmode="query" lookup="pmworktype"/>
+						<textbox dataattribute="WOTYPE2" id="1289848515172" inputmode="QUERY" lookup="valuelist"/>
+						<textbox dataattribute="wostatus" id="qbe_grid6_1_1_2" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="priority" id="qbe_grid6_1_1_5" inputmode="query"/>
+						<textbox dataattribute="interruptible" id="qbe_grid6_1_1_10" inputmode="query"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="qbe_grid3a_r1_c2">
+					<section id="qbe_grid3a_r1_c2_s1" label="Responsibility">
+						<sectioncol id="qbe_grid3a_r1_c2_s1_c1">
+							<section id="qbe_grid3a_r1_c2_s1_c1_s1">
+								<textbox applink="person" dataattribute="supervisor" id="qbe_grid6_1_1_1" inputmode="query" lookup="person" menutype="normal"/>
+								<textbox dataattribute="crewid" id="qbe_grid6_1_1_4" inputmode="query" lookup="valuelist" sigoption="CREWIDFIELD"/>
+								<textbox applink="person" dataattribute="lead" id="qbe_grid6_1_1_12" inputmode="query" lookup="person" menutype="normal"/>
+							</section>
+						</sectioncol>
+						<sectioncol id="qbe_grid3a_r1_c2_s1_c2">
+							<section id="qbe_grid3a_r1_c2_s1_c2_s1">
+								<textbox applink="persongr" dataattribute="persongroup" id="qbe_grid6_1_1_13" inputmode="query" lookup="persongroup" menutype="normal"/>
+								<textbox applink="person" dataattribute="owner" id="qbe_grid6_1_1_14" inputmode="query" lookup="person" menutype="normal"/>
+								<textbox applink="persongr" dataattribute="ownergroup" id="qbe_grid6_1_1_15" inputmode="query" lookup="persongroup" menutype="normal"/>
+							</section>
+						</sectioncol>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<section id="qbe_date_s1" label="Dates">
+			<sectionrow id="qbe_date_r1">
+				<sectioncol id="qbe_date_r1_c1">
+					<section id="qbe_date_r1_c1_s1">
+						<sectionrow id="qbe_date_s1_r1">
+							<sectioncol id="qbe_date_s1_r1_c1">
+								<section id="qbe_date_s1_r1_c1_s1">
+									<statictext align="center" id="qbe_date_s1_r1_c1_s1_st1"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r1_c2">
+								<section id="qbe_date_s1_r1_c2_s1">
+									<statictext align="center" id="qbe_date_s1_r1_c2_s1_st1" label="From"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r1_c3">
+								<section id="qbe_date_s1_r1_c3_s1">
+									<statictext align="center" id="qbe_date_s1_r1_c3_s1_st1" label="To"/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+						<sectionrow id="qbe_date_s1_r2">
+							<sectioncol id="qbe_date_s1_r2_c1">
+								<section id="qbe_date_s1_r2_c1_s1">
+									<statictext align="right" id="qbe_date_s1_r2_c1_s1_t1" label="Estimated Next Due Date"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r2_c2">
+								<section id="qbe_date_s1_r2_c2_s1">
+									<textbox dataattribute="nextdate" hidelabel="true" id="qbe_grid3_11" inputmode="query" lookup="datelookup" prepend="&gt;="/>
+								</section>
+							</sectioncol>
+							<sectioncol id="qbe_date_s1_r2_c3">
+								<section id="qbe_date_s1_r2_c3_s1">
+									<textbox dataattribute="nextdate" hidelabel="true" id="qbe_grid3_12" inputmode="query" lookup="datelookup" prepend="&lt;="/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+					</section>
+				</sectioncol>
+				<sectioncol id="qbe_date_r1_c2">
+					<section id="qbe_date_r1_c2_s1">
+						<blankline id="qbe_blkline"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<buttongroup id="qbe_grid5_1_1_grid6">
+			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog beanclass="psdi.webclient.beans.pm.PMSetLastMeterReadingBean" id="setlastmr" label="Set Reading At Last WO" relationship="PMMETER" width="500">
 		<helpgrid id="setlastmr_help" innerhtml="Enter a new value for Reading at last Work Order either to establish a starting point for a new PM on an existing asset or to reset the schedule on a PM."/>
 		<table id="setlastmr_table" label="Readings">
@@ -845,121 +961,6 @@
 		<buttongroup id="list_generatefo_3">
 			<pushbutton default="true" id="list_generatefo_3_1" label="OK" mxevent="doforecast"/>
 			<pushbutton id="list_generatefo_3_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
-		<section id="qbe_grid3">
-			<sectionrow id="qbe_grid3_r1">
-				<sectioncol id="qbe_grid3_r1c1">
-					<section id="qbe_grid3_r1c11">
-						<multiparttextbox dataattribute="pmnum" descdataattribute="description" descinputmode="query" id="qbe_grid3_1" inputmode="query"/>
-						<multiparttextbox applink="masterpm" dataattribute="masterpm" descdataattribute="masterpm.description" descinputmode="query" id="qbe_grid3_17" inputmode="query" lookup="masterpm" menutype="normal"/>
-						<multiparttextbox applink="location,ipc" dataattribute="location" descdataattribute="locations.description" descinputmode="query" id="qbe_grid3_5" inputmode="query" lookup="locations" menutype="locations"/>
-						<textbox applink="location,ipc" dataattribute="primarysyslocpm.ancestor" id="qbe_grid6_1_1_11" inputmode="query" lookup="locations" menutype="locations"/>
-						<multiparttextbox applink="asset,ipc" dataattribute="assetnum" descdataattribute="asset.description" descinputmode="query" id="qbe_grid3_9" inputmode="query" lookup="asset" menutype="assetmain"/>
-						<textbox applink="JOBPLAN" dataattribute="PMSEQUENCE.JPNUM" id="1437768387027" inputmode="query" label="Sequenced JP Number" lookup="jobplan"/>
-						<multiparttextbox applink="routes" dataattribute="route" descdataattribute="routes.description" descinputmode="query" id="qbe_grid3_13" inputmode="query" lookup="routes" menutype="normal"/>
-					</section>
-				</sectioncol>
-				<sectioncol id="qbe_grid3_r1c2">
-					<section id="qbe_grid3_r1c21">
-						<textbox dataattribute="status" id="qbe_grid3_4" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="siteid" id="qbe_grid3_3" inputmode="query" lookup="site"/>
-						<textbox dataattribute="leadtime" id="qbe_grid6_1_1_9" inputmode="query"/>
-						<textbox dataattribute="glaccount" id="qbe_grid6_1_1_7" inputmode="query" lookup="glnavigator"/>
-						<textbox applink="storeroom,ipc" dataattribute="storeloc" id="qbe_grid6_1_1_3" inputmode="query" lookup="storelocsite" menutype="normal"/>
-						<textbox dataattribute="JPSEQINUSE" id="1453842792679" inputmode="query" label="JP Seq"/>
-						<textbox dataattribute="FREQUENCY" id="1506450773329" inputmode="query"/>
-						<textbox dataattribute="FREQUNIT" id="1506450765298" inputmode="query" lookup="VALUELIST"/>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<section id="qbe_grid3a">
-			<sectionrow id="qbe_grid3a_r1">
-				<sectioncol id="qbe_grid3a_r1_c1">
-					<section id="qbe_grid3a_r1_c1_s1" label="Work Order Information">
-						<multiparttextbox applink="jobplan" dataattribute="jpnum" descdataattribute="pluscjobplan.description" descinputmode="query" id="qbe_grid3_15" inputmode="query" label="Job Plan" lookup="jobplan" menutype="normal"/>
-						<textbox dataattribute="worktype" id="qbe_grid6_1_1_8" inputmode="query" lookup="pmworktype"/>
-						<textbox dataattribute="WOTYPE2" id="1289848515172" inputmode="QUERY" lookup="valuelist"/>
-						<textbox dataattribute="wostatus" id="qbe_grid6_1_1_2" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="priority" id="qbe_grid6_1_1_5" inputmode="query"/>
-						<textbox dataattribute="interruptible" id="qbe_grid6_1_1_10" inputmode="query"/>
-					</section>
-				</sectioncol>
-				<sectioncol id="qbe_grid3a_r1_c2">
-					<section id="qbe_grid3a_r1_c2_s1" label="Responsibility">
-						<sectioncol id="qbe_grid3a_r1_c2_s1_c1">
-							<section id="qbe_grid3a_r1_c2_s1_c1_s1">
-								<textbox applink="person" dataattribute="supervisor" id="qbe_grid6_1_1_1" inputmode="query" lookup="person" menutype="normal"/>
-								<textbox dataattribute="crewid" id="qbe_grid6_1_1_4" inputmode="query" lookup="valuelist" sigoption="CREWIDFIELD"/>
-								<textbox applink="person" dataattribute="lead" id="qbe_grid6_1_1_12" inputmode="query" lookup="person" menutype="normal"/>
-							</section>
-						</sectioncol>
-						<sectioncol id="qbe_grid3a_r1_c2_s1_c2">
-							<section id="qbe_grid3a_r1_c2_s1_c2_s1">
-								<textbox applink="persongr" dataattribute="persongroup" id="qbe_grid6_1_1_13" inputmode="query" lookup="persongroup" menutype="normal"/>
-								<textbox applink="person" dataattribute="owner" id="qbe_grid6_1_1_14" inputmode="query" lookup="person" menutype="normal"/>
-								<textbox applink="persongr" dataattribute="ownergroup" id="qbe_grid6_1_1_15" inputmode="query" lookup="persongroup" menutype="normal"/>
-							</section>
-						</sectioncol>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<section id="qbe_date_s1" label="Dates">
-			<sectionrow id="qbe_date_r1">
-				<sectioncol id="qbe_date_r1_c1">
-					<section id="qbe_date_r1_c1_s1">
-						<sectionrow id="qbe_date_s1_r1">
-							<sectioncol id="qbe_date_s1_r1_c1">
-								<section id="qbe_date_s1_r1_c1_s1">
-									<statictext align="center" id="qbe_date_s1_r1_c1_s1_st1"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r1_c2">
-								<section id="qbe_date_s1_r1_c2_s1">
-									<statictext align="center" id="qbe_date_s1_r1_c2_s1_st1" label="From"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r1_c3">
-								<section id="qbe_date_s1_r1_c3_s1">
-									<statictext align="center" id="qbe_date_s1_r1_c3_s1_st1" label="To"/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-						<sectionrow id="qbe_date_s1_r2">
-							<sectioncol id="qbe_date_s1_r2_c1">
-								<section id="qbe_date_s1_r2_c1_s1">
-									<statictext align="right" id="qbe_date_s1_r2_c1_s1_t1" label="Estimated Next Due Date"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r2_c2">
-								<section id="qbe_date_s1_r2_c2_s1">
-									<textbox dataattribute="nextdate" hidelabel="true" id="qbe_grid3_11" inputmode="query" lookup="datelookup" prepend="&gt;="/>
-								</section>
-							</sectioncol>
-							<sectioncol id="qbe_date_s1_r2_c3">
-								<section id="qbe_date_s1_r2_c3_s1">
-									<textbox dataattribute="nextdate" hidelabel="true" id="qbe_grid3_12" inputmode="query" lookup="datelookup" prepend="&lt;="/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-					</section>
-				</sectioncol>
-				<sectioncol id="qbe_date_r1_c2">
-					<section id="qbe_date_r1_c2_s1">
-						<blankline id="qbe_blkline"/>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<buttongroup id="qbe_grid5_1_1_grid6">
-			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
-			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
-			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
-			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
 
