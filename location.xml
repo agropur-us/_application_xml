@@ -31,22 +31,27 @@
 								<section id="main_grid1_row_col1_sec">
 									<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="REQUIRED" id="main_grid1_1" inputmode="REQUIRED"/>
 									<multilinetextbox columns="20" dataattribute="LOCATION" hidelabel="true" id="1265133054844" inputmode="READONLY" rows="1"/>
-									<textbox dataattribute="type" id="main_grid1_2" lookup="valuelist"/>
-									<textbox dataattribute="glaccount" id="main_grid6_1" lookup="glnavigator"/>
-									<textbox dataattribute="DFH_MCCID" id="1397701140275"/>
 									<multiparttextbox applink="item,inventor,tool,toolinv" dataattribute="itemnum" descdataattribute="item.description" descinputmode="readonly" id="main_grid5_5" label="Rotating Item" longdescreadonly="true" lookup="item" menutype="item" ondatachange="resetchildren"/>
 									<multiparttextbox applink="metergrp" dataattribute="groupname" descdataattribute="METERGROUP.description" descinputmode="readonly" id="main_grid5_7" longdescreadonly="true" lookup="metergroup" menutype="normal"/>
+									<textbox dataattribute="AGP_PID" id="1578323331060" label="P&amp;ID"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_grid1_row_col3">
 								<section id="main_grid1_row_col3_sec">
 									<textbox dataattribute="siteid" id="main_grid1_3"/>
-									<textbox applink="failure" applinkkey="failurelist" applinkquery="FAILURELIST.failurelist" applinkreturn="failurecode" dataattribute="failurecode" id="main_grid6_4" lookup="FAILURECLASS" menutype="normal"/>
 									<textbox dataattribute="locpriority" id="main_grid6_5"/>
 									<textbox dataattribute="calnum" id="main_grid6_10" lookup="calendar"/>
 									<textbox dataattribute="shiftnum" id="main_grid6_11" lookup="shift"/>
 									<checkbox dataattribute="LO1" id="1268320076464" label="PSM/Env [LO1]"/>
 									<checkbox dataattribute="isrepairfacility" id="main_grid6_6" sigoption="REPFACILITY" synchronous="true"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="main_grid1_row_col4">
+								<section id="main_grid1_row_col4_sec">
+									<textbox dataattribute="type" id="main_grid1_2" lookup="valuelist"/>
+									<textbox dataattribute="glaccount" id="main_grid6_1" lookup="glnavigator"/>
+									<textbox applink="failure" applinkkey="failurelist" applinkquery="FAILURELIST.failurelist" applinkreturn="failurecode" dataattribute="failurecode" id="main_grid6_4" lookup="FAILURECLASS" menutype="normal"/>
+									<textbox dataattribute="DFH_MCCID" id="1397701140275"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_grid1_row_col2">
@@ -805,44 +810,6 @@
 		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
 
-	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
-		<datasrc beanclass="psdi.webclient.beans.common.RepairFacilityConditionalUIBean" id="repfacilitysrc"/>
-		<section id="qbe_grid2">
-			<sectionrow id="qbe_grid2_1">
-				<sectioncol id="qbe_grid2_1_1">
-					<section id="qbe_grid2_1_1_grid3">
-						<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query" longdescreadonly="true" menutype="LOCATIONSCLASSIFICATION"/>
-						<textbox dataattribute="LOCHIERLOCONLY.parent" id="qbe_grid2_1_1_grid4_5" inputmode="query" label="Location Parent" lookup="locations" menutype="locationhier"/>
-						<textbox dataattribute="LOCHIERLOCONLY.systemid" id="qbe_grid2_1_1_grid4_9" inputmode="query" lookup="system" title="Location System ID"/>
-						<textbox applink="item,inventor" dataattribute="locoper.itemnum" id="qbe_grid2_1_1_grid4_4" inputmode="query" lookup="item" menutype="item"/>
-						<textbox applink="metergrp" dataattribute="locoper.groupname" id="qbe_grid2_1_1_grid4_10" inputmode="query" label="Meter Group" lookup="metergroup" menutype="normal"/>
-						<textbox dataattribute="locoper.calnum" id="qbe_grid2_1_1_grid4_8" inputmode="query" lookup="calendar"/>
-						<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_classificationhierarchy" inputmode="query" menutype="classificationqbe"/>
-						<textbox dataattribute="isrepairfacility" id="qbe_grid2_1_1_grid4_11" inputmode="query" sigoption="REPFACILITY" sigoptiondatasrc="repfacilitysrc"/>
-					</section>
-				</sectioncol>
-				<sectioncol id="qbe_grid2_2_1">
-					<section id="qbe_grid2_1_1_grid99">
-						<textbox dataattribute="type" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="status" id="qbe_grid2_1_1_grid4_2" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="siteid" id="qbe_grid2_1_1_grid3_4" inputmode="query" lookup="site"/>
-						<textbox dataattribute="locoper.locpriority" id="qbe_grid2_1_1_grid4_3" inputmode="query"/>
-						<textbox applink="failure" applinkreturn="failurecode" dataattribute="locoper.failurecode" id="qbe_grid2_1_1_grid4_1" inputmode="query" lookup="failureclass" menutype="normal"/>
-						<textbox dataattribute="glaccount" id="qbe_grid2_1_1_grid4_7" inputmode="query" lookup="glnavigator"/>
-						<textbox dataattribute="intlabrec" id="qbe_grid2_1_1_grid4_6" inputmode="query" lookup="glnavigator"/>
-						<textbox dataattribute="LO1" id="1553177394791" inputmode="query" label="PSM LocID"/>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<buttongroup id="qbe_grid5_1_1_grid6">
-			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
-			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
-			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
-			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog beanclass="psdi.webclient.beans.location.ApplyIASBean" id="applyias" label="Apply Item Assembly Structure" relationship="TOPITEMSTRUCT" width="1000">
 		<datasrc id="parentitem" relationship="PARENT"/>
 		<helpgrid id="applyias_help" innerhtml="Enter the location numbers for the new hierarchy created from the item assembly structure in the table window, or click Autonumber All to generate location numbers for each row."/>
@@ -961,6 +928,44 @@
 		<buttongroup id="managesystems_2">
 			<pushbutton clickmessage="Systems have been updated." default="true" id="managesystems_2_1" label="OK" mxevent="dialogok"/>
 			<pushbutton id="managesystems_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<datasrc beanclass="psdi.webclient.beans.common.RepairFacilityConditionalUIBean" id="repfacilitysrc"/>
+		<section id="qbe_grid2">
+			<sectionrow id="qbe_grid2_1">
+				<sectioncol id="qbe_grid2_1_1">
+					<section id="qbe_grid2_1_1_grid3">
+						<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query" longdescreadonly="true" menutype="LOCATIONSCLASSIFICATION"/>
+						<textbox dataattribute="LOCHIERLOCONLY.parent" id="qbe_grid2_1_1_grid4_5" inputmode="query" label="Location Parent" lookup="locations" menutype="locationhier"/>
+						<textbox dataattribute="LOCHIERLOCONLY.systemid" id="qbe_grid2_1_1_grid4_9" inputmode="query" lookup="system" title="Location System ID"/>
+						<textbox applink="item,inventor" dataattribute="locoper.itemnum" id="qbe_grid2_1_1_grid4_4" inputmode="query" lookup="item" menutype="item"/>
+						<textbox applink="metergrp" dataattribute="locoper.groupname" id="qbe_grid2_1_1_grid4_10" inputmode="query" label="Meter Group" lookup="metergroup" menutype="normal"/>
+						<textbox dataattribute="locoper.calnum" id="qbe_grid2_1_1_grid4_8" inputmode="query" lookup="calendar"/>
+						<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_classificationhierarchy" inputmode="query" menutype="classificationqbe"/>
+						<textbox dataattribute="isrepairfacility" id="qbe_grid2_1_1_grid4_11" inputmode="query" sigoption="REPFACILITY" sigoptiondatasrc="repfacilitysrc"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="qbe_grid2_2_1">
+					<section id="qbe_grid2_1_1_grid99">
+						<textbox dataattribute="type" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="status" id="qbe_grid2_1_1_grid4_2" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="siteid" id="qbe_grid2_1_1_grid3_4" inputmode="query" lookup="site"/>
+						<textbox dataattribute="locoper.locpriority" id="qbe_grid2_1_1_grid4_3" inputmode="query"/>
+						<textbox applink="failure" applinkreturn="failurecode" dataattribute="locoper.failurecode" id="qbe_grid2_1_1_grid4_1" inputmode="query" lookup="failureclass" menutype="normal"/>
+						<textbox dataattribute="glaccount" id="qbe_grid2_1_1_grid4_7" inputmode="query" lookup="glnavigator"/>
+						<textbox dataattribute="intlabrec" id="qbe_grid2_1_1_grid4_6" inputmode="query" lookup="glnavigator"/>
+						<textbox dataattribute="LO1" id="1553177394791" inputmode="query" label="PSM LocID"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<buttongroup id="qbe_grid5_1_1_grid6">
+			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
 
