@@ -52,6 +52,7 @@
 									<textbox dataattribute="glaccount" id="main_grid6_1" lookup="glnavigator"/>
 									<textbox applink="failure" applinkkey="failurelist" applinkquery="FAILURELIST.failurelist" applinkreturn="failurecode" dataattribute="failurecode" id="main_grid6_4" lookup="FAILURECLASS" menutype="normal"/>
 									<textbox dataattribute="DFH_MCCID" id="1397701140275"/>
+									<textbox dataattribute="LOCATIONUSERCUST.PERSONID" id="1578412382611" inputmode="readonly" label="Maint Owner"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_grid1_row_col2">
