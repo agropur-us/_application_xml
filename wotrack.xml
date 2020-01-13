@@ -13,7 +13,6 @@
 							<tablecol dataattribute="wonum" filterable="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
 							<tablecol dataattribute="wonum" id="results_showlist_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
 							<tablecol dataattribute="description" id="results_showlist_tablebody_3"/>
-							<tablecol dataattribute="WOPRIORITY" filterable="true" id="1450276501459" inputmode="query" smartfilloff="true" sortable="true"/>
 							<tablecol applink="location,ipc" dataattribute="location" id="results_showlist_tablebody_4" lookup="locations" menutype="locations"/>
 							<tablecol applink="asset,ipc" dataattribute="assetnum" id="results_showlist_tablebody_5" lookup="asset" menutype="assetmain" rechover="asset_recordhover"/>
 							<tablecol dataattribute="status" id="results_showlist_tablebody_6" linkedcontrolid="qbe_s1_sr1_sc2_s2_tb1" lookup="VALUELIST"/>
@@ -22,6 +21,7 @@
 							<tablecol dataattribute="SCHEDFINISH" filterable="true" id="1265228883062" label="Sched Finish" lookup="DATELOOKUP" sortable="true"/>
 							<tablecol dataattribute="reportdate" id="1530031456484" inputmode="query" lookup="DATELOOKUP"/>
 							<tablecol dataattribute="siteid" id="results_showlist_tablebody_10" linkedcontrolid="qbe_s1_sr1_sc2_s1_tb1"/>
+							<tablecol dataattribute="WOPRIORITY" filterable="true" id="1450276501459" inputmode="query" smartfilloff="true" sortable="true"/>
 							<tablecol dataattribute="HISTORYFLAG" id="1562879704431"/>
 							<tablecol dataattribute="WO20" id="1535574378171" inputmode="readonly" label="Doc" showfilterfield="false" sortable="true"/>
 							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
@@ -630,6 +630,8 @@
 											</sectioncol>
 											<sectioncol id="plans_plans_materials_materials_table_1_secrow1_2">
 												<section id="plans_plans_materials_materials_table_1_grid8">
+													<datasrc id="1578951668655" mboname="MAXUSER" whereclause="userid = :&amp;USERNAME&amp;"/>
+													<defaultvalue dataattribute="LOCATION" fromattribute="DEFSTOREROOM" fromdatasrc="1578951668655" id="1578951709673"/>
 													<textbox applink="storeroom,ipc" dataattribute="location" id="plans_plans_materials_materials_table_1_grid8_3" lookup="storelocsite" menutype="normal"/>
 													<textbox dataattribute="storelocsite" id="plans_plans_materials_materials_table_1_grid8_13" lookup="storelocsite"/>
 													<combobox dataattribute="restype" id="plans_plans_materials_materials_table_1_grid8_13a"/>
@@ -1403,10 +1405,10 @@
 												<section id="actuals_actuals_acmaterials_acmaterials_table_1_grid7">
 													<textbox dataattribute="actualstaskid" defaultfocus="true" id="actuals_actuals_acmaterials_acmaterials_table_1_grid7_1" lookup="wptask" sizeintable="4"/>
 													<multiparttextbox applink="item,inventor" dataattribute="itemnum" descdataattribute="description" dynamic="true" id="actuals_actuals_acmaterials_acmaterials_table_1_grid7_2" lookup="item" menutype="ITEM" rechover="item_recordhover" sizeintable="10"/>
-													<combobox dataattribute="linetype" id="actuals_actuals_acmaterials_acmaterials_table_1_grid8_11"/>
 													<datasrc id="1562948930057" mboname="MAXUSER" whereclause="userid = :&amp;USERNAME&amp;"/>
-													<defaultvalue dataattribute="STORELOC" fromattribute="DEFSTOREROOM" fromdatasrc="1562948930057" id="1562948981917"/>
 													<textbox applink="storeroom,ipc" dataattribute="storeloc" dynamic="true" id="actuals_actuals_acmaterials_acmaterials_table_1_grid8_1" lookup="storeroom" menutype="normal"/>
+													<defaultvalue dataattribute="STORELOC" fromattribute="DEFSTOREROOM" fromdatasrc="1562948930057" id="1562948981917"/>
+													<combobox dataattribute="linetype" id="actuals_actuals_acmaterials_acmaterials_table_1_grid8_11"/>
 													<textbox dataattribute="siteid" id="actuals_actuals_acmaterials_acmaterials_table_1_grid8_18" lookup="site"/>
 													<textbox dataattribute="positivequantity" dynamic="true" id="actuals_actuals_acmaterials_acmaterials_table_1_grid8_5" sizeintable="9"/>
 													<textbox dataattribute="unitcost" dynamic="true" id="actuals_actuals_acmaterials_acmaterials_table_1_grid8_6"/>
