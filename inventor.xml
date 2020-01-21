@@ -18,9 +18,9 @@
 							<tablecol dataattribute="item.commoditygroup" id="1494430590573" lookup="COMMODITYGROUP"/>
 							<tablecol dataattribute="curbaltotal" filterable="false" id="results_showlist_tablebody_5" sortable="false"/>
 							<tablecol dataattribute="invcost.STDCOST" filterable="true" id="1376748323721" inputmode="QUERY" label="Std Cost" sortable="true"/>
-							<tablecol dataattribute="item.rotating" id="results_showlist_tablebody_11" sortable="false"/>
 							<tablecol dataattribute="siteid" id="results_showlist_tablebody_8" linkedcontrolid="qbe_grid2_1_1_grid3_4"/>
 							<tablecol dataattribute="status" id="results_showlist_tablebody_10" linkedcontrolid="qbe_grid2_1_1_grid3_20"/>
+							<tablecol dataattribute="item.rotating" id="results_showlist_tablebody_11" sortable="false"/>
 							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
 						</tablebody>
 					</table>
@@ -55,13 +55,18 @@
 							</sectioncol>
 							<sectioncol id="main_header_row1_col3">
 								<section border="false" id="main_attachments">
-									<attachments id="doclinks"/>
 									<textbox dataattribute="issueunit" id="main_grid3_9" lookup="measureunit" title="Issue Unit"/>
 									<checkbox dataattribute="item.conditionenabled" id="main_grid3_5" inputmode="readonly"/>
 									<checkbox dataattribute="item.rotating" id="main_grid3_7" inputmode="readonly"/>
 									<checkbox dataattribute="pharmause" id="1301364557942"/>
 									<checkbox dataattribute="consignment" id="main_grid3_10" inputmode="readonly"/>
 									<checkbox dataattribute="hardresissue" id="main_grid3_11"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="main_header_row1_col4A">
+								<section id="main_grid4A">
+									<attachments id="doclinks"/>
+									<recordimage height="120" id="main_recordimage_4A" label="Click to see image in its actual size" width="120"/>
 									<checkbox dataattribute="AGP_INVFOLUP" id="1554741339587" label="Requires Follow Up"/>
 									<checkbox dataattribute="AGP_CRITSPARE" id="1552917051034"/>
 								</section>
@@ -273,7 +278,8 @@
 							</sectioncol>
 							<sectioncol id="reorder_d">
 								<section id="reorder_e">
-									<textbox dataattribute="siteid" id="reorder_grid3_3" title="Site"/>
+									<textbox dataattribute="siteid" id="1572533774266" title="Site"/>
+									<textbox dataattribute="STATUS" id="reorder_grid3_3" inputmode="readonly" title="Site"/>
 								</section>
 							</sectioncol>
 						</sectionrow>
@@ -793,6 +799,47 @@
 		</buttongroup>
 	</dialog>
 
+	<dialog beanclass="psdi.webclient.beans.inventory.AdjustAvgCostBean" id="AVGCOSTADJ" label="Average Cost Adjustment" relationship="INVCOST" width="800">
+		<table id="adjustaveragecost_grid1_1_1_invcosts_table" label="Inventory Costs" startrow="0">
+			<tablebody displayrowsperpage="10" filterable="true" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody">
+				<tablecol filterable="false" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+				<tablecol dataattribute="conditioncode" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_2"/>
+				<tablecol dataattribute="condrate" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_4"/>
+				<tablecol dataattribute="avgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_5"/>
+				<tablecol dataattribute="PERCENTINCREASE" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_6" sortable="false"/>
+				<tablecol dataattribute="newavgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_7" sortable="false"/>
+				<tablecol dataattribute="CONTROLACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_8" sortable="false"/>
+				<tablecol dataattribute="INVCOSTADJACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_9" sortable="false"/>
+				<tablecol filterable="false" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_10" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+			</tablebody>
+			<tabledetails id="adjustaveragecost_grid1_1_1_invcosts_table_1">
+				<section id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12" label="Details">
+					<sectionrow id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row">
+						<sectioncol id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row_col1">
+							<section id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row1_col1_sec">
+								<multiparttextbox dataattribute="conditioncode" descdataattribute="itemcondition.description" descinputmode="readonly" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_1"/>
+								<textbox dataattribute="condrate" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_3"/>
+								<textbox dataattribute="avgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_4"/>
+							</section>
+						</sectioncol>
+						<sectioncol id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row_col2">
+							<section id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row_col2_sec">
+								<textbox dataattribute="newavgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_2"/>
+								<textbox dataattribute="PERCENTINCREASE" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_1"/>
+								<textbox dataattribute="CONTROLACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_3" lookup="glnavigator"/>
+								<textbox dataattribute="INVCOSTADJACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_4" lookup="glnavigator"/>
+							</section>
+						</sectioncol>
+					</sectionrow>
+				</section>
+			</tabledetails>
+		</table>
+		<buttongroup id="adjustaveragecost_2">
+			<pushbutton clickmessage="Average Cost has been Adjusted." default="true" id="adjustaveragecost_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="adjustaveragecost_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
 		<section id="qbe_grid2">
 			<sectionrow id="qbe_grid2_1">
@@ -847,47 +894,6 @@
 			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
 			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
 			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.beans.inventory.AdjustAvgCostBean" id="AVGCOSTADJ" label="Average Cost Adjustment" relationship="INVCOST" width="800">
-		<table id="adjustaveragecost_grid1_1_1_invcosts_table" label="Inventory Costs" startrow="0">
-			<tablebody displayrowsperpage="10" filterable="true" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody">
-				<tablecol filterable="false" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-				<tablecol dataattribute="conditioncode" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_2"/>
-				<tablecol dataattribute="condrate" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_4"/>
-				<tablecol dataattribute="avgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_5"/>
-				<tablecol dataattribute="PERCENTINCREASE" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_6" sortable="false"/>
-				<tablecol dataattribute="newavgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_7" sortable="false"/>
-				<tablecol dataattribute="CONTROLACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_8" sortable="false"/>
-				<tablecol dataattribute="INVCOSTADJACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_9" sortable="false"/>
-				<tablecol filterable="false" id="adjustaveragecost_grid1_1_1_invcosts_table_tablebody_10" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-			</tablebody>
-			<tabledetails id="adjustaveragecost_grid1_1_1_invcosts_table_1">
-				<section id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12" label="Details">
-					<sectionrow id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row">
-						<sectioncol id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row_col1">
-							<section id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row1_col1_sec">
-								<multiparttextbox dataattribute="conditioncode" descdataattribute="itemcondition.description" descinputmode="readonly" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_1"/>
-								<textbox dataattribute="condrate" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_3"/>
-								<textbox dataattribute="avgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_4"/>
-							</section>
-						</sectioncol>
-						<sectioncol id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row_col2">
-							<section id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_row_col2_sec">
-								<textbox dataattribute="newavgcost" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_2"/>
-								<textbox dataattribute="PERCENTINCREASE" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_1"/>
-								<textbox dataattribute="CONTROLACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_3" lookup="glnavigator"/>
-								<textbox dataattribute="INVCOSTADJACCOUNT" id="adjustaveragecost_grid1_1_1_invcosts_table_1_grid12_1_1_grid12A_4" lookup="glnavigator"/>
-							</section>
-						</sectioncol>
-					</sectionrow>
-				</section>
-			</tabledetails>
-		</table>
-		<buttongroup id="adjustaveragecost_2">
-			<pushbutton clickmessage="Average Cost has been Adjusted." default="true" id="adjustaveragecost_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="adjustaveragecost_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -1175,19 +1181,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog beanclass="psdi.webclient.beans.common.ReorderResultBean" designermboname="REORDERITEMS" id="reorderresultsitem" inputmode="readonly" label="Reorder Results">
-		<section id="reorderresults_grid1_1_1_grid2">
-			<textbox dataattribute="totalnum" id="reorderresults_grid1_1_1_grid2_1" title="Number of Items Reordered"/>
-			<textbox dataattribute="startprnum" id="reorderresults_grid1_1_1_grid2_2" title="Starting PR Number"/>
-			<textbox dataattribute="endprnum" id="reorderresults_grid1_1_1_grid2_3" title="Ending PR Number"/>
-			<textbox dataattribute="startponum" id="reorderresults_grid1_1_1_grid2_4" title="Starting PO Number"/>
-			<textbox dataattribute="endponum" id="reorderresults_grid1_1_1_grid2_5" title="Ending PO Number"/>
-		</section>
-		<buttongroup id="reorderresults_21">
-			<pushbutton default="true" id="reorderresults_2_11" label="OK" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog beanclass="psdi.webclient.beans.common.ReorderpadBean" designermboname="REORDERPAD" id="reorderpaditem" label="Reorder Items Detail">
 		<table id="reorderpad_grid1_1_1_reorderpad_table" startrow="0">
 			<tablebody displayrowsperpage="18" filterable="true" filterexpanded="true" id="reorderpad_grid1_1_1_reorderpad_table_tablebody">
@@ -1220,6 +1213,19 @@
 			<pushbutton default="true" id="reorderpad_grid1_1_1_grid11_1" label="Run Reorder" mxevent="reorderresultsitem"/>
 			<pushbutton id="reorderpad_grid1_1_1_grid11_2" label="Reorder Report" mxevent="RUNREPORTBYNAME" value="invpurch.rptdesign"/>
 			<pushbutton id="reorderpad_grid1_1_1_grid11_3" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.beans.common.ReorderResultBean" designermboname="REORDERITEMS" id="reorderresultsitem" inputmode="readonly" label="Reorder Results">
+		<section id="reorderresults_grid1_1_1_grid2">
+			<textbox dataattribute="totalnum" id="reorderresults_grid1_1_1_grid2_1" title="Number of Items Reordered"/>
+			<textbox dataattribute="startprnum" id="reorderresults_grid1_1_1_grid2_2" title="Starting PR Number"/>
+			<textbox dataattribute="endprnum" id="reorderresults_grid1_1_1_grid2_3" title="Ending PR Number"/>
+			<textbox dataattribute="startponum" id="reorderresults_grid1_1_1_grid2_4" title="Starting PO Number"/>
+			<textbox dataattribute="endponum" id="reorderresults_grid1_1_1_grid2_5" title="Ending PO Number"/>
+		</section>
+		<buttongroup id="reorderresults_21">
+			<pushbutton default="true" id="reorderresults_2_11" label="OK" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
