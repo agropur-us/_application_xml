@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<presentation apphelp="com.ibm.mbs.doc,jobplan/c_job_plans_application.html" apprestrictions="siteid = (select defsite from maxuser where personid = :USER)" beanclass="psdi.webclient.beans.jobplan.JobPlanAppBean" id="jobplan" ismobile="false" keyattribute="jpnum" mboname="JOBPLAN" orderby="PLUSCREVNUM desc" resultstableid="results_showlist" version="6.2.3">
+<presentation apphelp="com.ibm.mbs.doc,jobplan/c_job_plans_application.html" beanclass="psdi.webclient.beans.jobplan.JobPlanAppBean" id="jobplan" ismobile="false" keyattribute="jpnum" mboname="JOBPLAN" orderby="PLUSCREVNUM desc" resultstableid="results_showlist" version="6.2.3" whereclause="siteid = (select defsite from maxuser where personid = :USER)">
 	<page id="mainrec" scroll="false">
 		<include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
 		<clientarea id="clientarea">
@@ -30,6 +30,7 @@
 								<section id="main_grid1_row1_col1_1">
 									<multiparttextbox dataattribute="jpnum" descdataattribute="description" id="main_grid1_1"/>
 									<multiparttextbox dataattribute="pluscrevnum" descdataattribute="pluscrevcom" descinputmode="readonly" id="main_grid1_pluscrevnum" inputmode="readonly"/>
+									<textbox dataattribute="PLUSCCHANGEBY" id="1583245821888" inputmode="readonly" label="Last Changed By" size="16"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_grid1_row1_col2">
@@ -39,7 +40,9 @@
 							</sectioncol>
 							<sectioncol id="main_grid1_row1_col3">
 								<section id="main_grid1_row1_col3_1">
-									<textbox dataattribute="siteid" id="main_grid1_3" inputmode="REQUIRED" lookup="site"/>
+									<datasrc id="1580740110656" mboname="maxuser" whereclause="userid = :&amp;USERNAME&amp;"/>
+									<defaultvalue dataattribute="SITEID" fromattribute="DEFSITE" fromdatasrc="1580740110656" id="1580740145923"/>
+									<textbox dataattribute="siteid" id="main_grid1_3" lookup="site"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_grid1_row1_col4">
@@ -154,7 +157,7 @@
 											<textbox applink="person" dataattribute="owner" id="main_jpop_table_1_grid6_3" lookup="person" menutype="normal"/>
 											<textbox applink="persongr" dataattribute="ownergroup" id="main_jpop_table_1_grid6_4" lookup="persongroup" menutype="normal"/>
 											<textbox applink="persongr" dataattribute="crewworkgroup" id="main_jpop_table_1_grid6_13" licensekey="CREW" lookup="persongroup" menutype="normal" smartfilloff="true"/>
-											<checkbox dataattribute="interruptible" id="main_grid10_1_1_grid12_9" value="interruptible"/>
+											<checkbox dataattribute="interruptible" id="main_grid10_1_1_grid12_9"/>
 											<textbox dataattribute="intshift" id="main_grid10_1_1_grid12_9b" lookup="shift"/>
 										</section>
 									</sectioncol>
@@ -905,5 +908,6 @@
 			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
 		</buttongroup>
 	</dialog>
-	<configurationblock id="datastore_configurationblock"/>
+	<configurationblock id="datastore_configurationblock">
+	</configurationblock>
 </presentation>
