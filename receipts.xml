@@ -850,5 +850,6 @@
 			<pushbutton id="srvsreturn_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
-	<configurationblock id="datastore_configurationblock"/>
+	<configurationblock id="datastore_configurationblock">
+	</configurationblock>
 </presentation>
