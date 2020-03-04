@@ -162,7 +162,6 @@
 							</section>
 						</tabledetails>
 						<buttongroup id="main_matreceiptstable_2">
-							<pushbutton id="main_matreceiptstable_2_4" label="Select Receipts to Void" mxevent="voidreceipt"/>
 							<pushbutton id="main_matreceiptstable_2_1" label="Select Items for Return" mxevent="itemreturn"/>
 							<pushbutton id="main_matreceiptstable_2_5" label="Select Rotating Assets for Return" mxevent="returnassets"/>
 							<pushbutton id="main_matreceiptstable_2_2" label="Select Ordered Items" mxevent="selorditem"/>
@@ -541,6 +540,25 @@
 		</buttongroup>
 	</dialog>
 
+	<dialog beanclass="psdi.webclient.beans.receipts.SelOrdItemsBean" id="voidreceipt" label="Select Receipts to Void" parentdatasrc="MAINRECORD" relationship="VOIDRECEIPTINPUT">
+		<helpgrid id="selrectovoid_helpgrid" innerhtml="Select the receipts that you want to void. Receipts that are not available to void do not appear."/>
+		<table id="selrectovoid_table" label="Receipts" selectmode="multiple" width="900">
+			<tablebody displayrowsperpage="15" id="selrectovoid_table_tablebody">
+				<tablecol filterable="false" id="selrectovoid_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
+				<tablecol applink="item,inventor" dataattribute="itemnum" id="selrectovoid_table_tablebody_2" inputmode="readonly" lookup="item" menutype="item" sortable="false"/>
+				<tablecol dataattribute="description" id="selrectovoid_table_tablebody_3" inputmode="readonly" sortable="false"/>
+				<tablecol dataattribute="qtyrequested" id="selrectovoid_table_tablebody_4" label="Quantity" sortable="false"/>
+				<tablecol dataattribute="actualdate" id="selrectovoid_table_tablebody_5" sortable="false"/>
+				<tablecol dataattribute="enterby" id="selrectovoid_table_tablebody_6" sortable="false"/>
+				<tablecol dataattribute="remark" id="selrectovoid_table_tablebody_7" sortable="false"/>
+			</tablebody>
+		</table>
+		<buttongroup id="selrectovoid_2">
+			<pushbutton default="true" id="selrectovoid_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="selrectovoid_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog id="rotasset" label="Receive Rotating Items" relationship="ASSETINPUT" width="800">
 		<helpgrid id="rotasset_helpgrid" innerhtml="Enter an asset number.  To generate one, click  &lt;b&gt;Autonumber&lt;/b&gt;.     To apply an item assembly structure to an asset record, click &lt;IMG border=&quot;0&quot; SRC=&quot;btn_applyias.gif&quot;&gt;."/>
 		<table id="rotasset_rotatingitems_table" label="Items">
@@ -560,25 +578,6 @@
 		<buttongroup id="rotasset_2">
 			<pushbutton default="true" id="rotasset_2_1" label="OK" mxevent="dolongop"/>
 			<pushbutton id="rotasset_2_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.beans.receipts.SelOrdItemsBean" id="voidreceipt" label="Select Receipts to Void" parentdatasrc="MAINRECORD" relationship="VOIDRECEIPTINPUT">
-		<helpgrid id="selrectovoid_helpgrid" innerhtml="Select the receipts that you want to void. Receipts that are not available to void do not appear."/>
-		<table id="selrectovoid_table" label="Receipts" selectmode="multiple" width="900">
-			<tablebody displayrowsperpage="15" id="selrectovoid_table_tablebody">
-				<tablecol filterable="false" id="selrectovoid_table_tablebody_1" mxevent="toggleselectrow" sortable="false" type="event"/>
-				<tablecol applink="item,inventor" dataattribute="itemnum" id="selrectovoid_table_tablebody_2" inputmode="readonly" lookup="item" menutype="item" sortable="false"/>
-				<tablecol dataattribute="description" id="selrectovoid_table_tablebody_3" inputmode="readonly" sortable="false"/>
-				<tablecol dataattribute="qtyrequested" id="selrectovoid_table_tablebody_4" label="Quantity" sortable="false"/>
-				<tablecol dataattribute="actualdate" id="selrectovoid_table_tablebody_5" sortable="false"/>
-				<tablecol dataattribute="enterby" id="selrectovoid_table_tablebody_6" sortable="false"/>
-				<tablecol dataattribute="remark" id="selrectovoid_table_tablebody_7" sortable="false"/>
-			</tablebody>
-		</table>
-		<buttongroup id="selrectovoid_2">
-			<pushbutton default="true" id="selrectovoid_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="selrectovoid_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
