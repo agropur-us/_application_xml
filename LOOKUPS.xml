@@ -642,7 +642,7 @@
 			<tablecol dataattribute="intpointname" id="ifaceoutintpoint_lookup_tablebody_col_2" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 		</tablebody>
 	</table>
-	<table id="failureclass" inputmode="readonly" selectmode="single">
+	<table id="failureclass" inputmode="readonly" orderby="failurecode asc" selectmode="single">
 		<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="failureclass_lookup_tablebody">
 			<tablecol dataattribute="failurecode" id="failureclass_lookup_tablebody_col_2" label="Failure Class" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="true" type="link"/>
 			<tablecol dataattribute="failurecode.description" id="failureclass_lookup_tablebody_col_3" mxevent="selectrecord" mxevent_desc="Go To %1" sortable="false" type="link"/>

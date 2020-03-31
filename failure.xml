@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<presentation apphelp="com.ibm.mbs.doc,failure/c_fail_codes_app.html" beanclass="psdi.webclient.beans.failure.FailureAppBean" id="failure" mboname="FAILURELIST" resultstableid="results_failureshowlist" version="6.2.3">
-	<page id="mainrec">
-		<include id="pageHeader"/>
+<presentation apphelp="com.ibm.mbs.doc,failure/c_fail_codes_app.html" beanclass="psdi.webclient.beans.failure.FailureAppBean" id="failure" ismobile="false" mboname="FAILURELIST" resultstableid="results_failureshowlist" version="6.2.3">
+	<page id="mainrec" scroll="false">
+		<include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
 		<clientarea id="clientarea">
 			<tabgroup id="maintabs" style="form">
 				<tab default="true" id="results" label="List" type="list">
@@ -23,7 +23,6 @@
 							<sectioncol id="main_section_1_row_1_column_1">
 								<section id="main_section_1_row_1_column_1_section_1">
 									<multiparttextbox dataattribute="failurecode" descdataattribute="failurecode.description" id="main_grid1_1" label="Failure Class"/>
-									<checkbox dataattribute="ACTIVE" id="1458923953245" label="Active?"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_section_1_row_1_column_2">
@@ -34,6 +33,7 @@
 							<sectioncol id="main_section_1_col4">
 								<section border="false" id="main_attachments">
 									<attachments id="doclinks"/>
+									<checkbox dataattribute="ACTIVE" id="1458923953245" label="Active"/>
 								</section>
 							</sectioncol>
 						</sectionrow>
@@ -114,7 +114,7 @@
 				</tab>
 			</tabgroup>
 		</clientarea>
-		<include id="pageFooter"/>
+		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
 
 	<dialog beanclass="psdi.webclient.beans.failure.CopyFailureBean" id="copycodes" label="Copy Failure Hierarchy" relationship="SHOWALLPROBLEMS">
@@ -134,19 +134,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="FAILURELIST">
-		<table id="bookmarks_table" inputmode="readonly" label="Failure Codes" selectmode="single">
-			<tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
-				<tablecol dataattribute="failurecode" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
-				<tablecol dataattribute="failurecode.description" id="bookmarks_table_tablebody_2" showfilterfield="true" sortable="false"/>
-				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
-			</tablebody>
-		</table>
-		<buttongroup id="bookmarks_2">
-			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog beanclass="psdi.webclient.system.beans.LookupBean" icon="img_lookup.gif" id="lookup_failurecode" label="Select Value">
 		<table id="failurecode" inputmode="readonly" selectmode="single">
 			<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="failurecode_lookup_tablebody">
@@ -161,19 +148,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
-		<section id="qbe_grid2">
-			<multiparttextbox dataattribute="failurecode" descdataattribute="failurecode.description" descinputmode="query" id="qbe_grid2_1_1_1" inputmode="query" label="Failure Class"/>
-			<textbox applink="multisite" dataattribute="orgid" id="qbe_grid2_1_1_2" inputmode="query" lookup="org" menutype="normal"/>
-		</section>
-		<buttongroup id="qbe_grid5_1_1_grid6">
-			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
-			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
-			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
-			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog id="newcode" label="New Code Message">
 		<section id="newcode_grid1_1_1_grid1">
 			<statictext id="newcode_grid1_1_1_grid1_1" label="Would you like to be notified when a failure code is used for the first time?"/>
@@ -184,6 +158,32 @@
 		</buttongroup>
 		<buttongroup id="newcode_2">
 			<pushbutton default="true" id="newcode_2_1" label="OK" mxevent="dialogok"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="FAILURELIST">
+		<table id="bookmarks_table" inputmode="readonly" label="Failure Codes" selectmode="single">
+			<tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+				<tablecol dataattribute="failurecode" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
+				<tablecol dataattribute="failurecode.description" id="bookmarks_table_tablebody_2" showfilterfield="true" sortable="false"/>
+				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+			</tablebody>
+		</table>
+		<buttongroup id="bookmarks_2">
+			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<section id="qbe_grid2">
+			<multiparttextbox dataattribute="failurecode" descdataattribute="failurecode.description" descinputmode="query" id="qbe_grid2_1_1_1" inputmode="query" label="Failure Class"/>
+			<textbox applink="multisite" dataattribute="orgid" id="qbe_grid2_1_1_2" inputmode="query" lookup="org" menutype="normal"/>
+		</section>
+		<buttongroup id="qbe_grid5_1_1_grid6">
+			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
 	<configurationblock id="datastore_configurationblock">
