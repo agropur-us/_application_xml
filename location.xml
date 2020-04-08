@@ -17,7 +17,7 @@
 							<tablecol dataattribute="GLACCOUNT" filterable="true" id="1265133108735" lookup="GLNAVIGATOR" sortable="true"/>
 							<tablecol dataattribute="type" id="results_showlist_tablebody_4" linkedcontrolid="qbe_grid2_1_1_grid3_3"/>
 							<tablecol dataattribute="status" id="results_showlist_tablebody_5" linkedcontrolid="qbe_grid2_1_1_grid4_2" sortable="true"/>
-							<tablecol applink="FAILURE" dataattribute="FAILURELIST.FAILURECODE" filterable="true" id="1277300319145" lookup="FAILURECLASS" menutype="NORMAL" showfilterfield="true" sortable="true"/>
+							<tablecol applink="FAILURE" dataattribute="LOCOPER.FAILURECODE" filterable="true" id="1277300319145" lookup="FAILURECLASS" menutype="NORMAL" showfilterfield="true" sortable="true"/>
 							<tablecol dataattribute="locoper.locpriority" id="results_showlist_tablebody_6" sortable="false"/>
 							<tablecol dataattribute="siteid" id="results_showlist_tablebody_7" linkedcontrolid="qbe_grid2_1_1_grid3_4"/>
 							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
@@ -810,6 +810,28 @@
 		</clientarea>
 		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
+
+	<dialog id="locstatus" label="Change Status" relationship="LOCCHANGESTATUS" savemode="ONLOADUNLOAD">
+		<section border="true" datasrc="MAINRECORD" id="changestatus_grid1_1_1_grid3">
+			<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_1"/>
+			<multiparttextbox dataattribute="status" descdataattribute="statusdesc.description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_2"/>
+		</section>
+		<section border="false" id="changestatus_grid1_1_1_grid4">
+			<combobox dataattribute="status" id="changestatus_grid1_1_1_grid4_1"/>
+			<textbox dataattribute="asofdate" id="changestatus_grid1_1_1_grid4_2" inputmode="readonly" lookup="datelookup" title="Date"/>
+			<textbox dataattribute="memo" id="changestatus_grid1_1_1_grid4_3" size="40"/>
+			<checkbox dataattribute="rolltoallchildren" id="changestatus_grid1_1_1_grid4_4"/>
+			<checkbox dataattribute="rolltoallequipment" id="changestatus_grid1_1_1_grid4_5"/>
+			<checkbox dataattribute="removefromalljp" id="changestatus_grid1_1_1_grid4_6"/>
+			<checkbox dataattribute="removefromallroutes" id="changestatus_grid1_1_1_grid4_7"/>
+			<checkbox dataattribute="removefromactivesp" id="changestatus_grid1_1_1_grid4_8"/>
+			<checkbox dataattribute="changepmstatus" id="changestatus_grid1_1_1_grid4_9"/>
+		</section>
+		<buttongroup id="changestatus_2">
+			<pushbutton clickmessage="Location status has been changed." default="true" id="changestatus_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="changestatus_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
 
 	<dialog beanclass="psdi.webclient.beans.location.ApplyIASBean" id="applyias" label="Apply Item Assembly Structure" relationship="TOPITEMSTRUCT" width="1000">
 		<datasrc id="parentitem" relationship="PARENT"/>
@@ -1817,28 +1839,6 @@
 		<buttongroup id="assetloccomm_2">
 			<pushbutton default="true" id="assetloccomm_2_1" label="OK" mxevent="dialogok"/>
 			<pushbutton id="assetloccomm_2_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog id="locstatus" label="Change Status" relationship="LOCCHANGESTATUS" savemode="ONLOADUNLOAD">
-		<section border="true" datasrc="MAINRECORD" id="changestatus_grid1_1_1_grid3">
-			<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_1"/>
-			<multiparttextbox dataattribute="status" descdataattribute="statusdesc.description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_2"/>
-		</section>
-		<section border="false" id="changestatus_grid1_1_1_grid4">
-			<combobox dataattribute="status" id="changestatus_grid1_1_1_grid4_1"/>
-			<textbox dataattribute="asofdate" id="changestatus_grid1_1_1_grid4_2" inputmode="readonly" lookup="datelookup" title="Date"/>
-			<textbox dataattribute="memo" id="changestatus_grid1_1_1_grid4_3"/>
-			<checkbox dataattribute="rolltoallchildren" id="changestatus_grid1_1_1_grid4_4"/>
-			<checkbox dataattribute="rolltoallequipment" id="changestatus_grid1_1_1_grid4_5"/>
-			<checkbox dataattribute="removefromalljp" id="changestatus_grid1_1_1_grid4_6"/>
-			<checkbox dataattribute="removefromallroutes" id="changestatus_grid1_1_1_grid4_7"/>
-			<checkbox dataattribute="removefromactivesp" id="changestatus_grid1_1_1_grid4_8"/>
-			<checkbox dataattribute="changepmstatus" id="changestatus_grid1_1_1_grid4_9"/>
-		</section>
-		<buttongroup id="changestatus_2">
-			<pushbutton clickmessage="Location status has been changed." default="true" id="changestatus_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="changestatus_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 	<configurationblock id="datastore_configurationblock">
