@@ -34,7 +34,6 @@
 								<section id="main_section_1_row_1_column_1_section_1">
 									<multiparttextbox dataattribute="reportname" descdataattribute="description" id="main_grid2_3"/>
 									<textbox dataattribute="runtype" id="main_grid2_9" lookup="valuelist"/>
-									<textbox dataattribute="LASTRUNDATE" id="1373895151815" inputmode="READONLY"/>
 									<textbox dataattribute="appname" id="main_grid2_11" label="Application" lookup="maxapps"/>
 									<textbox dataattribute="reportfolder" id="main_grid2_13"/>
 								</section>
@@ -43,6 +42,7 @@
 								<section id="main_section_1_row_1_column_2_section_1">
 									<textbox dataattribute="report_design.importeddate" id="main_grid2_15" inputmode="readonly" label="Last Import Date"/>
 									<textbox dataattribute="report_design.importedby" id="main_grid2_9c" inputmode="readonly"/>
+									<textbox dataattribute="LASTRUNDATE" id="1373895151815" inputmode="READONLY"/>
 								</section>
 							</sectioncol>
 						</sectionrow>
@@ -103,10 +103,22 @@
 								<section id="main_section_2_row_1_column_1_section_1">
 									<checkbox dataattribute="ql" id="main_grid2_110"/>
 									<textbox dataattribute="qlloc" id="main_grid2_111" lookup="valuelist"/>
-									<checkbox dataattribute="dp" id="main_grid2_112"/>
-									<textbox dataattribute="dploc" id="main_grid2_113" lookup="valuelist"/>
-									<checkbox dataattribute="pad" id="main_grid2_114"/>
-									<textbox dataattribute="padloc" id="main_grid2_115" lookup="valuelist"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="main_section_2_row_1_column_3">
+								<section id="main_section_2_row_1_column_3_section_1">
+									<checkbox dataattribute="dp" id="main_grid3_112"/>
+									<textbox dataattribute="dploc" id="main_grid3_113" lookup="valuelist"/>
+									<checkbox dataattribute="pad" id="main_grid3_114"/>
+									<textbox dataattribute="padloc" id="main_grid3_115" lookup="valuelist"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="main_section_2_row_1_column_4">
+								<section id="main_section_2_row_1_column_4_section_1">
+									<checkbox dataattribute="dp" id="main_grid4_112"/>
+									<textbox dataattribute="dploc" id="main_grid4_113" lookup="valuelist"/>
+									<checkbox dataattribute="pad" id="main_grid4_114"/>
+									<textbox dataattribute="padloc" id="main_grid4_115" lookup="valuelist"/>
 								</section>
 							</sectioncol>
 						</sectionrow>
@@ -747,6 +759,23 @@
 		</buttongroup>
 	</dialog>
 
+	<dialog id="REPMAILOPT" label="Report Email File Options" mboname="REPORTEMAILFILE">
+		<table id="reportemailfiletypes_table" orderby="FILETYPE" selectmode="single">
+			<tablebody displayrowsperpage="5" filterable="true" filterexpanded="false" id="reportemailfiletypes_table_tablebody">
+				<tablecol dataattribute="filetype" id="reportemailfiletypes_tablebody_2" inputmode="readonly"/>
+				<tablecol dataattribute="description" id="reportemailfiletypes_table_tablebody_3" inputmode="readonly"/>
+				<tablecol dataattribute="label" id="reportemailfiletypes_tablebody_4"/>
+				<tablecol dataattribute="display" id="reportemailfiletypes_table_tablebody_6">
+					<checkbox id="reportemailfiletypes_table_tablebody_6_1"/>
+				</tablecol>
+			</tablebody>
+		</table>
+		<buttongroup id="reportemailfiletypes_2">
+			<pushbutton default="true" id="reportemailfiletypes_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="reportemailfiletypes_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog beanclass="psdi.webclient.beans.report.ReportImportLibBrowseBean" id="repimplibbrowse" label="Select a File">
 		<section id="repimplibbrowse_sec">
 			<uploadfile cancellabel="Cancel" id="repimplibbrowse_sec_1" label="Specify a New File" oklabel="OK"/>
@@ -988,22 +1017,6 @@
 			<uploadfile cancellabel="Cancel" id="repimprepbrowse2_sec_1" label="Specify a New File" oklabel="OK"/>
 		</section>
 	</dialog>
-	<configurationblock id="datastore_configurationblock"/>
-
-	<dialog id="REPMAILOPT" label="Report Email File Options" mboname="REPORTEMAILFILE">
-		<table id="reportemailfiletypes_table" orderby="FILETYPE" selectmode="single">
-			<tablebody displayrowsperpage="5" filterable="true" filterexpanded="false" id="reportemailfiletypes_table_tablebody">
-				<tablecol dataattribute="filetype" id="reportemailfiletypes_tablebody_2" inputmode="readonly"/>
-				<tablecol dataattribute="description" id="reportemailfiletypes_table_tablebody_3" inputmode="readonly"/>
-				<tablecol dataattribute="label" id="reportemailfiletypes_tablebody_4"/>
-				<tablecol dataattribute="display" id="reportemailfiletypes_table_tablebody_6">
-					<checkbox id="reportemailfiletypes_table_tablebody_6_1"/>
-				</tablecol>
-			</tablebody>
-		</table>
-		<buttongroup id="reportemailfiletypes_2">
-			<pushbutton default="true" id="reportemailfiletypes_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="reportemailfiletypes_2_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
+	<configurationblock id="datastore_configurationblock">
+	</configurationblock>
 </presentation>
