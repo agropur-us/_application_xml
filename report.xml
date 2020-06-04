@@ -66,20 +66,6 @@
 							</sectioncol>
 						</sectionrow>
 					</section>
-					<section id="main_section_4" label="Cognos Report Settings" sigoption="RPTCOGPKG">
-						<sectionrow id="main_section_4_row_1">
-							<sectioncol id="main_section_4_row_1_column_0">
-								<section id="main_section_4_row_1_column_0_section_1">
-									<textbox dataattribute="package" id="main_section_4_row_1_column_2_section_1_1"/>
-								</section>
-							</sectioncol>
-							<sectioncol id="main_section_4_row_1_column_1">
-								<section id="main_section_4_row_1_column_1_section_1">
-									<textbox dataattribute="packageloc" id="main_section_4_row_1_column_2_section_1_2"/>
-								</section>
-							</sectioncol>
-						</sectionrow>
-					</section>
 					<section id="main_section_2" label="Settings">
 						<sectionrow id="main_section_2_row_1">
 							<sectioncol id="main_section_2_row_1_column_0">
@@ -95,12 +81,12 @@
 									<checkbox dataattribute="norequestpage" id="main_grid2_01"/>
 									<checkbox dataattribute="usewherewithparam" id="main_grid2_02"/>
 									<checkbox dataattribute="scheduleonly" id="main_grid2_12_3"/>
-									<textbox dataattribute="paramcolumns" id="main_grid2_12_5" label="Number of request page columns"/>
 									<textbox dataattribute="toolbarsequence" id="main_grid2_04"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_section_2_row_1_column_2">
 								<section id="main_section_2_row_1_column_1_section_1">
+									<textbox dataattribute="paramcolumns" id="main_grid2_12_5" label="Number of request page columns"/>
 									<checkbox dataattribute="ql" id="main_grid2_110"/>
 									<textbox dataattribute="qlloc" id="main_grid2_111" lookup="valuelist"/>
 								</section>
@@ -109,8 +95,6 @@
 								<section id="main_section_2_row_1_column_3_section_1">
 									<checkbox dataattribute="dp" id="main_grid3_112"/>
 									<textbox dataattribute="dploc" id="main_grid3_113" lookup="valuelist"/>
-									<checkbox dataattribute="pad" id="main_grid3_114"/>
-									<textbox dataattribute="padloc" id="main_grid3_115" lookup="valuelist"/>
 								</section>
 							</sectioncol>
 							<sectioncol id="main_section_2_row_1_column_4">
