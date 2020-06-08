@@ -12405,6 +12405,7 @@
 				<tablecol dataattribute="inventory.modelnum" id="wosparepart_Spare_PartsTable_tablebody_42" sortable="true"/>
 				<tablecol dataattribute="siteid" id="wosparepart_Spare_PartsTable_tablebody_6" sortable="true"/>
 				<tablecol dataattribute="inventory.location" id="wosparepart_Spare_PartsTable_tablebody_6Z" sortable="true"/>
+				<tablecol dataattribute="description" id="wosparepart_Spare_PartsTable_tablebody_6ADAA" />
 			</tablebody>
 		</table>
 		<buttongroup id="wosparepart_2">
