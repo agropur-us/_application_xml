@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<presentation apphelp="com.ibm.mbs.doc,failure/c_fail_codes_app.html" beanclass="psdi.webclient.beans.failure.FailureAppBean" id="failure" ismobile="false" mboname="FAILURELIST" resultstableid="results_failureshowlist" version="6.2.3">
+<presentation apphelp="com.ibm.mbs.doc,failure/c_fail_codes_app.html" beanclass="psdi.webclient.beans.failure.FailureAppBean" id="failure" ismobile="false" mboname="FAILURELIST" orderby="FAILURECODE" resultstableid="results_failureshowlist" version="6.2.3">
 	<page id="mainrec" scroll="false">
 		<include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
 		<clientarea id="clientarea">
@@ -13,6 +13,7 @@
 							<tablecol dataattribute="failurecode" id="results_failureshowlist_tablebody_2" label="Failure Class" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
 							<tablecol dataattribute="failurecode.description" id="results_failureshowlist_tablebody_3" showfilterfield="true" sortable="false"/>
 							<tablecol dataattribute="failurecode.orgid" id="results_failureshowlist_tablebody_4" showfilterfield="true" sortable="false"/>
+							<tablecol dataattribute="ACTIVE" id="1596040937205" inputmode="query" label="Active" sortable="true"/>
 							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
 						</tablebody>
 					</table>
