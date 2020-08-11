@@ -266,7 +266,7 @@
 							<tablecol dataattribute="issuedqty" id="sparepartsform_parts_table_tablebody_5"/>
 							<tablecol dataattribute="item.status" id="1307541058896" inputmode="READONLY"/>
 							<tablecol dataattribute="INVENTORY.CATALOGCODE" id="sparepartsform_parts_table_tablebody_6" inputmode="readonly" label="Catalog Code"/>
-							<tablecol dataattribute="INVENTORY.MODELNUM" id="1560176443369" inputmode="readonly"/>
+							<tablecol dataattribute="INVENTORY.binnum" filterable="true" id="1560176443369" inputmode="readonly"/>
 							<tablecol filterable="false" id="sparepartsform_parts_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
 						</tablebody>
 						<tabledetails id="sparepartsform_parts_table_1">
@@ -313,6 +313,52 @@
 						<buttongroup id="sparepartsform_sub_assemb_2">
 							<pushbutton default="true" id="sparepartsform_sub_assemb_2_1" label="New Row" mxevent="addrow"/>
 						</buttongroup>
+					</table>
+				</tab>
+					<tab id="asset_pm_2020-08-11" label="PM's">
+					<section border="true" height="100" id="asset_pm_grid1">
+						<sectionrow id="asset_pm_grid1_r1">
+							<sectioncol id="asset_pm_grid1_c1">
+								<section id="asset_pm_grid1_s1">
+									<multiparttextbox dataattribute="assetnum" descdataattribute="description" desclookup="longdesc" id="asset_pm_grid1_1"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="asset_pm_grid1_c2">
+								<section id="asset_pm_grid1_s2">
+									<textbox dataattribute="siteid" id="asset_pm_grid1_3" inputmode="readonly"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="asset_pm_grid1_c3">
+								<section id="asset_pm_grid1_s3">
+									<textbox dataattribute="status" id="asset_pm_grid1_6" inputmode="readonly"/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table datasrc="act_pm_open_table" id="act_pm_opentable" inputmode="readonly" label="Asset PM Records" relationship="PM">
+						<tablebody displayrowsperpage="10" filterable="true" id="asset_pm_2020-08-11_tablebody">
+							<tablecol filterable="false" id="asset_pm_2020-08-11_1_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+							<tablecol applink="PM" dataattribute="PMNUM" filterable="true" id="pm61412250219" inputmode="readonly" label="PM Num" lookup="PM" menutype="PM" sortable="true"/>
+							<tablecol dataattribute="description" id="pm61412253183" inputmode="readonly" label="Description" sortable="true"/>
+							<tablecol dataattribute="status" id="pm1561468804763" inputmode="readonly"/>
+							<tablecol dataattribute="nextdate" id="pm1561462342363" inputmode="readonly"/>
+						</tablebody>
+						<tabledetails id="act_pm_open_table1_1">
+							<section id="act_pm_open_table1_1_grid7" label="Details">
+								<sectionrow id="act_pm_open_table1_1_grid7_r1">
+									<sectioncol id="act_pm_open_table1_1_grid7_c1">
+										<section id="act_pm_open_table1_1_grid7_s1">
+											<multiparttextbox applink="pm" dataattribute="pmnum" defaultfocus="true" descdataattribute="description" descinputmode="readonly" desclookup="longdesc" id="act_pm_open_table1_1_grid7_1" lookup="pm" menutype="normal"/>
+											<multiparttextbox applink="jobplan" dataattribute="jpnum" defaultfocus="true" descdataattribute="pluscjobplan.description" descinputmode="readonly" desclookup="longdesc" id="act_pm_open_table1_1_grid7_2" lookup="pm" menutype="normal"/>
+											<textbox dataattribute="worktype" id="1560123476e6511" inputmode="readonly"/>
+											<textbox dataattribute="wotype2" id="232rqaddf523434" inputmode="readonly"/>
+											<textbox dataattribute="wostatus" id="156adffa6623511" inputmode="readonly"/>
+										</section>
+									</sectioncol>
+									<sectioncol id="act_pm_open_table1_1_grid7_c2"/>
+								</sectionrow>
+							</section>
+						</tabledetails>
 					</table>
 				</tab>
 				<tab id="safepl" label="Safety">
@@ -1713,6 +1759,77 @@
 		</buttongroup>
 	</dialog>
 
+	<dialog id="usercust" label="Associate Users and Custodians">
+		<table id="usercust_grid1_1_1_UsersCustodiansTable" label="Users and Custodians" relationship="ASSETUSERCUST">
+			<tablebody displayrowsperpage="20" filterexpanded="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody">
+				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+				<tablecol applink="person" dataattribute="personid" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_2" lookup="person" menutype="normal" sortable="true"/>
+				<tablecol dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3" sortable="true">
+					<textbox dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3a" inputmode="readonly"/>
+				</tablecol>
+				<tablecol dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_4" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
+				<tablecol dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_5" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_4" sortable="true"/>
+				<tablecol dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_6" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_5" sortable="true"/>
+				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+			</tablebody>
+			<tabledetails id="usercust_grid1_1_1_UsersCustodiansTable_1">
+				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_3" label="Details">
+					<multiparttextbox applink="person" dataattribute="personid" defaultfocus="true" descdataattribute="PERSON.displayname" descinputmode="readonly" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" lookup="person" menutype="normal"/>
+					<checkbox dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_3"/>
+					<checkbox dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_4"/>
+					<checkbox dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_5"/>
+				</section>
+				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_4" label="Planned Modifications">
+					<sectionrow id="usercust_grid1_1_1_UsersCustodiansTable_row1">
+						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col1">
+							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec1">
+								<checkbox dataattribute="willbeprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_1"/>
+								<checkbox dataattribute="willbecustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_2"/>
+								<checkbox dataattribute="willbeuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_3"/>
+							</section>
+						</sectioncol>
+						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col2">
+							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec2">
+								<checkbox dataattribute="modifyperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_1"/>
+								<checkbox dataattribute="addperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_2"/>
+								<checkbox dataattribute="removeperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_3"/>
+								<textbox dataattribute="multiassetlocci.recordclass" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_4" inputmode="readonly"/>
+								<textbox dataattribute="multiassetlocci.recordkey" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_5" inputmode="readonly" label="Record"/>
+							</section>
+						</sectioncol>
+					</sectionrow>
+				</section>
+			</tabledetails>
+			<buttongroup id="usercust_grid1_1_1_UsersCustodiansTable_2">
+				<pushbutton default="true" id="usercust_grid1_1_1_UsersCustodiansTable_2_1" label="New Row" mxevent="addrow"/>
+			</buttongroup>
+		</table>
+		<table id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable" label="Associate Group" relationship="TLOAMASSETPERSONGRP">
+			<tablebody displayrowsperpage="20" filterexpanded="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody">
+				<tablecol filterable="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+				<tablecol applink="persongr" dataattribute="persongroup" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_2" lookup="persongroup" menutype="normal" sortable="true"/>
+				<tablecol dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3" sortable="true">
+					<textbox dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3a" inputmode="readonly"/>
+				</tablecol>
+				<tablecol dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_4" linkedcontrolid="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
+				<tablecol filterable="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+			</tablebody>
+			<tabledetails id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1">
+				<section id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3" label="Details">
+					<multiparttextbox applink="persongr" dataattribute="persongroup" defaultfocus="true" descdataattribute="TLOAMPERSONGROUP.description" descinputmode="readonly" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_1" lookup="persongroup" menutype="normal"/>
+					<checkbox dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3"/>
+				</section>
+			</tabledetails>
+			<buttongroup id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2">
+				<pushbutton default="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2_1" label="New Row" mxevent="addrow"/>
+			</buttongroup>
+		</table>
+		<buttongroup id="usercust_2">
+			<pushbutton default="true" id="usercust_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="usercust_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog id="BIM_IMP" label="Display Model Import Sessions">
 		<section id="session_bannergrid">
 			<sectionrow id="session_grid1">
@@ -1785,77 +1902,6 @@
 		</table>
 		<buttongroup id="session_bg">
 			<pushbutton id="session_bg_1" label="Close" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog id="usercust" label="Associate Users and Custodians">
-		<table id="usercust_grid1_1_1_UsersCustodiansTable" label="Users and Custodians" relationship="ASSETUSERCUST">
-			<tablebody displayrowsperpage="20" filterexpanded="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody">
-				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-				<tablecol applink="person" dataattribute="personid" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_2" lookup="person" menutype="normal" sortable="true"/>
-				<tablecol dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3" sortable="true">
-					<textbox dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3a" inputmode="readonly"/>
-				</tablecol>
-				<tablecol dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_4" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
-				<tablecol dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_5" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_4" sortable="true"/>
-				<tablecol dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_6" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_5" sortable="true"/>
-				<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-			</tablebody>
-			<tabledetails id="usercust_grid1_1_1_UsersCustodiansTable_1">
-				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_3" label="Details">
-					<multiparttextbox applink="person" dataattribute="personid" defaultfocus="true" descdataattribute="PERSON.displayname" descinputmode="readonly" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" lookup="person" menutype="normal"/>
-					<checkbox dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_3"/>
-					<checkbox dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_4"/>
-					<checkbox dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_5"/>
-				</section>
-				<section id="usercust_grid1_1_1_UsersCustodiansTable_1_4" label="Planned Modifications">
-					<sectionrow id="usercust_grid1_1_1_UsersCustodiansTable_row1">
-						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col1">
-							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec1">
-								<checkbox dataattribute="willbeprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_1"/>
-								<checkbox dataattribute="willbecustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_2"/>
-								<checkbox dataattribute="willbeuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_3"/>
-							</section>
-						</sectioncol>
-						<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col2">
-							<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec2">
-								<checkbox dataattribute="modifyperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_1"/>
-								<checkbox dataattribute="addperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_2"/>
-								<checkbox dataattribute="removeperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_3"/>
-								<textbox dataattribute="multiassetlocci.recordclass" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_4" inputmode="readonly"/>
-								<textbox dataattribute="multiassetlocci.recordkey" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_5" inputmode="readonly" label="Record"/>
-							</section>
-						</sectioncol>
-					</sectionrow>
-				</section>
-			</tabledetails>
-			<buttongroup id="usercust_grid1_1_1_UsersCustodiansTable_2">
-				<pushbutton default="true" id="usercust_grid1_1_1_UsersCustodiansTable_2_1" label="New Row" mxevent="addrow"/>
-			</buttongroup>
-		</table>
-		<table id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable" label="Associate Group" relationship="TLOAMASSETPERSONGRP">
-			<tablebody displayrowsperpage="20" filterexpanded="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody">
-				<tablecol filterable="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-				<tablecol applink="persongr" dataattribute="persongroup" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_2" lookup="persongroup" menutype="normal" sortable="true"/>
-				<tablecol dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3" sortable="true">
-					<textbox dataattribute="TLOAMPERSONGROUP.description" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_3a" inputmode="readonly"/>
-				</tablecol>
-				<tablecol dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_4" linkedcontrolid="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
-				<tablecol filterable="false" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_tablebody_5" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-			</tablebody>
-			<tabledetails id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1">
-				<section id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3" label="Details">
-					<multiparttextbox applink="persongr" dataattribute="persongroup" defaultfocus="true" descdataattribute="TLOAMPERSONGROUP.description" descinputmode="readonly" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_1" lookup="persongroup" menutype="normal"/>
-					<checkbox dataattribute="isprimary" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_1_3_3"/>
-				</section>
-			</tabledetails>
-			<buttongroup id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2">
-				<pushbutton default="true" id="tloamassetgrp_grid1_1_1_TloamAssetGrpTable_2_1" label="New Row" mxevent="addrow"/>
-			</buttongroup>
-		</table>
-		<buttongroup id="usercust_2">
-			<pushbutton default="true" id="usercust_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="usercust_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -2294,19 +2340,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="ASSET">
-		<table id="bookmarks_table" inputmode="readonly" label="Assets" selectmode="single">
-			<tablebody displayrowsperpage="20" id="bookmarks_table_tablebody">
-				<tablecol dataattribute="assetnum" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
-				<tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
-				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
-			</tablebody>
-		</table>
-		<buttongroup id="bookmarks_2">
-			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog beanclass="psdi.webclient.beans.asset.SourceOrTargetAssetBean" id="VIEWASHIS" label="View Asset Specification History" width="850">
 		<section border="true" id="viewashis_grid1">
 			<sectionrow id="viewashis_grid1_11">
@@ -2353,6 +2386,19 @@
 		</table>
 		<buttongroup id="viewashis_2">
 			<pushbutton default="true" id="viewashis_2_1" label="OK" mxevent="dialogclose"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="ASSET">
+		<table id="bookmarks_table" inputmode="readonly" label="Assets" selectmode="single">
+			<tablebody displayrowsperpage="20" id="bookmarks_table_tablebody">
+				<tablecol dataattribute="assetnum" id="bookmarks_tablebody_1" mxevent="selectrecord" type="link"/>
+				<tablecol dataattribute="description" id="bookmarks_table_tablebody_2"/>
+				<tablecol filterable="false" id="bookmarks_table_tablebody_delete" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+			</tablebody>
+		</table>
+		<buttongroup id="bookmarks_2">
+			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
 		</buttongroup>
 	</dialog>
 

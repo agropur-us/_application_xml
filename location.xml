@@ -275,6 +275,52 @@
 						</tabledetails>
 					</table>
 				</tab>
+				<tab id="locid_pm_2020-08-11" label="PM's">
+					<section border="true" height="100" id="locid_pm_grid1">
+						<sectionrow id="locid_pm_grid1_r1">
+							<sectioncol id="locid_pm_grid1_c1">
+								<section id="locid_pm_grid1_s1">
+									<multiparttextbox dataattribute="location" descdataattribute="description" desclookup="longdesc" id="locid_pm_grid1_1"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="locid_pm_grid1_c2">
+								<section id="locid_pm_grid1_s2">
+									<textbox dataattribute="siteid" id="locid_pm_grid1_3" inputmode="readonly"/>
+								</section>
+							</sectioncol>
+							<sectioncol id="locid_pm_grid1_c3">
+								<section id="locid_pm_grid1_s3">
+									<textbox dataattribute="status" id="locid_pm_grid1_6" inputmode="readonly"/>
+								</section>
+							</sectioncol>
+						</sectionrow>
+					</section>
+					<table datasrc="act_pm_open_table" id="act_pm_opentable" inputmode="readonly" label="Location PM Records" relationship="PM">
+						<tablebody displayrowsperpage="10" filterable="true" id="locid_pm_2020-08-11_tablebody">
+							<tablecol filterable="false" id="locid_pm_2020-08-11_1_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+							<tablecol applink="PM" dataattribute="PMNUM" filterable="true" id="pm61412250219" inputmode="readonly" label="PM Num" lookup="PM" menutype="PM" sortable="true"/>
+							<tablecol dataattribute="description" id="pm61412253183" inputmode="readonly" label="Description" sortable="true"/>
+							<tablecol dataattribute="status" id="pm1561468804763" inputmode="readonly"/>
+							<tablecol dataattribute="nextdate" id="pm1561462342363" inputmode="readonly"/>
+						</tablebody>
+						<tabledetails id="act_pm_open_table1_1">
+							<section id="act_pm_open_table1_1_grid7" label="Details">
+								<sectionrow id="act_pm_open_table1_1_grid7_r1">
+									<sectioncol id="act_pm_open_table1_1_grid7_c1">
+										<section id="act_pm_open_table1_1_grid7_s1">
+											<multiparttextbox applink="pm" dataattribute="pmnum" defaultfocus="true" descdataattribute="description" descinputmode="readonly" desclookup="longdesc" id="act_pm_open_table1_1_grid7_1" lookup="pm" menutype="normal"/>
+											<multiparttextbox applink="jobplan" dataattribute="jpnum" defaultfocus="true" descdataattribute="pluscjobplan.description" descinputmode="readonly" desclookup="longdesc" id="act_pm_open_table1_1_grid7_2" lookup="pm" menutype="normal"/>
+											<textbox dataattribute="worktype" id="1560123476e6511" inputmode="readonly"/>
+											<textbox dataattribute="wotype2" id="232rqaddf523434" inputmode="readonly"/>
+											<textbox dataattribute="wostatus" id="156adffa6623511" inputmode="readonly"/>
+										</section>
+									</sectioncol>
+									<sectioncol id="act_pm_open_table1_1_grid7_c2"/>
+								</sectionrow>
+							</section>
+						</tabledetails>
+					</table>
+				</tab>
 				<tab id="history" label="History">
 					<section border="true" id="history_grid1">
 						<sectionrow id="history_grid1_row">
@@ -811,25 +857,42 @@
 		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
 	</page>
 
-	<dialog id="locstatus" label="Change Status" relationship="LOCCHANGESTATUS" savemode="ONLOADUNLOAD">
-		<section border="true" datasrc="MAINRECORD" id="changestatus_grid1_1_1_grid3">
-			<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_1"/>
-			<multiparttextbox dataattribute="status" descdataattribute="statusdesc.description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_2"/>
+	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<datasrc beanclass="psdi.webclient.beans.common.RepairFacilityConditionalUIBean" id="repfacilitysrc"/>
+		<section id="qbe_grid2">
+			<sectionrow id="qbe_grid2_1">
+				<sectioncol id="qbe_grid2_1_1">
+					<section id="qbe_grid2_1_1_grid3">
+						<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query" longdescreadonly="true" menutype="LOCATIONSCLASSIFICATION"/>
+						<textbox dataattribute="LOCHIERLOCONLY.parent" id="qbe_grid2_1_1_grid4_5" inputmode="query" label="Location Parent" lookup="locations" menutype="locationhier"/>
+						<textbox applink="LOCATION" dataattribute="LOCANCESTOR.ANCESTOR" id="1593174121079" inputmode="query" lookup="LOCATIONS"/>
+						<textbox dataattribute="LOCHIERLOCONLY.systemid" id="qbe_grid2_1_1_grid4_9" inputmode="query" lookup="system" title="Location System ID"/>
+						<textbox applink="item,inventor" dataattribute="locoper.itemnum" id="qbe_grid2_1_1_grid4_4" inputmode="query" lookup="item" menutype="item"/>
+						<textbox applink="metergrp" dataattribute="locoper.groupname" id="qbe_grid2_1_1_grid4_10" inputmode="query" label="Meter Group" lookup="metergroup" menutype="normal"/>
+						<textbox dataattribute="locoper.calnum" id="qbe_grid2_1_1_grid4_8" inputmode="query" lookup="calendar"/>
+						<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_classificationhierarchy" inputmode="query" menutype="classificationqbe"/>
+						<textbox dataattribute="isrepairfacility" id="qbe_grid2_1_1_grid4_11" inputmode="query" sigoption="REPFACILITY" sigoptiondatasrc="repfacilitysrc"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="qbe_grid2_2_1">
+					<section id="qbe_grid2_1_1_grid99">
+						<textbox dataattribute="type" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="status" id="qbe_grid2_1_1_grid4_2" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="siteid" id="qbe_grid2_1_1_grid3_4" inputmode="query" lookup="site"/>
+						<textbox dataattribute="locoper.locpriority" id="qbe_grid2_1_1_grid4_3" inputmode="query"/>
+						<textbox applink="failure" applinkreturn="failurecode" dataattribute="locoper.failurecode" id="qbe_grid2_1_1_grid4_1" inputmode="query" lookup="failureclass" menutype="normal"/>
+						<textbox dataattribute="glaccount" id="qbe_grid2_1_1_grid4_7" inputmode="query" lookup="glnavigator"/>
+						<textbox dataattribute="intlabrec" id="qbe_grid2_1_1_grid4_6" inputmode="query" lookup="glnavigator"/>
+						<textbox dataattribute="LO1" id="1553177394791" inputmode="query" label="PSM LocID"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
 		</section>
-		<section border="false" id="changestatus_grid1_1_1_grid4">
-			<combobox dataattribute="status" id="changestatus_grid1_1_1_grid4_1"/>
-			<textbox dataattribute="asofdate" id="changestatus_grid1_1_1_grid4_2" inputmode="readonly" lookup="datelookup" title="Date"/>
-			<textbox dataattribute="memo" id="changestatus_grid1_1_1_grid4_3" size="40"/>
-			<checkbox dataattribute="rolltoallchildren" id="changestatus_grid1_1_1_grid4_4"/>
-			<checkbox dataattribute="rolltoallequipment" id="changestatus_grid1_1_1_grid4_5"/>
-			<checkbox dataattribute="removefromalljp" id="changestatus_grid1_1_1_grid4_6"/>
-			<checkbox dataattribute="removefromallroutes" id="changestatus_grid1_1_1_grid4_7"/>
-			<checkbox dataattribute="removefromactivesp" id="changestatus_grid1_1_1_grid4_8"/>
-			<checkbox dataattribute="changepmstatus" id="changestatus_grid1_1_1_grid4_9"/>
-		</section>
-		<buttongroup id="changestatus_2">
-			<pushbutton clickmessage="Location status has been changed." default="true" id="changestatus_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="changestatus_2_2" label="Cancel" mxevent="dialogcancel"/>
+		<buttongroup id="qbe_grid5_1_1_grid6">
+			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -951,44 +1014,6 @@
 		<buttongroup id="managesystems_2">
 			<pushbutton clickmessage="Systems have been updated." default="true" id="managesystems_2_1" label="OK" mxevent="dialogok"/>
 			<pushbutton id="managesystems_2_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.beans.common.ClassificationBean" id="searchmore" inputmode="query" label="More Search Fields">
-		<datasrc beanclass="psdi.webclient.beans.common.RepairFacilityConditionalUIBean" id="repfacilitysrc"/>
-		<section id="qbe_grid2">
-			<sectionrow id="qbe_grid2_1">
-				<sectioncol id="qbe_grid2_1_1">
-					<section id="qbe_grid2_1_1_grid3">
-						<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query" longdescreadonly="true" menutype="LOCATIONSCLASSIFICATION"/>
-						<textbox dataattribute="LOCHIERLOCONLY.parent" id="qbe_grid2_1_1_grid4_5" inputmode="query" label="Location Parent" lookup="locations" menutype="locationhier"/>
-						<textbox dataattribute="LOCHIERLOCONLY.systemid" id="qbe_grid2_1_1_grid4_9" inputmode="query" lookup="system" title="Location System ID"/>
-						<textbox applink="item,inventor" dataattribute="locoper.itemnum" id="qbe_grid2_1_1_grid4_4" inputmode="query" lookup="item" menutype="item"/>
-						<textbox applink="metergrp" dataattribute="locoper.groupname" id="qbe_grid2_1_1_grid4_10" inputmode="query" label="Meter Group" lookup="metergroup" menutype="normal"/>
-						<textbox dataattribute="locoper.calnum" id="qbe_grid2_1_1_grid4_8" inputmode="query" lookup="calendar"/>
-						<textbox applink="assetcat" dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="qbe_classificationhierarchy" inputmode="query" menutype="classificationqbe"/>
-						<textbox dataattribute="isrepairfacility" id="qbe_grid2_1_1_grid4_11" inputmode="query" sigoption="REPFACILITY" sigoptiondatasrc="repfacilitysrc"/>
-					</section>
-				</sectioncol>
-				<sectioncol id="qbe_grid2_2_1">
-					<section id="qbe_grid2_1_1_grid99">
-						<textbox dataattribute="type" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="status" id="qbe_grid2_1_1_grid4_2" inputmode="query" lookup="valuelist"/>
-						<textbox dataattribute="siteid" id="qbe_grid2_1_1_grid3_4" inputmode="query" lookup="site"/>
-						<textbox dataattribute="locoper.locpriority" id="qbe_grid2_1_1_grid4_3" inputmode="query"/>
-						<textbox applink="failure" applinkreturn="failurecode" dataattribute="locoper.failurecode" id="qbe_grid2_1_1_grid4_1" inputmode="query" lookup="failureclass" menutype="normal"/>
-						<textbox dataattribute="glaccount" id="qbe_grid2_1_1_grid4_7" inputmode="query" lookup="glnavigator"/>
-						<textbox dataattribute="intlabrec" id="qbe_grid2_1_1_grid4_6" inputmode="query" lookup="glnavigator"/>
-						<textbox dataattribute="LO1" id="1553177394791" inputmode="query" label="PSM LocID"/>
-					</section>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<buttongroup id="qbe_grid5_1_1_grid6">
-			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
-			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
-			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
-			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -1114,76 +1139,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog beanclass="psdi.webclient.beans.location.UsersAndCustodiansBean" id="usercust" label="Users and Custodians" relationship="LOCATIONUSERCUST">
-		<section datasrc="MAINRECORD" id="usercust_bannergrid">
-			<multiparttextbox dataattribute="location" defaultfocus="true" descdataattribute="description" descinputmode="readonly" id="usercust_bannergrid_1"/>
-			<textbox dataattribute="siteid" id="usercust_bannergrid_3"/>
-		</section>
-		<section id="usercust_grid1">
-			<sectionrow id="usercust_grid1_1">
-				<sectioncol id="usercust_grid1_1_1">
-					<table id="usercust_grid1_1_1_UsersCustodiansTable" label="Users and Custodians">
-						<tablebody displayrowsperpage="20" filterable="true" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody">
-							<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-							<tablecol dataattribute="personid" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_2" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" sortable="true"/>
-							<tablecol dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_2" sortable="true"/>
-							<tablecol dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_4" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
-							<tablecol dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_5" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_4" sortable="true"/>
-							<tablecol dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_6" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_5" sortable="true"/>
-							<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-						</tablebody>
-						<tabledetails id="usercust_grid1_1_1_UsersCustodiansTable_1">
-							<section id="usercust_grid1_1_1_UsersCustodiansTable_1_3" label="Details">
-								<textbox applink="person" dataattribute="personid" defaultfocus="true" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" lookup="person" menutype="normal"/>
-								<textbox dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_2" inputmode="readonly" title="Name:"/>
-								<checkbox dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_3"/>
-								<checkbox dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_4"/>
-								<checkbox dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_5"/>
-							</section>
-							<section id="usercust_grid1_1_1_UsersCustodiansTable_1_4" label="Planned Modifications">
-								<sectionrow id="usercust_grid1_1_1_UsersCustodiansTable_row1">
-									<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col1">
-										<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec1">
-											<checkbox dataattribute="willbeprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_1"/>
-											<checkbox dataattribute="willbecustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_2"/>
-											<checkbox dataattribute="willbeuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_3"/>
-										</section>
-									</sectioncol>
-									<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col2">
-										<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec2">
-											<checkbox dataattribute="modifyperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_1"/>
-											<checkbox dataattribute="addperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_2"/>
-											<checkbox dataattribute="removeperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_3"/>
-											<textbox dataattribute="multiassetlocci.recordclass" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_4" inputmode="readonly"/>
-											<textbox dataattribute="multiassetlocci.recordkey" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_5" inputmode="readonly" label="Record"/>
-										</section>
-									</sectioncol>
-								</sectionrow>
-							</section>
-						</tabledetails>
-						<buttongroup id="usercust_grid1_1_1_UsersCustodiansTable_2">
-							<pushbutton default="true" id="usercust_grid1_1_1_UsersCustodiansTable_2_1" label="New Row" mxevent="addrow"/>
-						</buttongroup>
-					</table>
-				</sectioncol>
-			</sectionrow>
-		</section>
-		<buttongroup id="usercust_2">
-			<pushbutton default="true" id="usercust_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="usercust_2_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.beans.location.MultiLocationCollectionBean" id="ALOCCOLLCT" label="Add Locations to Collections" mboname="NPCOLLECTION">
-		<section id="aloccollct_1">
-			<multiparttextbox applink="collection" dataattribute="collectionnum" descdataattribute="COLLECTION.description" descinputmode="readonly" id="aloccollct_11" lookup="collection" menutype="normal"/>
-		</section>
-		<buttongroup id="aloccollct_buttons_3">
-			<pushbutton default="true" id="aloccollct_buttons_3_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="aloccollct_buttons_3_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog id="BIM_IMP" label="Display Model Import Sessions">
 		<section id="session_bannergrid">
 			<sectionrow id="session_grid1">
@@ -1256,6 +1211,76 @@
 		</table>
 		<buttongroup id="session_bg">
 			<pushbutton id="session_bg_1" label="Close" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.beans.location.UsersAndCustodiansBean" id="usercust" label="Users and Custodians" relationship="LOCATIONUSERCUST">
+		<section datasrc="MAINRECORD" id="usercust_bannergrid">
+			<multiparttextbox dataattribute="location" defaultfocus="true" descdataattribute="description" descinputmode="readonly" id="usercust_bannergrid_1"/>
+			<textbox dataattribute="siteid" id="usercust_bannergrid_3"/>
+		</section>
+		<section id="usercust_grid1">
+			<sectionrow id="usercust_grid1_1">
+				<sectioncol id="usercust_grid1_1_1">
+					<table id="usercust_grid1_1_1_UsersCustodiansTable" label="Users and Custodians">
+						<tablebody displayrowsperpage="20" filterable="true" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody">
+							<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+							<tablecol dataattribute="personid" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_2" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" sortable="true"/>
+							<tablecol dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_3" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_2" sortable="true"/>
+							<tablecol dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_4" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_3" ondatachange="refreshtable" sortable="true"/>
+							<tablecol dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_5" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_4" sortable="true"/>
+							<tablecol dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_6" linkedcontrolid="usercust_grid1_1_1_UsersCustodiansTable_1_3_5" sortable="true"/>
+							<tablecol filterable="false" id="usercust_grid1_1_1_UsersCustodiansTable_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+						</tablebody>
+						<tabledetails id="usercust_grid1_1_1_UsersCustodiansTable_1">
+							<section id="usercust_grid1_1_1_UsersCustodiansTable_1_3" label="Details">
+								<textbox applink="person" dataattribute="personid" defaultfocus="true" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_1" lookup="person" menutype="normal"/>
+								<textbox dataattribute="PERSON.displayname" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_2" inputmode="readonly" title="Name:"/>
+								<checkbox dataattribute="isprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_3"/>
+								<checkbox dataattribute="iscustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_4"/>
+								<checkbox dataattribute="isuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_3_5"/>
+							</section>
+							<section id="usercust_grid1_1_1_UsersCustodiansTable_1_4" label="Planned Modifications">
+								<sectionrow id="usercust_grid1_1_1_UsersCustodiansTable_row1">
+									<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col1">
+										<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec1">
+											<checkbox dataattribute="willbeprimary" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_1"/>
+											<checkbox dataattribute="willbecustodian" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_2"/>
+											<checkbox dataattribute="willbeuser" id="usercust_grid1_1_1_UsersCustodiansTable_1_4_3"/>
+										</section>
+									</sectioncol>
+									<sectioncol id="usercust_grid1_1_1_UsersCustodiansTabl_row1_col2">
+										<section id="usercust_grid1_1_1_UsersCustodiansTabl_sec2">
+											<checkbox dataattribute="modifyperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_1"/>
+											<checkbox dataattribute="addperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_2"/>
+											<checkbox dataattribute="removeperson" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_3"/>
+											<textbox dataattribute="multiassetlocci.recordclass" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_4" inputmode="readonly"/>
+											<textbox dataattribute="multiassetlocci.recordkey" id="usercust_grid1_1_1_UsersCustodiansTable_1_5_5" inputmode="readonly" label="Record"/>
+										</section>
+									</sectioncol>
+								</sectionrow>
+							</section>
+						</tabledetails>
+						<buttongroup id="usercust_grid1_1_1_UsersCustodiansTable_2">
+							<pushbutton default="true" id="usercust_grid1_1_1_UsersCustodiansTable_2_1" label="New Row" mxevent="addrow"/>
+						</buttongroup>
+					</table>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<buttongroup id="usercust_2">
+			<pushbutton default="true" id="usercust_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="usercust_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.beans.location.MultiLocationCollectionBean" id="ALOCCOLLCT" label="Add Locations to Collections" mboname="NPCOLLECTION">
+		<section id="aloccollct_1">
+			<multiparttextbox applink="collection" dataattribute="collectionnum" descdataattribute="COLLECTION.description" descinputmode="readonly" id="aloccollct_11" lookup="collection" menutype="normal"/>
+		</section>
+		<buttongroup id="aloccollct_buttons_3">
+			<pushbutton default="true" id="aloccollct_buttons_3_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="aloccollct_buttons_3_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -1538,45 +1563,6 @@
 		</buttongroup>
 	</dialog>
 
-	<dialog id="addsys" label="Associate Systems with Location" relationship="LOCHIERLOCONLY" savemode="ONLOAD">
-		<helpgrid id="associatesystems_help" innerhtml="To associate a new system with the current location, click New Row."/>
-		<section datasrc="MAINRECORD" id="associatesystems_bannergrid">
-			<multiparttextbox dataattribute="location" defaultfocus="true" descdataattribute="description" descinputmode="readonly" id="associatesystems_bannergrid_1"/>
-			<textbox dataattribute="siteid" id="associatesystems_bannergrid_3"/>
-		</section>
-		<table id="associatesystems_grid1_1_1_addsystem_table" label="System">
-			<tablebody displayrowsperpage="20" filterable="true" id="associatesystems_grid1_1_1_addsystem_table_tablebody">
-				<tablecol filterable="false" id="associatesystems_grid1_1_1_addsystem_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
-				<tablecol dataattribute="systemid" id="associatesystems_grid1_1_1_addsystem_table_tablebody_2"/>
-				<tablecol dataattribute="locsystem.description" id="associatesystems_grid1_1_1_addsystem_table_tablebody_3" showfilterfield="true" sortable="false"/>
-				<tablecol dataattribute="locsystem.primarysystem" id="associatesystems_grid1_1_1_addsystem_table_tablebody_4" inputmode="readonly" showfilterfield="true" sortable="false">
-					<checkbox dataattribute="locsystem.primarysystem" id="associatesystems_grid1_1_1_addsystem_table_tablebody_4a" inputmode="readonly"/>
-				</tablecol>
-				<tablecol dataattribute="locsystem.network" id="associatesystems_grid1_1_1_addsystem_table_tablebody_5" inputmode="readonly" showfilterfield="true" sortable="false">
-					<checkbox dataattribute="locsystem.network" id="associatesystems_grid1_1_1_addsystem_table_tablebody_5a" inputmode="readonly"/>
-				</tablecol>
-				<tablecol dataattribute="parent" id="associatesystems_grid1_1_1_addsystem_table_tablebody_6"/>
-				<tablecol filterable="false" id="associatesystems_grid1_1_1_addsystem_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
-			</tablebody>
-			<tabledetails id="associatesystems_grid1_1_1_addsystem_table_1">
-				<section id="associatesystems_grid1_1_1_addsystem_table_1_grid3" label="Details">
-					<multiparttextbox dataattribute="systemid" defaultfocus="true" descdataattribute="locsystem.description" descinputmode="readonly" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_1" longdescreadonly="true" lookup="system" title="System Identification"/>
-					<multiparttextbox dataattribute="parent" descdataattribute="locations.description" descinputmode="readonly" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_3" longdescreadonly="true" lookup="locations" menutype="locations" title="Belongs To"/>
-					<checkbox dataattribute="locsystem.primarysystem" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_4" inputmode="readonly"/>
-					<checkbox dataattribute="locsystem.network" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_5" inputmode="readonly"/>
-					<checkbox dataattribute="locsystem.address" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_6" inputmode="readonly" licensekey="SERVICEADDRESS"/>
-				</section>
-			</tabledetails>
-			<buttongroup id="associatesystems_grid1_1_1_addsystem_table_2">
-				<pushbutton default="true" id="associatesystems_grid1_1_1_addsystem_table_2_1" label="New Row" mxevent="addrow"/>
-			</buttongroup>
-		</table>
-		<buttongroup id="associatesystems_2">
-			<pushbutton default="true" id="associatesystems_2_1" label="OK" mxevent="dialogok"/>
-			<pushbutton id="associatesystems_2_2" label="Cancel" mxevent="dialogcancel"/>
-		</buttongroup>
-	</dialog>
-
 	<dialog beanclass="psdi.webclient.beans.meter.MeterReadingBean" id="metreset" label="Reset/Replace Meters" orderby="sequence" relationship="LOCATIONMETERCONTINUOUS" width="900">
 		<helpgrid id="metreset_help" innerhtml="Use this action if you have reset the meter or replaced it with a different physical meter."/>
 		<section datasrc="MAINRECORD" id="metreset_bannergrid">
@@ -1648,6 +1634,45 @@
 		<buttongroup id="metreset_2">
 			<pushbutton default="true" id="metreset_2_1" label="OK" mxevent="dialogok"/>
 			<pushbutton id="metreset_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="addsys" label="Associate Systems with Location" relationship="LOCHIERLOCONLY" savemode="ONLOAD">
+		<helpgrid id="associatesystems_help" innerhtml="To associate a new system with the current location, click New Row."/>
+		<section datasrc="MAINRECORD" id="associatesystems_bannergrid">
+			<multiparttextbox dataattribute="location" defaultfocus="true" descdataattribute="description" descinputmode="readonly" id="associatesystems_bannergrid_1"/>
+			<textbox dataattribute="siteid" id="associatesystems_bannergrid_3"/>
+		</section>
+		<table id="associatesystems_grid1_1_1_addsystem_table" label="System">
+			<tablebody displayrowsperpage="20" filterable="true" id="associatesystems_grid1_1_1_addsystem_table_tablebody">
+				<tablecol filterable="false" id="associatesystems_grid1_1_1_addsystem_table_tablebody_1" mxevent="toggledetailstate" mxevent_desc="Show Detail" sortable="false" type="event"/>
+				<tablecol dataattribute="systemid" id="associatesystems_grid1_1_1_addsystem_table_tablebody_2"/>
+				<tablecol dataattribute="locsystem.description" id="associatesystems_grid1_1_1_addsystem_table_tablebody_3" showfilterfield="true" sortable="false"/>
+				<tablecol dataattribute="locsystem.primarysystem" id="associatesystems_grid1_1_1_addsystem_table_tablebody_4" inputmode="readonly" showfilterfield="true" sortable="false">
+					<checkbox dataattribute="locsystem.primarysystem" id="associatesystems_grid1_1_1_addsystem_table_tablebody_4a" inputmode="readonly"/>
+				</tablecol>
+				<tablecol dataattribute="locsystem.network" id="associatesystems_grid1_1_1_addsystem_table_tablebody_5" inputmode="readonly" showfilterfield="true" sortable="false">
+					<checkbox dataattribute="locsystem.network" id="associatesystems_grid1_1_1_addsystem_table_tablebody_5a" inputmode="readonly"/>
+				</tablecol>
+				<tablecol dataattribute="parent" id="associatesystems_grid1_1_1_addsystem_table_tablebody_6"/>
+				<tablecol filterable="false" id="associatesystems_grid1_1_1_addsystem_table_tablebody_7" mxevent="toggledeleterow" mxevent_desc="Mark Row for Delete" mxevent_icon="btn_garbage.gif" sortable="false" type="event"/>
+			</tablebody>
+			<tabledetails id="associatesystems_grid1_1_1_addsystem_table_1">
+				<section id="associatesystems_grid1_1_1_addsystem_table_1_grid3" label="Details">
+					<multiparttextbox dataattribute="systemid" defaultfocus="true" descdataattribute="locsystem.description" descinputmode="readonly" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_1" longdescreadonly="true" lookup="system" title="System Identification"/>
+					<multiparttextbox dataattribute="parent" descdataattribute="locations.description" descinputmode="readonly" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_3" longdescreadonly="true" lookup="locations" menutype="locations" title="Belongs To"/>
+					<checkbox dataattribute="locsystem.primarysystem" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_4" inputmode="readonly"/>
+					<checkbox dataattribute="locsystem.network" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_5" inputmode="readonly"/>
+					<checkbox dataattribute="locsystem.address" id="associatesystems_grid1_1_1_addsystem_table_1_grid3_6" inputmode="readonly" licensekey="SERVICEADDRESS"/>
+				</section>
+			</tabledetails>
+			<buttongroup id="associatesystems_grid1_1_1_addsystem_table_2">
+				<pushbutton default="true" id="associatesystems_grid1_1_1_addsystem_table_2_1" label="New Row" mxevent="addrow"/>
+			</buttongroup>
+		</table>
+		<buttongroup id="associatesystems_2">
+			<pushbutton default="true" id="associatesystems_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="associatesystems_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 
@@ -1839,6 +1864,28 @@
 		<buttongroup id="assetloccomm_2">
 			<pushbutton default="true" id="assetloccomm_2_1" label="OK" mxevent="dialogok"/>
 			<pushbutton id="assetloccomm_2_2" label="Cancel" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog id="locstatus" label="Change Status" relationship="LOCCHANGESTATUS" savemode="ONLOADUNLOAD">
+		<section border="true" datasrc="MAINRECORD" id="changestatus_grid1_1_1_grid3">
+			<multiparttextbox dataattribute="location" descdataattribute="description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_1"/>
+			<multiparttextbox dataattribute="status" descdataattribute="statusdesc.description" descinputmode="readonly" id="changestatus_grid1_1_1_grid3_2"/>
+		</section>
+		<section border="false" id="changestatus_grid1_1_1_grid4">
+			<combobox dataattribute="status" id="changestatus_grid1_1_1_grid4_1"/>
+			<textbox dataattribute="asofdate" id="changestatus_grid1_1_1_grid4_2" inputmode="readonly" lookup="datelookup" title="Date"/>
+			<textbox dataattribute="memo" id="changestatus_grid1_1_1_grid4_3" size="40"/>
+			<checkbox dataattribute="rolltoallchildren" id="changestatus_grid1_1_1_grid4_4"/>
+			<checkbox dataattribute="rolltoallequipment" id="changestatus_grid1_1_1_grid4_5"/>
+			<checkbox dataattribute="removefromalljp" id="changestatus_grid1_1_1_grid4_6"/>
+			<checkbox dataattribute="removefromallroutes" id="changestatus_grid1_1_1_grid4_7"/>
+			<checkbox dataattribute="removefromactivesp" id="changestatus_grid1_1_1_grid4_8"/>
+			<checkbox dataattribute="changepmstatus" id="changestatus_grid1_1_1_grid4_9"/>
+		</section>
+		<buttongroup id="changestatus_2">
+			<pushbutton clickmessage="Location status has been changed." default="true" id="changestatus_2_1" label="OK" mxevent="dialogok"/>
+			<pushbutton id="changestatus_2_2" label="Cancel" mxevent="dialogcancel"/>
 		</buttongroup>
 	</dialog>
 	<configurationblock id="datastore_configurationblock">
