@@ -10,8 +10,9 @@
 					<table id="results_showlist" inputmode="readonly" label="People" mboname="PERSON" selectmode="multiple">
 						<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
 							<tablecol dataattribute="personid" filterable="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
-							<tablecol dataattribute="personid" id="results_showlist_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" size="35" type="link" usefieldsizegroup="false"/>
-							<tablecol dataattribute="displayname" id="results_showlist_tablebody_5"/>
+							<tablecol dataattribute="personid" id="results_showlist_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link" usefieldsizegroup="false"/>
+							<tablecol dataattribute="FIRSTNAME" filterable="true" id="1598974542234" sortable="true"/>
+							<tablecol dataattribute="LASTNAME" filterable="true" id="1598974544804" sortable="true"/>
 							<tablecol dataattribute="title" id="results_showlist_tablebody_6"/>
 							<tablecol dataattribute="SUPERVISOR" id="1323098872687" lookup="PERSON"/>
 							<tablecol dataattribute="DEPARTMENT" filterable="true" id="results_showlist_tablebody_10" inputmode="readonly" label="Department" lookup="VALUELIST" menutype="normal" sortable="true"/>
