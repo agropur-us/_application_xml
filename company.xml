@@ -12,11 +12,12 @@
 							<tablecol dataattribute="company" filterable="false" id="results_showlist_tablebody_1" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
 							<tablecol dataattribute="company" id="results_showlist_tablebody_2" mxevent="selectrecord" mxevent_desc="Go To %1" type="link"/>
 							<tablecol dataattribute="name" id="results_showlist_tablebody_3" sigoption="READ"/>
-							<tablecol dataattribute="CO4" filterable="true" id="1265753035649" label="ERP Vendor ID" sortable="true"/>
+							<tablecol dataattribute="EBS_VENDORID" filterable="true" id="1265753035649" label="EBS Vendor ID" sortable="true"/>
+							<tablecol dataattribute="EBS_OUNAME" id="1629300650062" label="EBS OU Name" sortable="true"/>
+							<tablecol dataattribute="CO4" id="1629299813232"/>
 							<tablecol dataattribute="CUSTOMERNUM" filterable="true" id="results_showlist_tablebody_4" sortable="true"/>
 							<tablecol dataattribute="disabled" id="1496778414024" inputmode="query" sortable="true"/>
 							<tablecol dataattribute="type" id="results_showlist_tablebody_5" linkedcontrolid="qbe_grid2_1_1_grid3_5"/>
-							<tablecol dataattribute="currencycode" id="results_showlist_tablebody_6"/>
 							<tablecol dataattribute="orgid" id="results_showlist_tablebody_7" linkedcontrolid="qbe_grid2_1_1_grid3_3"/>
 							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
 						</tablebody>
@@ -43,9 +44,10 @@
 									<textbox dataattribute="type" id="main_grid1_8" lookup="valuelist"/>
 									<textbox dataattribute="orgid" id="main_grid1_3" readonly="true"/>
 									<checkbox dataattribute="useparentremitto" id="main_grid1_6"/>
-									<textbox dataattribute="co4" id="1265753121200" label="ERP Vendor ID"/>
-									<textbox dataattribute="co1" id="1265753124915" label="ERP Remit To"/>
-									<textbox dataattribute="co5" id="1265753127461" label="ERP Delv From"/>
+									<textbox dataattribute="co4" id="1265753121200" inputmode="readonly" label="Adage Vendor ID"/>
+									<textbox dataattribute="EBS_VENDORID" id="1265753124915" inputmode="readonly" label="Oracle Vendor ID"/>
+									<textbox dataattribute="EBS_OUNAME" id="1629129367878" inputmode="readonly" label="Oracle OU Name"/>
+									<textbox dataattribute="EBS_VENDOR_SITEID" id="1629129365719" inputmode="readonly" label="Oracle Vendor Site"/>
 								</section>
 							</sectioncol>
 						</sectionrow>
@@ -133,7 +135,7 @@
 									<sectioncol id="contacts_contacts_table_1_grid3_11_1">
 										<section id="contacts_contacts_table_1_grid3_11_1_1">
 											<textbox dataattribute="contact" defaultfocus="true" id="contacts_contacts_table_1_grid3_1"/>
-											<textbox dataattribute="position" id="contacts_contacts_table_1_grid3_2"/>
+											<textbox dataattribute="position" id="contacts_contacts_table_1_grid3_2" size="35"/>
 											<textbox dataattribute="email" id="contacts_contacts_table_1_grid3_5"/>
 											<textbox dataattribute="procurementcardnum" id="contacts_contacts_table_1_grid3_8"/>
 											<textbox dataattribute="proccardexpiredate" id="contacts_contacts_table_1_grid3_9" lookup="datelookup"/>
@@ -144,9 +146,7 @@
 											<textbox dataattribute="voicephone" id="contacts_contacts_table_1_grid3_3" usefieldsizegroup="false"/>
 											<textbox dataattribute="faxphone" id="contacts_contacts_table_1_grid3_4" usefieldsizegroup="false"/>
 											<textbox dataattribute="pagerphone" id="contacts_contacts_table_1_grid3_6" label="Cell" size="20"/>
-											<textbox dataattribute="homephone" id="contacts_contacts_table_1_grid3_7"/>
-											<textbox dataattribute="CLASSSTRUCTURE.HIERARCHYPATH" id="contacts_contacts_table_hierachypath" menutype="classification" ondatachange="resetchildren"/>
-											<textbox dataattribute="CLASSSTRUCTURE.description_class" id="contacts_contacts_table_class_desc" lookup="classification" ondatachange="resetchildren"/>
+											<textbox dataattribute="homephone" id="contacts_contacts_table_1_grid3_7" size="20"/>
 										</section>
 									</sectioncol>
 								</sectionrow>
@@ -176,7 +176,6 @@
 						<sectionrow id="addresses_grid2_11">
 							<sectioncol id="addresses_grid2_11_2">
 								<section id="addresses_grid2_11_2_1" label="General Information">
-									<textbox dataattribute="contact" id="addresses_grid2_1" lookup="compcontact" smartfilloff="true"/>
 									<textbox dataattribute="address1" id="addresses_grid2_2"/>
 									<textbox dataattribute="address6" id="1359603056911"/>
 									<textbox dataattribute="address7" id="1359603060101"/>
@@ -190,7 +189,6 @@
 							</sectioncol>
 							<sectioncol id="addresses_grid2_22_1">
 								<section id="addresses_grid2_22_1_1" label="Remit To Information">
-									<textbox dataattribute="remitcontact" id="addresses_grid3_1" lookup="compcontact" smartfilloff="true"/>
 									<textbox dataattribute="remitaddress1" id="addresses_grid3_2"/>
 									<textbox dataattribute="remitaddress6" id="1359602990318"/>
 									<textbox dataattribute="remitaddress7" id="1359602993278"/>
@@ -350,6 +348,36 @@
 		</buttongroup>
 	</dialog>
 
+	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<section id="qbe_grid2_1_1_grid3">
+			<multiparttextbox dataattribute="company" descdataattribute="name" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query"/>
+			<sectionrow id="1629134061797">
+				<sectioncol id="1629134086644">
+					<section id="1629134144136">
+						<textbox dataattribute="co4" id="1265753389616" label="Adage Vendor ID"/>
+						<textbox dataattribute="EBS_VENDORID" id="1629134171811" label="Oracle Vendor ID"/>
+						<textbox dataattribute="EBS_VENDOR_SITEID" id="1629134169089" label="Oracle Vendor SiteID"/>
+						<textbox dataattribute="EBS_OUNAME" id="1629134242076" label="Oracle OU Name"/>
+					</section>
+				</sectioncol>
+				<sectioncol id="16291340617972">
+					<section id="qbe_grid2_1_1_grid316291340617972subSection">
+						<textbox dataattribute="customernum" id="qbe_grid2_1_1_grid3_4" inputmode="query"/>
+						<textbox applink="multisite" dataattribute="orgid" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="org" menutype="normal"/>
+						<textbox dataattribute="type" id="qbe_grid2_1_1_grid3_5" inputmode="query" lookup="valuelist"/>
+						<textbox dataattribute="DISABLED" id="1465833822957" inputmode="query"/>
+					</section>
+				</sectioncol>
+			</sectionrow>
+		</section>
+		<buttongroup id="qbe_grid5_1_1_grid6">
+			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
+		</buttongroup>
+	</dialog>
+
 	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="My Bookmarks" mboname="COMPANIES">
 		<table id="bookmarks_table" inputmode="readonly" label="Companies" selectmode="single">
 			<tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
@@ -360,23 +388,6 @@
 		</table>
 		<buttongroup id="bookmarks_2">
 			<pushbutton default="true" id="bookmarks_2_1" label="OK" mxevent="dialogok"/>
-		</buttongroup>
-	</dialog>
-
-	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
-		<section id="qbe_grid2_1_1_grid3">
-			<multiparttextbox dataattribute="company" descdataattribute="name" descinputmode="query" id="qbe_grid2_1_1_grid3_1" inputmode="query"/>
-			<textbox dataattribute="customernum" id="qbe_grid2_1_1_grid3_4" inputmode="query"/>
-			<textbox dataattribute="type" id="qbe_grid2_1_1_grid3_5" inputmode="query" lookup="valuelist"/>
-			<textbox applink="multisite" dataattribute="orgid" id="qbe_grid2_1_1_grid3_3" inputmode="query" lookup="org" menutype="normal"/>
-			<textbox dataattribute="co4" id="1265753389616" label="ERP Vend ID"/>
-			<textbox dataattribute="DISABLED" id="1465833822957" inputmode="query"/>
-		</section>
-		<buttongroup id="qbe_grid5_1_1_grid6">
-			<pushbutton default="true" id="qbe_grid5_1_1_grid6_1" label="Find" mxevent="dialogok"/>
-			<pushbutton id="qbe_restoreappdefault_button" label="Restore Application Defaults" mxevent="qbeclear"/>
-			<pushbutton id="qbe_revisebutton" label="Revise" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
-			<pushbutton id="qbe_grid5_1_1_grid6_3" label="Cancel" mxevent="qbecancel"/>
 		</buttongroup>
 	</dialog>
 
