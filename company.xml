@@ -137,16 +137,20 @@
 											<textbox dataattribute="contact" defaultfocus="true" id="contacts_contacts_table_1_grid3_1"/>
 											<textbox dataattribute="position" id="contacts_contacts_table_1_grid3_2" size="35"/>
 											<textbox dataattribute="email" id="contacts_contacts_table_1_grid3_5"/>
-											<textbox dataattribute="procurementcardnum" id="contacts_contacts_table_1_grid3_8"/>
-											<textbox dataattribute="proccardexpiredate" id="contacts_contacts_table_1_grid3_9" lookup="datelookup"/>
+											<textbox dataattribute="procurementcardnum" id="contacts_contacts_table_1_grid3_8" inputmode="readonly"/>
+											<textbox dataattribute="proccardexpiredate" id="contacts_contacts_table_1_grid3_9" inputmode="readonly" lookup="datelookup"/>
 										</section>
 									</sectioncol>
 									<sectioncol id="contacts_contacts_table_1_grid3_11_2">
 										<section id="contacts_contacts_table_1_grid3_11_2_1">
 											<textbox dataattribute="voicephone" id="contacts_contacts_table_1_grid3_3" usefieldsizegroup="false"/>
 											<textbox dataattribute="faxphone" id="contacts_contacts_table_1_grid3_4" usefieldsizegroup="false"/>
-											<textbox dataattribute="pagerphone" id="contacts_contacts_table_1_grid3_6" label="Cell" size="20"/>
-											<textbox dataattribute="homephone" id="contacts_contacts_table_1_grid3_7" size="20"/>
+										</section>
+									</sectioncol>
+									<sectioncol id="contacts_contacts_table_1_grid3_11_3">
+										<section id="contacts_contacts_table_1_grid3_11_3_1">
+											<textbox dataattribute="pagerphone" id="contacts_contacts_table_1_grid3_61" label="Cell" size="20"/>
+											<textbox dataattribute="homephone" id="contacts_contacts_table_1_grid3_71" size="20"/>
 										</section>
 									</sectioncol>
 								</sectionrow>
